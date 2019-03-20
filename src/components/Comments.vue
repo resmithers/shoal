@@ -5,7 +5,7 @@
       <li v-for="comment in comments" :key="comment.id">
         {{ comment.Body }}
         <br>
-        {{moment(comment.Timestamp.seconds).format('LLL')}}
+        {{moment(comment.Timestamp).format('LLL')}}
         <br>
         {{ comment.Author }}
       </li>
@@ -15,7 +15,7 @@
 
 <script>
 import { listenComments } from "../utils/FirestoreListen";
-import moment from 'moment';
+import moment from "moment";
 
 export default {
   data() {
@@ -30,18 +30,15 @@ export default {
 
   mounted() {
     listenComments(this);
-    console.log(this.$route.params);
   },
 
   watch: {
-    comments: function() {
-      console.log(this.comments);
-    }
+    comments: function() {}
   },
   methods: {
-      moment: function(param){
-          return moment.unix(param);
-      }
+    moment: function(param) {
+      return moment(param);
+    }
   }
 };
 </script>
