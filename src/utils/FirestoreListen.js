@@ -1,33 +1,33 @@
 const db = require("./config.js");
 
-function listenDisc(thisBind) {
+export function listenDisc(thisBind) {
   return db
     .collection("Discussions")
-    .doc(thisBind.user)
+    .doc(thisBind.discID)
     .collection("Points")
     .onSnapshot(snap => {
       thisBind.gregPoints = snap.docs.map(v => v.data());
     });
 }
 
-function listenComments(thisBind) {
+export function listenComments(thisBind) {
   return db
     .collection("Discussions")
-    .doc(thisBind.user)
-    .collection("Comments")
+    .doc(thisBind.discID)
+    .collection("Comments").orderBy('Timestamp', 'desc')
     .onSnapshot(snap => {
-      thisBind.gregComments = snap.docs.map(v => v.data());
+      thisBind.comments = snap.docs.map(v => v.data());
     });
 }
 
-function listenVotes(thisBind) {
+export function listenVotes(thisBind) {
   return db
     .collection("Discussions")
-    .doc(thisBind.user)
+    .doc(thisBind.discID)
     .collection("Votes")
     .onSnapshot(snap => {
       thisBind.gregVotes = snap.docs.map(v => v.data());
     });
 }
 
-module.exports = { listenDisc, listenComments, listenVotes };
+// module.exports = { listenDisc, listenComments, listenVotes };
