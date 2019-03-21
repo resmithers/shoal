@@ -28,7 +28,6 @@ export function addDiscPoint(event, refs, docUID) {
 }
 
 export function addComment(docUID, body, user) {
-  console.log(docUID, body, user);
   Shoal.doc(docUID)
     .collection('Comments')
     .add({
