@@ -14,20 +14,22 @@
       :pointhoverborderwidth="3"
       :pointhoverbackgroundcolor="'#636b6f'"
       :pointhoverbordercolor="'#ffd663'"
+      :responsive="true"
       id="chart"
     ></chartjs-line>
-    <button @click="pushing">Test</button>
   </div>
 </template>
 
 <script>
 import { listenVotes } from "../utils/FirestoreListen.js";
+
 export default {
   data() {
     return {
       chartKey: 0,
       labels: [],
       datasets: [],
+      discID: this.$route.params.id,
       option: {
         title: {
           postition: "bottom"
@@ -41,22 +43,12 @@ export default {
   mounted() {
     listenVotes(this);
   },
-  props: {
-    discID: String
-  },
   watch: {
     datasets: function() {
       this.chartKey++;
     }
   },
-  methods: {
-    pushing() {
-      this.labels.push("a time");
-      this.datasets.push(1);
-      this.chartKey++;
-      console.log(this.chartKey);
-    }
-  }
+  methods: {}
 };
 </script>
 

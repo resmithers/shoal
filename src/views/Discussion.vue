@@ -2,8 +2,8 @@
   <div id="Discussion">
     <Keypoint discID="greg" user="hugo boss" userAccess="3"/>
     <Chart discID="greg"/>
-    <AddComment discID="greg" user="hugo boss"/>
-    <Comments discID="greg"/>
+    <AddComment user="hugo boss"/>
+    <Comments/>
   </div>
 </template>
 
