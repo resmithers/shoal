@@ -15,9 +15,9 @@
       :pointhoverborderwidth="3"
       :pointhoverbackgroundcolor="'#636b6f'"
       :pointhoverbordercolor="'#ffd663'"
-      :duration="0"
       id="chart"
     ></chartjs-line>
+    <button @click="pushing">Test</button>
   </div>
 </template>
 
@@ -40,7 +40,6 @@ export default {
     };
   },
   mounted() {
-    // Pass this down as props, otherwise there will be two instances of thevote listener
     listenVotes(this);
   },
   props: {
@@ -48,11 +47,17 @@ export default {
   },
   watch: {
     datasets: function() {
-      this.chartKey += 1;
-      console.log(this.datasets);
+      this.chartKey++;
     }
   },
-  methods: {}
+  methods: {
+    pushing() {
+      this.labels.push("a time");
+      this.datasets.push(1);
+      this.chartKey++;
+      console.log(this.chartKey);
+    }
+  }
 };
 </script>
 

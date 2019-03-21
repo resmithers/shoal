@@ -1,6 +1,6 @@
 <template>
-  <div id="Discussions">
-    <h1>Discussions</h1>
+  <div id="Discussion">
+    <h1>Discussion</h1>
     <Chart discID="greg"/>
     <Comments discID="greg"/>
   </div>
@@ -10,7 +10,7 @@
 import Comments from "../components/Comments";
 import Chart from "../components/Chart";
 export default {
-  name: "Discussions",
+  name: "Discussion",
   components: {
     Comments,
     Chart

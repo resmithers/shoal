@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/discussions/:id',
       name: 'discussions',
-      component: () => import('./views/Discussions.vue')
+      component: () => import('./views/Discussion.vue')
     }
   ]
 });
