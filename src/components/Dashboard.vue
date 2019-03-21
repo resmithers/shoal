@@ -1,12 +1,12 @@
 <template>
   <div id="Dashboard">
     <h1>Dashboard</h1>
-    <CurrentDiscussions/>(Manager)
+    <CurrentDiscussions />(Manager)
     <router-link to="/discussions/1">MVP Disc</router-link>
-    <MyDiscussions/>
-    <ParticipatingDiscussions/>
-    <Outcomes/>(Manager)
-    <PostDiscussions/>
+    <MyDiscussions />
+    <ParticipatingDiscussions />
+    <Outcomes />(Manager)
+    <PostDiscussions />
   </div>
 </template>
 
@@ -29,7 +29,4 @@ export default {
 };
 </script>
 
-
-
-<style scoped>
-</style>
+<style scoped></style>
