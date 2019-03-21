@@ -9,12 +9,17 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: Home,
     },
     {
       path: '/discussions/:id',
       name: 'discussions',
-      component: () => import('./views/Discussions.vue')
-    }
-  ]
+      component: () => import('./views/Discussions.vue'),
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('./views/Signup.vue'),
+    },
+  ],
 });
