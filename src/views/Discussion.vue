@@ -1,6 +1,6 @@
 <template>
   <div id="Discussion">
-    <Keypoint discID="greg"/>
+    <Keypoint discID="greg" user="hugo boss" userAccess="3"/>
     <Chart discID="greg"/>
     <AddComment discID="greg" user="hugo boss"/>
     <Comments discID="greg"/>

@@ -16,12 +16,12 @@ export function addNewDisc(event, refs) {
   event.target.reset();
 }
 
-export function addDiscPoint(event, refs, docUID) {
+export function addDiscPoint(docUID, body, user) {
   Shoal.doc(docUID)
     .collection('Points')
     .add({
-      Body: refs.body.value,
-      Author: refs.author.value,
+      Body: body,
+      Author: user,
       Timestamp: Date.now()
     });
   event.target.reset();
