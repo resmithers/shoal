@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import CurrentDiscussions from "./CurrentDiscussions";
-import MyDiscussions from "./MyDiscussions";
-import ParticipatingDiscussions from "./ParticipatingDiscussions";
-import Outcomes from "./Outcomes";
-import PostDiscussions from "./PostDiscussions";
+import CurrentDiscussions from "../components/CurrentDiscussions";
+import MyDiscussions from "../components/MyDiscussions";
+import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
+import Outcomes from "../components/Outcomes";
+import PostDiscussions from "../components/PostDiscussions";
 
 export default {
   name: "Dashboard",

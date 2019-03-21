@@ -20,14 +20,10 @@ import moment from "moment";
 export default {
   data() {
     return {
-      comments: null
+      comments: null,
+      discID: this.$route.params.id
     };
   },
-
-  props: {
-    discID: String
-  },
-
   mounted() {
     listenComments(this);
   },

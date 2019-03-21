@@ -1,4 +1,4 @@
-const db = require("./config.js");
+const {db} = require("./config.js");
 
 let Shoal = db.collection("Discussions");
 let Users = db.collection("Users");
