@@ -4,7 +4,7 @@ import router from "./router";
 import "chart.js";
 import "hchs-vue-charts";
 import firebase from "firebase";
-import firebaseApp from "./firebase/init";
+import { firebaseApp } from "./utils/config";
 
 Vue.use(window.VueCharts);
 
