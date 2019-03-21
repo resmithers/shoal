@@ -1,6 +1,5 @@
 <template>
   <div id="Chart">
-    <h1>Key Point</h1>
     <chartjs-line
       :datalabel="'Votes'"
       :labels="labels"
@@ -27,7 +26,7 @@ export default {
   data() {
     return {
       chartKey: 0,
-      labels: null,
+      labels: [],
       datasets: [],
       option: {
         title: {
