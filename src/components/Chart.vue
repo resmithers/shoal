@@ -29,6 +29,7 @@ export default {
       chartKey: 0,
       labels: null,
       datasets: [],
+      discID: this.$route.params.id,
       option: {
         title: {
           postition: "bottom"
@@ -43,13 +44,10 @@ export default {
     // Pass this down as props, otherwise there will be two instances of thevote listener
     listenVotes(this);
   },
-  props: {
-    discID: String
-  },
   watch: {
     datasets: function() {
       this.chartKey += 1;
-      console.log(this.datasets);
+      
     }
   },
   methods: {}

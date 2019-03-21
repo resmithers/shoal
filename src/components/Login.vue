@@ -8,35 +8,66 @@
       <figcaption>Shoal</figcaption>
     </figure>
     <h2>Better together</h2>
-    <form>
+    <form @submit.prevent="login">
       <span class="inline">
         <input
+          v-model="email"
           type="text"
-          name="Unique ID"
+          name="email"
           class="unique"
-          placeholder="   Enter your ID..."
+          placeholder="Enter your email..."
           required
         >
         <input
+          v-model="password"
           type="password"
           name="Password"
           class="unique"
           placeholder="   Enter your password..."
           required
         >
+        <p v-if="feedback">{{feedback}}</p>
       </span>
       <button>Login</button>
     </form>
     <h2>Third party</h2>
     <button>Guest?</button>
+    <router-link to="/signup/">Sign Up</router-link>
   </div>
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   name: "Login",
   props: {
     user: String
+  },
+  data() {
+    return {
+      email: null,
+      password: null,
+      feedback: null
+    };
+  },
+  methods: {
+    login() {
+      if (this.email && this.password) {
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password)
+          .then(cred => {
+            console.log(cred.user);
+            this.$router.push({ name: "Dashboard" });
+          })
+          .catch(error => {
+            this.feedback = "There is no user existing with these credentials";
+          });
+        this.feedback = null;
+      } else {
+        this.feedback = "Please fill in both fields";
+      }
+    }
   }
 };
 </script>
