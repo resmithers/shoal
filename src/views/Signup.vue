@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import db from "@/firebase/init";
+import { db } from "@/utils/config";
 import firebase from "firebase";
 
 export default {
@@ -56,7 +56,7 @@ export default {
         this.password &&
         this.confirm_password === this.password
       ) {
-        let ref = db.collection("users").doc(this.employeeId);
+        let ref = db.collection("Users").doc(this.employeeId);
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password)
