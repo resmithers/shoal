@@ -1,6 +1,6 @@
 <template>
   <div id="Keypoint">
-    <h1>{{discID}}</h1>
+    <h1>{{this.mainPoint}}</h1>
     <button v-if="userAccess >= 3" @click="showPointForm">Add Keypoint</button>
     <form v-if="addPointForm" id="addPoint" @submit.prevent="postKeyPoint">
       <input required>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { listenDisc } from "../utils/FirestoreListen.js";
+import { listenDisc, getMainPoint } from "../utils/FirestoreListen.js";
 import { addDiscPoint } from "../utils/FirestoreReq.js";
 
 import moment from "moment";
@@ -25,18 +25,18 @@ export default {
     return {
       keyPoints: [],
       addPointForm: false,
-      discID: this.$route.params.id
+      discID: this.$route.params.id,
+      mainPoint: null
     };
   },
   mounted() {
     listenDisc(this);
-    console.log(this.keyPoints);
+    getMainPoint(this);
   },
   props: {
     user: String,
     userAccess: String
   },
-  watch: {},
   methods: {
     moment: function(param) {
       return moment(param);

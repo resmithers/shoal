@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import db from "../utils/config.js";
+import firebase from "firebase";
 export default {
   name: "Login",
   props: {
@@ -57,7 +57,6 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
           .then(cred => {
-            console.log(cred.user);
             this.$router.push({ name: "Dashboard" });
           })
           .catch(error => {

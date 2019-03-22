@@ -9,11 +9,22 @@ export function listenAllDiscussions(thisBind) {
   });
 }
 
+export function getMainPoint(thisBind) {
+  return db
+    .collection('Discussions')
+    .doc(thisBind.discID)
+    .get()
+    .then((doc) => {
+      thisBind.mainPoint = doc.data().Body;
+    });
+}
+
 export function listenDisc(thisBind) {
   return db
     .collection('Discussions')
     .doc(thisBind.discID)
     .collection('Points')
+    .orderBy('Timestamp', 'desc')
     .onSnapshot((snap) => {
       thisBind.keyPoints = snap.docs.map((v) => v.data());
     });
