@@ -1,6 +1,5 @@
 <template>
   <div id="Chart">
-    <h1>Key Point</h1>
     <chartjs-line
       :datalabel="'Votes'"
       :labels="labels"
@@ -15,7 +14,7 @@
       :pointhoverborderwidth="3"
       :pointhoverbackgroundcolor="'#636b6f'"
       :pointhoverbordercolor="'#ffd663'"
-      :duration="0"
+      :responsive="true"
       id="chart"
     ></chartjs-line>
   </div>
@@ -23,11 +22,12 @@
 
 <script>
 import { listenVotes } from "../utils/FirestoreListen.js";
+
 export default {
   data() {
     return {
       chartKey: 0,
-      labels: null,
+      labels: [],
       datasets: [],
       discID: this.$route.params.id,
       option: {
@@ -41,13 +41,11 @@ export default {
     };
   },
   mounted() {
-    // Pass this down as props, otherwise there will be two instances of thevote listener
     listenVotes(this);
   },
   watch: {
     datasets: function() {
-      this.chartKey += 1;
-      
+      this.chartKey++;
     }
   },
   methods: {}

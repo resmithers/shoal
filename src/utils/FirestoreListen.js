@@ -15,7 +15,7 @@ export function listenDisc(thisBind) {
     .doc(thisBind.discID)
     .collection('Points')
     .onSnapshot((snap) => {
-      thisBind.gregPoints = snap.docs.map((v) => v.data());
+      thisBind.keyPoints = snap.docs.map((v) => v.data());
     });
 }
 
