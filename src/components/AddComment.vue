@@ -24,7 +24,9 @@
 import { addComment } from "../utils/FirestoreReq.js";
 export default {
   data() {
-    return {};
+    return {
+      discID: this.$route.params.id
+    };
   },
   methods: {
     postComment(e) {
@@ -34,7 +36,6 @@ export default {
     }
   },
   props: {
-    discID: String,
     user: String
   }
 };

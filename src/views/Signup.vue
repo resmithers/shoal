@@ -41,10 +41,6 @@ export default {
       confirm_password: null
     };
   },
-  updated() {
-    console.log(db);
-  },
-
   methods: {
     signup() {
       if (

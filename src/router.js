@@ -12,9 +12,9 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/discussions/:id',
-      name: 'discussions',
-      component: () => import('./views/Discussions.vue'),
+      path: '/discussion/:id',
+      name: 'discussion',
+      component: () => import('./views/Discussion.vue'),
     },
     {
       path: '/signup',

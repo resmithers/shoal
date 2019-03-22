@@ -14,7 +14,7 @@ export default {
   name: "CurrentDiscussions",
   methods: {
 selectDisc(e) {
-  this.$router.push({path:`/discussions/${e.target.value}`})
+  this.$router.push({path:`/discussion/${e.target.value}`})
 }
   },
   data(){ return {  
@@ -24,9 +24,6 @@ selectDisc(e) {
   mounted() {
     listenAllDiscussions(this)
       
-  },
-  updated() {
-    console.log(this.discussions)
   }
 
 };

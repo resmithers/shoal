@@ -1,7 +1,7 @@
 <template>
   <div id="Discussion">
-    <Keypoint discID="greg" user="hugo boss" userAccess="3"/>
-    <Chart discID="greg"/>
+    <Keypoint  user="hugo boss" userAccess="3"/>
+    <Chart />
     <AddComment user="hugo boss"/>
     <Comments/>
   </div>
