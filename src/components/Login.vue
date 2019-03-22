@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import db from "../utils/config.js";
 export default {
   name: "Login",
   props: {

@@ -30,6 +30,7 @@ export default {
   },
   mounted() {
     listenDisc(this);
+    console.log(this.keyPoints);
   },
   props: {
     user: String,

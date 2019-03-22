@@ -1,12 +1,12 @@
-const {db} = require('./config.js');
+const { db } = require('./config.js');
 import moment from 'moment';
 
 export function listenAllDiscussions(thisBind) {
-  return db
-    .collection('Discussions')
-    .onSnapshot((snap) => {
-       thisBind.discussions = snap.docs.map((v) =>{ return { id:v.id, ...v.data()} } );
+  return db.collection('Discussions').onSnapshot((snap) => {
+    thisBind.discussions = snap.docs.map((v) => {
+      return { id: v.id, ...v.data() };
     });
+  });
 }
 
 export function listenDisc(thisBind) {
