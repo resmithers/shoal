@@ -58,7 +58,7 @@ export default {
           .signInWithEmailAndPassword(this.email, this.password)
           .then(cred => {
             console.log(cred.user);
-            this.$router.push({ name: "discussions", params: { id: "1" } });
+            this.$router.push({ name: "Dashboard" });
           })
           .catch(error => {
             this.feedback = "There is no user existing with these credentials";

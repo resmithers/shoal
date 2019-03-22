@@ -1,33 +1,55 @@
-const db = require("./config.js");
+const {db} = require('./config.js');
+import moment from 'moment';
 
-function listenDisc(thisBind) {
+export function listenAllDiscussions(thisBind) {
   return db
-    .collection("Discussions")
-    .doc(thisBind.user)
-    .collection("Points")
-    .onSnapshot(snap => {
-      thisBind.gregPoints = snap.docs.map(v => v.data());
+    .collection('Discussions')
+    .onSnapshot((snap) => {
+       thisBind.discussions = snap.docs.map((v) =>{ return { id:v.id, ...v.data()} } );
     });
 }
 
-function listenComments(thisBind) {
+export function listenDisc(thisBind) {
   return db
-    .collection("Discussions")
-    .doc(thisBind.user)
-    .collection("Comments")
-    .onSnapshot(snap => {
-      thisBind.gregComments = snap.docs.map(v => v.data());
+    .collection('Discussions')
+    .doc(thisBind.discID)
+    .collection('Points')
+    .onSnapshot((snap) => {
+      thisBind.keyPoints = snap.docs.map((v) => v.data());
     });
 }
 
-function listenVotes(thisBind) {
+export function listenComments(thisBind) {
   return db
-    .collection("Discussions")
-    .doc(thisBind.user)
-    .collection("Votes")
-    .onSnapshot(snap => {
-      thisBind.gregVotes = snap.docs.map(v => v.data());
+    .collection('Discussions')
+    .doc(thisBind.discID)
+    .collection('Comments')
+    .orderBy('Timestamp', 'desc')
+    .onSnapshot((snap) => {
+      thisBind.comments = snap.docs.map((v) => v.data());
     });
 }
 
-module.exports = { listenDisc, listenComments, listenVotes };
+export function listenVotes(thisBind) {
+  return db
+    .collection('Discussions')
+    .doc(thisBind.discID)
+    .collection('Votes')
+    .orderBy('Timestamp', 'asc')
+    .onSnapshot((snap) => {
+      const accumulatedVotes = [];
+      const getVoteData = (votes) => {
+        votes.reduce((acc, num) => {
+          acc += num;
+          accumulatedVotes.push(acc);
+          return acc;
+        }, 0);
+      };
+      const converted = snap.docs.map((v) => v.data().Vote);
+      getVoteData(converted);
+      thisBind.datasets = accumulatedVotes;
+      thisBind.labels = snap.docs.map((v) =>
+        moment(v.data().Timestamp).format('LLL')
+      );
+    });
+}

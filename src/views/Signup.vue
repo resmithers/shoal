@@ -41,10 +41,6 @@ export default {
       confirm_password: null
     };
   },
-  updated() {
-    console.log(this.email);
-  },
-
   methods: {
     signup() {
       if (
@@ -69,7 +65,7 @@ export default {
                 user_id: cred.user.uid
               })
               .then(() => {
-                this.$router.push({ name: "Home" });
+                this.$router.push({ name: "Dashboard" });
               });
           })
           .catch(err => {

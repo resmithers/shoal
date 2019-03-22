@@ -2,7 +2,7 @@
   <div id="Dashboard">
     <h1>Dashboard</h1>
     <CurrentDiscussions/>(Manager)
-    <router-link to="/discussions/1">MVP Disc</router-link>
+    <router-link to="/discussions/greg">MVP Disc</router-link>
     <MyDiscussions/>
     <ParticipatingDiscussions/>
     <Outcomes/>(Manager)
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import CurrentDiscussions from "./CurrentDiscussions";
-import MyDiscussions from "./MyDiscussions";
-import ParticipatingDiscussions from "./ParticipatingDiscussions";
-import Outcomes from "./Outcomes";
-import PostDiscussions from "./PostDiscussions";
+import CurrentDiscussions from "../components/CurrentDiscussions";
+import MyDiscussions from "../components/MyDiscussions";
+import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
+import Outcomes from "../components/Outcomes";
+import PostDiscussions from "../components/PostDiscussions";
 
 export default {
   name: "Dashboard",
