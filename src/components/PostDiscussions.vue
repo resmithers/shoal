@@ -1,6 +1,8 @@
 <template>
   <div class="PostDiscussions">
-    <h1>PostDiscussions</h1>
+    <form action="">
+      <input type="text" placeholder='Title'>
+    </form>
   </div>
 </template>
 
