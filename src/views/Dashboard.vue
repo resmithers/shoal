@@ -2,7 +2,6 @@
   <div id="Dashboard">
     <h1>Dashboard</h1>
     <CurrentDiscussions/>(Manager)
-    <router-link to="/discussions/greg">MVP Disc</router-link>
     <MyDiscussions/>
     <ParticipatingDiscussions/>
     <Outcomes/>(Manager)

@@ -57,7 +57,6 @@ export default {
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
           .then(cred => {
-            console.log(cred.user);
             this.$router.push({ name: "Dashboard" });
           })
           .catch(error => {
