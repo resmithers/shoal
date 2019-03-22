@@ -14,6 +14,7 @@ export function listenDisc(thisBind) {
     .collection("Discussions")
     .doc(thisBind.discID)
     .collection("Points")
+    .orderBy("Timestamp", "desc")
     .onSnapshot(snap => {
       thisBind.keyPoints = snap.docs.map(v => v.data());
     });
