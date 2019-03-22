@@ -1,12 +1,12 @@
 <template>
   <div id="Dashboard">
-    <h1 v-if='userDetails' >Welcome {{this.userDetails.name}}</h1> 
+    <h1 v-if="userDetails">Welcome {{this.userDetails.name}}</h1>
     <CurrentDiscussions/>(Manager)
     <router-link to="/discussions/greg">MVP Disc</router-link>
     <MyDiscussions/>
     <ParticipatingDiscussions/>
     <Outcomes/>(Manager)
-    <PostDiscussions/>
+    <PostDiscussions :user="this.userDetails"/>
   </div>
 </template>
 
@@ -16,7 +16,7 @@ import MyDiscussions from "../components/MyDiscussions";
 import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
 import Outcomes from "../components/Outcomes";
 import PostDiscussions from "../components/PostDiscussions";
-import {getUser} from '../utils/FirestoreListen';
+import { getUser } from "../utils/FirestoreListen";
 
 export default {
   name: "Dashboard",
@@ -28,14 +28,14 @@ export default {
     PostDiscussions
   },
   data() {
-    return {userDetails: null }
+    return { userDetails: null };
   },
   props: {
     user: String,
     setUser: Function
   },
   mounted() {
-    getUser(this)
+    getUser(this);
   }
 };
 </script>

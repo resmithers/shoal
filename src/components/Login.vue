@@ -51,8 +51,8 @@ export default {
     };
   },
   props: {
-user: String,
-setUser: Function
+    user: String,
+    setUser: Function
   },
   methods: {
     login() {
@@ -61,8 +61,8 @@ setUser: Function
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
           .then(cred => {
-            this.$router.push({ name: "Dashboard"});
-            this.setUser(cred.user.uid)
+            this.$router.push({ name: "Dashboard" });
+            this.setUser(cred.user.uid);
           })
           .catch(error => {
             this.feedback = "There is no user existing with these credentials";

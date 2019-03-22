@@ -1,16 +1,15 @@
-const {db} = require("./config.js");
+const { db } = require("./config.js");
 
-let Shoal = db.collection('Discussions');
-let Users = db.collection('Users');
+let Shoal = db.collection("Discussions");
+let Users = db.collection("Users");
 
-export function addNewDisc(event, refs) {
-  Shoal.add({
-    Title: refs.title.value,
-    Body: refs.body.value,
-    Author: refs.author.value,
-    Deptartment: refs.dept.value,
-    Start: refs.start.value,
-    End: refs.end.value,
+export function addNewDisc(title, event, refs) {
+  Shoal.doc(title).set({
+    Body: refs.body,
+    Author: refs.author,
+    Deptartment: refs.dept,
+    Start: refs.start,
+    End: refs.end,
     Timestamp: Date.now()
   });
   event.target.reset();
@@ -18,7 +17,7 @@ export function addNewDisc(event, refs) {
 
 export function addDiscPoint(docUID, body, user) {
   Shoal.doc(docUID)
-    .collection('Points')
+    .collection("Points")
     .add({
       Body: body,
       Author: user,
@@ -29,7 +28,7 @@ export function addDiscPoint(docUID, body, user) {
 
 export function addComment(docUID, body, user) {
   Shoal.doc(docUID)
-    .collection('Comments')
+    .collection("Comments")
     .add({
       Body: body,
       Author: user,
@@ -40,7 +39,7 @@ export function addComment(docUID, body, user) {
 
 export function addVote(event, refs, docUID) {
   Shoal.doc(docUID)
-    .collection('Votes')
+    .collection("Votes")
     .add({
       Score: refs.score.value,
       Author: docUID,
