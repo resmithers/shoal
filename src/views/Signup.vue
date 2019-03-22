@@ -4,8 +4,6 @@
     <form class="SignupForm" @submit.prevent="signup">
       <label for="email">Email:</label>
       <input v-model="email" type="text" name="email" placeholder="you@email.com">
-      <label for="employeeId">Employee ID:</label>
-      <input v-model="employeeId" type="text" name="employeeId">
       <label for="name">Name:</label>
       <input v-model="name" type="text" name="name">
       <label for="access">Access:</label>
@@ -33,7 +31,6 @@ export default {
     return {
       email: null,
       feedback: null,
-      employeeId: null,
       name: null,
       access: null,
       department: null,
@@ -45,19 +42,19 @@ export default {
     signup() {
       if (
         this.email &&
-        this.employeeId &&
         this.name &&
         this.access &&
         this.department &&
         this.password &&
         this.confirm_password === this.password
       ) {
-        let ref = db.collection("Users").doc(this.employeeId);
+        let ref = db.collection("Users");
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password)
           .then(cred => {
             ref
+              .doc(cred.user.uid)
               .set({
                 name: this.name,
                 access: this.access,

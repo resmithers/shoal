@@ -1,7 +1,7 @@
 <template>
   <div class="Home">
     <h1>Home (No user ? Login : Dashboard)</h1>
-    <Login user="Hugo Boss"/>
+    <Login :setUser="this.setUser" :user="this.user"/>
   </div>
 </template>
 
@@ -12,6 +12,14 @@ export default {
   name: "Home",
   components: {
     Login
+  },
+  props: {
+    user: String,
+    setUser: Function
+  },
+  mounted() {
+    console.log(this.setUser);
+    console.log(this.user);
   }
 };
 </script>
