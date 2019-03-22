@@ -12,7 +12,9 @@ export function listenAllDiscussions(thisBind) {
 export function getUser(thisBind) {
   return db
     .collection('Users').doc(thisBind.user)
-    .get().then(user => thisBind.userDetails=user.data());
+    .get().then(user => 
+     thisBind.userDetails=user.data()
+      );
 }
 
 export function listenDisc(thisBind) {

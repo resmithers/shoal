@@ -1,6 +1,6 @@
 <template>
   <div id="Dashboard">
-    <h1>Welcome {{this.userDetails.name}}</h1> 
+    <h1 v-if='userDetails' >Welcome {{this.userDetails.name}}</h1> 
     <CurrentDiscussions/>(Manager)
     <router-link to="/discussions/greg">MVP Disc</router-link>
     <MyDiscussions/>
@@ -28,7 +28,7 @@ export default {
     PostDiscussions
   },
   data() {
-    userDetails: null
+    return {userDetails: null }
   },
   props: {
     user: String,
