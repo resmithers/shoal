@@ -17,6 +17,11 @@
       :responsive="true"
       id="chart"
     ></chartjs-line>
+    <ul>
+      <li>Total votes: {{this.datasets.length}}</li>
+      <li>Positive: {{this.upVotes}}</li>
+      <li>Negative: {{this.downVotes}}</li>
+    </ul>
   </div>
 </template>
 
@@ -30,6 +35,8 @@ export default {
       labels: [],
       datasets: [],
       discID: this.$route.params.id,
+      upVotes: 0,
+      downVotes: 0,
       option: {
         title: {
           postition: "bottom"
@@ -46,9 +53,24 @@ export default {
   watch: {
     datasets: function() {
       this.chartKey++;
+      this.countVotes();
     }
   },
-  methods: {}
+  methods: {
+    countVotes: function() {
+      this.upVotes = 0;
+      this.downVotes = 0;
+
+      if (this.datasets[0] === 1) this.upVotes++;
+      if (this.datasets[0] === -1) this.downVotes++;
+
+      for (let i = 1; i < this.datasets.length; i++) {
+        this.datasets[i] < this.datasets[i - 1]
+          ? this.downVotes++
+          : this.upVotes++;
+      }
+    }
+  }
 };
 </script>
 
@@ -64,5 +86,9 @@ export default {
 
 h1 {
   text-align: center;
+}
+
+ul {
+  list-style-type: none;
 }
 </style>

@@ -47,20 +47,27 @@ export function listenVotes(thisBind) {
     .doc(thisBind.discID)
     .collection('Votes')
     .orderBy('Timestamp', 'asc')
-    .onSnapshot((snap) => {
+    .onSnapshot(({ docs }) => {
+      const data = docs.map((v) => v.data());
       const accumulatedVotes = [];
-      const getVoteData = (votes) => {
-        votes.reduce((acc, num) => {
-          acc += num;
-          accumulatedVotes.push(acc);
-          return acc;
-        }, 0);
-      };
-      const converted = snap.docs.map((v) => v.data().Vote);
-      getVoteData(converted);
+      const labels = [];
+
+      getUnique(data, 'Author').reduce((acc, vObj) => {
+        acc += vObj.Vote;
+        labels.push(moment(vObj.Timestamp).format('LLL'));
+        accumulatedVotes.push(acc);
+        return acc;
+      }, 0);
+
       thisBind.datasets = accumulatedVotes;
-      thisBind.labels = snap.docs.map((v) =>
-        moment(v.data().Timestamp).format('LLL')
-      );
+      thisBind.labels = labels;
     });
+}
+
+function getUnique(arr, comp) {
+  return arr
+    .map((e) => e[comp])
+    .map((e, i, final) => final.lastIndexOf(e) === i && i)
+    .filter((e) => arr[e])
+    .map((e) => arr[e]);
 }
