@@ -1,6 +1,6 @@
 <template>
   <div id="Dashboard">
-    <h1>Welcome {{this.user}}</h1> 
+    <h1>Welcome {{this.userDetails.name}}</h1> 
     <CurrentDiscussions/>(Manager)
     <router-link to="/discussions/greg">MVP Disc</router-link>
     <MyDiscussions/>
@@ -35,8 +35,6 @@ export default {
     setUser: Function
   },
   mounted() {
-    console.log(this.setUser);
-    console.log(this.user);
     getUser(this)
   }
 };
