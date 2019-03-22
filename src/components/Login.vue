@@ -50,6 +50,10 @@ export default {
       feedback: null
     };
   },
+  props: {
+    user: String,
+    setUser: Function
+  },
   methods: {
     login() {
       if (this.email && this.password) {
@@ -58,6 +62,7 @@ export default {
           .signInWithEmailAndPassword(this.email, this.password)
           .then(cred => {
             this.$router.push({ name: "Dashboard" });
+            this.setUser(cred.user.uid);
           })
           .catch(error => {
             this.feedback = "There is no user existing with these credentials";

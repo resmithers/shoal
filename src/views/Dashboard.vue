@@ -1,11 +1,11 @@
 <template>
   <div id="Dashboard">
-    <h1>Dashboard</h1>
+    <h1 v-if="userDetails">Welcome {{this.userDetails.name}}</h1>
     <CurrentDiscussions/>(Manager)
     <MyDiscussions/>
     <ParticipatingDiscussions/>
     <Outcomes/>(Manager)
-    <PostDiscussions/>
+    <PostDiscussions :user="this.userDetails"/>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ import MyDiscussions from "../components/MyDiscussions";
 import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
 import Outcomes from "../components/Outcomes";
 import PostDiscussions from "../components/PostDiscussions";
+import { getUser } from "../utils/FirestoreListen";
 
 export default {
   name: "Dashboard",
@@ -24,6 +25,16 @@ export default {
     ParticipatingDiscussions,
     Outcomes,
     PostDiscussions
+  },
+  data() {
+    return { userDetails: null };
+  },
+  props: {
+    user: String,
+    setUser: Function
+  },
+  mounted() {
+    getUser(this);
   }
 };
 </script>
