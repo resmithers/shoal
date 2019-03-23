@@ -63,6 +63,7 @@ export default {
           .then(cred => {
             this.$router.push({ name: "Dashboard" });
             this.setUser(cred.user.uid);
+            localStorage.setItem("userUID", JSON.stringify(cred.user.uid));
           })
           .catch(error => {
             this.feedback = "There is no user existing with these credentials";

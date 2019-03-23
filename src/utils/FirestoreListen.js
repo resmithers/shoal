@@ -17,41 +17,44 @@ export function getMainPoint(thisBind) {
     .then((doc) => {
       thisBind.mainPoint = doc.data().Body;
     });
+  });
 }
 
 export function getUser(thisBind) {
   return db
-    .collection('Users').doc(thisBind.user)
-    .get().then(user => 
-     thisBind.userDetails=user.data()
-      );
+    .collection("Users")
+    .doc(thisBind.user)
+    .get()
+    .then(user => {
+      thisBind.userDetails = user.data();
+      localStorage.setItem("userDetails", JSON.stringify(user.data()));
+    });
 }
 
 export function listenDisc(thisBind) {
   return db
-    .collection('Discussions')
+    .collection("Discussions")
     .doc(thisBind.discID)
-    .collection('Points')
-    .orderBy('Timestamp', 'desc')
-    .onSnapshot((snap) => {
-      thisBind.keyPoints = snap.docs.map((v) => v.data());
+    .collection("Points")
+    .onSnapshot(snap => {
+      thisBind.keyPoints = snap.docs.map(v => v.data());
     });
 }
 
 export function listenComments(thisBind) {
   return db
-    .collection('Discussions')
+    .collection("Discussions")
     .doc(thisBind.discID)
-    .collection('Comments')
-    .orderBy('Timestamp', 'desc')
-    .onSnapshot((snap) => {
-      thisBind.comments = snap.docs.map((v) => v.data());
+    .collection("Comments")
+    .orderBy("Timestamp", "desc")
+    .onSnapshot(snap => {
+      thisBind.comments = snap.docs.map(v => v.data());
     });
 }
 
 export function listenVotes(thisBind) {
   return db
-    .collection('Discussions')
+    .collection("Discussions")
     .doc(thisBind.discID)
     .collection('Votes')
     .orderBy('Timestamp', 'asc')
