@@ -35,11 +35,25 @@ export default {
       upVotes: 0,
       downVotes: 0,
       option: {
-        title: {
-          postition: "bottom"
-        },
         animation: {
-          duration: 1
+          duration: 300
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontSize: 20,
+                beginAtZero: true
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                display: false
+              }
+            }
+          ]
         }
       }
     };
