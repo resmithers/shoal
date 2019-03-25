@@ -19,7 +19,8 @@ export default {
     user: String,
     total: Number,
     up: Number,
-    down: Number
+    down: Number,
+    userDetails: Object
   },
   mounted() {},
   methods: {

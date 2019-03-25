@@ -28,15 +28,19 @@ export default {
       discID: this.$route.params.id
     };
   },
+  mounted() {
+    console.log(this.userDetails.name)
+  },
   methods: {
     postComment(e) {
       const body = e.target[1].value;
-      let user = e.target[0].value === "yes" ? this.user : "Anon";
+      let user = e.target[0].value === "yes" ? this.userDetails.name : "Anon";
       addComment(this.discID, body, user);
     }
   },
   props: {
-    user: String
+    user: String,
+    userDetails: Object
   }
 };
 </script>

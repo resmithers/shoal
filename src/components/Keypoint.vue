@@ -35,7 +35,8 @@ export default {
   },
   props: {
     user: String,
-    userAccess: String
+    userAccess: String,
+    userDetails: Object
   },
   methods: {
     moment: function(param) {
