@@ -3,13 +3,15 @@
     <h1>{{this.discussion.Body}}</h1>
     <button v-if="userDetails.access >= 3 && discussion.End > Date.now()" @click="showPointForm">Add Keypoint</button>
     <form v-if="addPointForm" id="addPoint" @submit.prevent="postKeyPoint">
-      <textarea  required cols='40' />
+      <textarea required cols="40" />
       <button type="submit" form="addPoint">Submit</button>
     </form>
     <ol v-if="keyPoints.length > 0">
       <p id="updatedPoints">Updated Points:</p>
-      <li v-for="keyPoint in keyPoints">
-        {{keyPoint.Body}}&nbsp;{{moment(keyPoint.Timestamp).format('LLL')}}
+      <li v-for="keyPoint in keyPoints" :key="keyPoint.id">
+        {{ keyPoint.Body }}
+        <br />
+        {{ moment(keyPoint.Timestamp).format("LLL") }}
       </li>
     </ol>
   </div>

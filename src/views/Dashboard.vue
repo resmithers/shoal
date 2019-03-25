@@ -1,11 +1,11 @@
 <template>
   <div id="Dashboard">
-    <h1 v-if="userDetails">Welcome {{this.userDetails.name}}</h1>
+    <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
     <CurrentDiscussions :active="live" />
     <MyDiscussions v-if="userDetails.access >= 3" :mine="mine" />
     <ParticipatingDiscussions :interacted="interacted" />
     <Outcomes :past="historical" />
-    <PostDiscussions v-if="this.userDetails.access >= 3 " :user="this.userDetails"/>
+    <PostDiscussions v-if="userDetails.access >= 3" :user="userDetails" />
     <button @click="logout">Logout</button>
   </div>
 </template>
@@ -42,13 +42,12 @@ export default {
     };
   },
   mounted() {
-    if (!this.user) this.$router.push({ name: "Home" });
-    getAvailable(this);
-    getHistorical(this);
-    // getInteracted()
-    // availables
-    // i have interacted with
-    // past
+    if (!this.user) {
+      this.$router.push({ name: "Home" });
+    } else {
+      getAvailable(this);
+      getHistorical(this);
+    }
   }
 };
 </script>

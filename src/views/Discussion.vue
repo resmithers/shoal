@@ -41,11 +41,12 @@ export default {
   mounted() {
     getDisc(this);
     addDiscInteraction(this.$route.params.id, this.user);
+<<<<<<< Updated upstream
      
+=======
+>>>>>>> Stashed changes
   }
 };
 </script>
 
-
-<style scoped>
-</style>
+<style scoped></style>

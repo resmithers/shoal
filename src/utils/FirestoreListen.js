@@ -36,6 +36,7 @@ export function listenDisc(thisBind) {
     .collection("Discussions")
     .doc(thisBind.discID)
     .collection("Points")
+    .orderBy("Timestamp", "desc")
     .onSnapshot(snap => {
       thisBind.keyPoints = snap.docs.map(v => v.data());
     });
@@ -87,6 +88,7 @@ export function getAvailable(thisBind) {
   return db
     .collection("Discussions")
     .where("End", ">=", Date.now())
+    .orderBy("Timestamp", "desc")
     .get()
     .then(discussions => {
       thisBind.live = discussions.docs.map(disc => ({
@@ -106,6 +108,7 @@ export function getHistorical(thisBind) {
   return db
     .collection("Discussions")
     .where("End", "<=", Date.now())
+    .orderBy("End", "desc")
     .get()
     .then(discussions => {
       thisBind.historical = discussions.docs.map(disc => ({
@@ -114,14 +117,3 @@ export function getHistorical(thisBind) {
       }));
     });
 }
-
-// export function getInteracted(userID) {
-//   return db
-//     .collection("Discussions")
-//     .where("End", ">=", Date.now())
-//     .get()
-//     .then(x => console.log(x.docs.map(a => a.data())));
-// }
-
-// i have interacted with
-// past
