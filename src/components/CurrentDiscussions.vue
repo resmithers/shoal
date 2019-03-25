@@ -1,31 +1,28 @@
 <template>
   <div class="CurrentDiscussions">
-<select name="discussionOption" id="discussion selector" v-on:change="selectDisc">
-  <option value=''>Current discussions</option>
-  <option v-for="discussion in discussions" :key="discussion.id">{{discussion.id}}</option>
-  </select>
+    <select name="active" id="discussion selector" v-on:change="selectDisc">
+      <option value>Current discussions</option>
+      <option v-for="discussion in active" :key="discussion.id">{{discussion.id}}</option>
+    </select>
   </div>
 </template>
 
 <script>
-import { listenAllDiscussions } from '../utils/FirestoreListen.js';
-
 export default {
   name: "CurrentDiscussions",
   methods: {
-selectDisc(e) {
-  this.$router.push({path:`/discussion/${e.target.value}`})
-}
+    selectDisc(e) {
+      this.$router.push({ path: `/discussion/${e.target.value}` });
+    }
   },
-  data(){ return {  
-    discussions: []
+  data() {
+    return {
+      discussions: []
     };
   },
-  mounted() {
-    listenAllDiscussions(this)
-      
+  props: {
+    active: Array
   }
-
 };
 </script>
 

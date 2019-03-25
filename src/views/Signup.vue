@@ -60,7 +60,7 @@ export default {
             Promise.all([
               ref.doc(uid).set({
                 name: this.name,
-                access: this.access,
+                access: +this.access,
                 department: this.department,
                 user_id: uid
               }),

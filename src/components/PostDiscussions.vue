@@ -34,10 +34,6 @@ export default {
     };
   },
   props: { user: Object },
-  updated() {
-    console.log(moment(this.startDate).format("x"));
-    console.log(this.message);
-  },
   methods: {
     addDisc(e) {
       if (
@@ -50,12 +46,10 @@ export default {
         addNewDisc(this.title, e, {
           body: this.message,
           author: this.user.name,
+          authorID: this.user.user_id,
           dept: this.department,
           start: +moment(this.startDate).format("x"),
           end: +moment(this.endDate).format("x")
-        }).catch(err => {
-          console.log(err);
-          this.feedback = err.message;
         });
       } else {
         this.feedback = "Required Fields missing";
