@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     if (localStorage.getItem("userUID")) {
-      this.setUser(JSON.parse(localStorage.getItem("userUID")));
+      this.setUser(JSON.parse(localStorage.getItem("userUID")), JSON.parse(localStorage.getItem("userDetails")) );
       this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
       getUser(this);
     } else {

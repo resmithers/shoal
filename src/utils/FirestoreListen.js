@@ -17,8 +17,7 @@ export function getMainPoint(thisBind) {
     .then((doc) => {
       thisBind.mainPoint = doc.data().Body;
     });
-  });
-}
+  }
 
 export function getUser(thisBind) {
   return db
