@@ -8,9 +8,9 @@
     </form>
     <ol v-if="keyPoints.length > 0">
       <p id="updatedPoints">Updated Points:</p>
-      <li
-        v-for="keyPoint in keyPoints"
-      >{{keyPoint.Body}}&nbsp;{{moment(keyPoint.Timestamp).format('LLL')}}</li>
+      <li v-for="keyPoint in keyPoints">
+        {{keyPoint.Body}}&nbsp;{{moment(keyPoint.Timestamp).format('LLL')}}
+      </li>
     </ol>
   </div>
 </template>

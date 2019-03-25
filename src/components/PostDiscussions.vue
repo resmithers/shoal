@@ -43,7 +43,6 @@ export default {
         this.startDate &&
         this.endDate
       ) {
-        console.log(this.user)
         addNewDisc(this.title, e, {
           body: this.message,
           author: this.user.name,
@@ -51,7 +50,7 @@ export default {
           dept: this.department,
           start: +moment(this.startDate).format("x"),
           end: +moment(this.endDate).format("x")
-        })
+        });
       } else {
         this.feedback = "Required Fields missing";
       }

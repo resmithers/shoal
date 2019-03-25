@@ -3,10 +3,10 @@
     <button>
       <router-link to="/dashboard">dashboard</router-link>
     </button>
-    <Keypoint :user="user" userAccess="3" :userDetails="userDetails" />
+    <Keypoint :user="user" userAccess="3" :userDetails="userDetails"/>
     <Chart/>
-    <Votes :user="user" />
-    <AddComment :user="user" :userDetails="userDetails" />
+    <Votes :user="user"/>
+    <AddComment :user="user" :userDetails="userDetails"/>
     <Comments/>
   </div>
 </template>
@@ -17,7 +17,7 @@ import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
 import Votes from "../components/Votes";
-import { addDiscInteraction } from '../utils/FirestoreReq';
+import { addDiscInteraction } from "../utils/FirestoreReq";
 
 export default {
   name: "Discussion",
@@ -32,9 +32,9 @@ export default {
     user: String,
     userDetails: Object
   },
-  mounted () {
-  addDiscInteraction(this.$route.params.id, this.user)
-console.log(this.$route.params.id)
+  mounted() {
+    addDiscInteraction(this.$route.params.id, this.user);
+    console.log(this.$route.params.id);
   }
 };
 </script>

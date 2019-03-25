@@ -1,12 +1,23 @@
 <template>
   <div class="MyDiscussions">
-    <h1>MyDiscussions</h1>
+    <select name="mine" id="discussion selector" v-on:change="selectDisc">
+      <option value>My discussions</option>
+      <option v-for="discussion in mine" :key="discussion.id">{{ discussion.id }}</option>
+    </select>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MyDiscussions"
+  name: "MyDiscussions",
+  methods: {
+    selectDisc(e) {
+      this.$router.push({ path: `/discussion/${e.target.value}` });
+    }
+  },
+  props: {
+    mine: Array
+  }
 };
 </script>
 
