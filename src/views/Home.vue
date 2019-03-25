@@ -16,10 +16,6 @@ export default {
   props: {
     user: String,
     setUser: Function
-  },
-  mounted() {
-    console.log(this.setUser);
-    console.log(this.user);
   }
 };
 </script>
