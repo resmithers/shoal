@@ -1,4 +1,5 @@
-const { db } = require('./config.js');
+const { db, firebaseApp } = require('./config.js');
+const firebase = require("firebase");
 
 let Shoal = db.collection('Discussions');
 let Users = db.collection('Users');
@@ -11,7 +12,7 @@ export function addNewDisc(title, event, refs) {
     Start: refs.start,
     End: refs.end,
     Timestamp: Date.now(),
-    Interactions: [refs.author]
+    Interactions: [refs]
   });
   event.target.reset();
 }
@@ -57,3 +58,11 @@ export function addUser(event, refs) {
   });
   event.target.reset();
 }
+
+export function addDiscInteraction(docUID, user) {
+  Shoal.doc(docUID)
+    .update({
+      Interactions: firebase.firestore.FieldValue.arrayUnion(user)
+    });
+}
+

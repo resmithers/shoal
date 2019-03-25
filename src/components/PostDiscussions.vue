@@ -43,9 +43,11 @@ export default {
         this.startDate &&
         this.endDate
       ) {
+        console.log(this.user)
         addNewDisc(this.title, e, {
           body: this.message,
           author: this.user.name,
+          authorID: this.user.user_id,
           dept: this.department,
           start: +moment(this.startDate).format("x"),
           end: +moment(this.endDate).format("x")

@@ -17,6 +17,7 @@ import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
 import Votes from "../components/Votes";
+import { addDiscInteraction } from '../utils/FirestoreReq';
 
 export default {
   name: "Discussion",
@@ -30,6 +31,10 @@ export default {
   props: {
     user: String,
     userDetails: Object
+  },
+  mounted () {
+  addDiscInteraction(this.$route.params.id, this.user)
+console.log(this.$route.params.id)
   }
 };
 </script>
