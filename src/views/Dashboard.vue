@@ -1,11 +1,11 @@
 <template>
   <div id="Dashboard">
     <h1 v-if="userDetails">Welcome {{this.userDetails.name}}</h1>
-    <CurrentDiscussions/>(Manager)
-    <MyDiscussions/>
+    <CurrentDiscussions  />
+    <MyDiscussions v-if='this.userDetails.access >= 3 '/>
     <ParticipatingDiscussions/>
-    <Outcomes/>(Manager)
-    <PostDiscussions :user="this.userDetails"/>
+    <Outcomes/>
+    <PostDiscussions v-if='this.userDetails.access >= 3 ' :user="this.userDetails"/>
     <button @click="logout">Logout</button>
   </div>
 </template>
@@ -16,7 +16,7 @@ import MyDiscussions from "../components/MyDiscussions";
 import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
 import Outcomes from "../components/Outcomes";
 import PostDiscussions from "../components/PostDiscussions";
-import { getUser } from "../utils/FirestoreListen";
+import { getUser, getAvailable, getInteracted } from "../utils/FirestoreListen";
 import firebase from "firebase";
 
 export default {
@@ -36,6 +36,11 @@ export default {
   },
   mounted() {
     if (!this.user) this.$router.push({ name: "Home" });
+    getAvailable()
+    getInteracted(userID)
+    // availables
+    // i have interacted with
+    // past
   }
 };
 </script>

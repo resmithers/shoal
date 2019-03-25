@@ -1,10 +1,10 @@
 <template>
   <div id="Keypoint">
     <h1>{{this.mainPoint}}</h1>
-    <button v-if="userAccess >= 3" @click="showPointForm">Add Keypoint</button>
+    <button v-if="userDetails.access >= 3 && addPointForm===false" @click="showPointForm">Add Keypoint</button>
     <form v-if="addPointForm" id="addPoint" @submit.prevent="postKeyPoint">
-      <input required>
-      <button type="submit" form="addPoint">Add KeyPoint</button>
+      <textarea  required cols='40' />
+      <button type="submit" form="addPoint">Submit</button>
     </form>
     <ol v-if="keyPoints.length > 0">
       <p id="updatedPoints">Updated Points:</p>

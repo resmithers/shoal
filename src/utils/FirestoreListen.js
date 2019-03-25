@@ -82,3 +82,26 @@ function getUnique(arr, comp) {
     .filter((e) => arr[e])
     .map((e) => arr[e]);
 }
+
+
+export function getAvailable() {
+  return db
+  .collection("Discussions")
+  .where('End', '>=', Date.now())
+  .get()
+  .then(x => console.log(x.docs.map(a => a.data() )))
+}
+
+
+export function getInteracted(userID) {
+  return db
+  .collection("Discussions")
+  .where('End', '>=', Date.now())
+  .get()
+  .then(x => console.log(x.docs.map(a => a.data() )))
+}
+
+
+
+// i have interacted with
+// past

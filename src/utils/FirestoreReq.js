@@ -10,11 +10,12 @@ export function addNewDisc(title, event, refs) {
     Deptartment: refs.dept,
     Start: refs.start,
     End: refs.end,
-    Timestamp: Date.now()
+    Timestamp: Date.now(),
+    Interactions: [refs.author]
   });
   event.target.reset();
 }
-
+ 
 export function addDiscPoint(docUID, body, user) {
   Shoal.doc(docUID)
     .collection('Points')

@@ -34,10 +34,6 @@ export default {
     };
   },
   props: { user: Object },
-  updated() {
-    console.log(moment(this.startDate).format("x"));
-    console.log(this.message);
-  },
   methods: {
     addDisc(e) {
       if (
@@ -53,10 +49,7 @@ export default {
           dept: this.department,
           start: +moment(this.startDate).format("x"),
           end: +moment(this.endDate).format("x")
-        }).catch(err => {
-          console.log(err);
-          this.feedback = err.message;
-        });
+        })
       } else {
         this.feedback = "Required Fields missing";
       }
