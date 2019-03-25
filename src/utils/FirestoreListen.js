@@ -9,13 +9,13 @@ export function listenAllDiscussions(thisBind) {
   });
 }
 
-export function getMainPoint(thisBind) {
+export function getDisc(thisBind) {
   return db
     .collection("Discussions")
     .doc(thisBind.discID)
     .get()
     .then(doc => {
-      thisBind.mainPoint = doc.data().Body;
+      thisBind.discussion = doc.data();
     });
 }
 

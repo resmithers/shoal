@@ -1,7 +1,7 @@
 <template>
   <div id="Keypoint">
-    <h1>{{this.mainPoint}}</h1>
-    <button v-if="userDetails.access >= 3 && addPointForm===false" @click="showPointForm">Add Keypoint</button>
+    <h1>{{this.discussion.Body}}</h1>
+    <button v-if="userDetails.access >= 3 && discussion.End > Date.now()" @click="showPointForm">Add Keypoint</button>
     <form v-if="addPointForm" id="addPoint" @submit.prevent="postKeyPoint">
       <textarea  required cols='40' />
       <button type="submit" form="addPoint">Submit</button>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { listenDisc, getMainPoint } from "../utils/FirestoreListen.js";
+import { listenDisc, getDisc } from "../utils/FirestoreListen.js";
 import { addDiscPoint } from "../utils/FirestoreReq.js";
 
 import moment from "moment";
@@ -24,19 +24,16 @@ export default {
   data() {
     return {
       keyPoints: [],
-      addPointForm: false,
-      discID: this.$route.params.id,
-      mainPoint: null
+      addPointForm: false
     };
   },
   mounted() {
     listenDisc(this);
-    getMainPoint(this);
   },
   props: {
     user: String,
-    userAccess: String,
-    userDetails: Object
+    userDetails: Object,
+    discussion: Object
   },
   methods: {
     moment: function(param) {
