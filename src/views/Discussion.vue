@@ -1,8 +1,13 @@
 <template>
   <div id="Discussion">
-    <Keypoint  user="hugo boss" userAccess="3"/>
-    <Chart />
-    <AddComment user="hugo boss"/>
+    <button>
+      <router-link to="/dashboard">dashboard</router-link>
+    </button>
+    <Keypoint :user="user" userAccess="3"/>
+    <Chart/>
+    <Votes :user="user"/>
+    <AddComment :user="user"/>
+
     <Comments/>
   </div>
 </template>
@@ -12,6 +17,7 @@ import Comments from "../components/Comments";
 import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
+import Votes from "../components/Votes";
 
 export default {
   name: "Discussion",
@@ -19,8 +25,13 @@ export default {
     Keypoint,
     Comments,
     Chart,
-    AddComment
-  }
+    AddComment,
+    Votes
+  },
+  props: {
+    user: String
+  },
+  mounted() {}
 };
 </script>
 

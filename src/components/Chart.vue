@@ -17,16 +17,13 @@
       :responsive="true"
       id="chart"
     ></chartjs-line>
-    <ul>
-      <li>Total votes: {{this.datasets.length}}</li>
-      <li>Positive: {{this.upVotes}}</li>
-      <li>Negative: {{this.downVotes}}</li>
-    </ul>
+    <Votes :total="this.datasets.length" :up="this.upVotes" :down="this.downVotes"></Votes>
   </div>
 </template>
 
 <script>
 import { listenVotes } from "../utils/FirestoreListen.js";
+import Votes from "../components/Votes";
 
 export default {
   data() {
@@ -42,7 +39,7 @@ export default {
           postition: "bottom"
         },
         animation: {
-          duration: 0
+          duration: 1
         }
       }
     };
@@ -70,6 +67,9 @@ export default {
           : this.upVotes++;
       }
     }
+  },
+  components: {
+    Votes
   }
 };
 </script>
