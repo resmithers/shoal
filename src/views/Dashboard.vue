@@ -28,39 +28,16 @@ export default {
     Outcomes,
     PostDiscussions
   },
-  data() {
-    return { userDetails: null };
-  },
   props: {
     user: String,
-    setUser: Function
+    setUser: Function,
+    userDetails: Object,
+    logout: Function
   },
   mounted() {
-    if (localStorage.getItem("userUID")) {
-      this.setUser(JSON.parse(localStorage.getItem("userUID")), JSON.parse(localStorage.getItem("userDetails")) );
-      this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      getUser(this);
-    } else {
-      this.$router.push({ name: "Home" });
-    }
-  },
-  methods: {
-    logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.push({ name: "Home" });
-          localStorage.clear();
-        });
-    }
+    if (!this.user) this.$router.push({ name: "Home" });
   }
 };
 </script>
 
-
-  
-
-
-<style scoped>
-</style>
+<style scoped></style>

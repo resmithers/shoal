@@ -28,9 +28,6 @@ export default {
       discID: this.$route.params.id
     };
   },
-  mounted() {
-    console.log(this.userDetails.name)
-  },
   methods: {
     postComment(e) {
       const body = e.target[1].value;
