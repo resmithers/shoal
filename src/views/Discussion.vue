@@ -3,11 +3,10 @@
     <button>
       <router-link to="/dashboard">dashboard</router-link>
     </button>
-    <Keypoint :user="user" userAccess="3" :userDetails="userDetails"/>
+    <Keypoint :user="user" userAccess="3" :userDetails="userDetails" />
     <Chart/>
-    <Votes :user="user"/>
-    <AddComment :user="user" :userDetails="userDetails"/>
-
+    <Votes :user="user" />
+    <AddComment :user="user" :userDetails="userDetails" />
     <Comments/>
   </div>
 </template>
@@ -31,9 +30,6 @@ export default {
   props: {
     user: String,
     userDetails: Object
-  },
-  mounted() {
-    console.log(this.userDetails);
   }
 };
 </script>

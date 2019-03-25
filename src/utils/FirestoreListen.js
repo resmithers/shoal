@@ -26,6 +26,7 @@ export function getUser(thisBind) {
     .get()
     .then(user => {
       thisBind.userDetails = user.data();
+      localStorage.setItem("userUID", thisBind.user);
       localStorage.setItem("userDetails", JSON.stringify(user.data()));
     });
 }
