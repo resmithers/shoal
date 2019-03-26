@@ -2,7 +2,7 @@
   <div id="Dashboard">
     <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
     <CurrentDiscussions :active="live" />
-    <MyDiscussions v-if="userDetails.access >= 3" :mine="mine" />
+    <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine" />
     <ParticipatingDiscussions :interacted="interacted" />
     <Outcomes :past="historical" />
     <PostDiscussions v-if="userDetails.access >= 3" :user="userDetails" />
