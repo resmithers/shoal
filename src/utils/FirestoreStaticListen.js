@@ -17,5 +17,7 @@ export function getArchiveDisc(thisBind) {
     .collection("Discussions")
     .doc(thisBind.discID)
     .get()
-    .then(greg => console.dir(greg.data()));
+    .then(greg => {
+      thisBind.discussion = greg.data();
+    });
 }
