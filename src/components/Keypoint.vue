@@ -1,22 +1,27 @@
 <template>
   <div id="Keypoint">
-    <h1>{{this.mainPoint}}</h1>
-    <button v-if="userDetails.access >= 3 && addPointForm===false" @click="showPointForm">Add Keypoint</button>
+    <h1>{{discussion && discussion.Body}}</h1>
+    <button
+      v-if="userDetails.access >= 3 && discussion && discussion.End > Date.now()"
+      @click="showPointForm"
+    >Add Keypoint</button>
     <form v-if="addPointForm" id="addPoint" @submit.prevent="postKeyPoint">
-      <textarea  required cols='40' />
+      <textarea required cols="40"/>
       <button type="submit" form="addPoint">Submit</button>
     </form>
     <ol v-if="keyPoints.length > 0">
       <p id="updatedPoints">Updated Points:</p>
-      <li v-for="keyPoint in keyPoints">
-        {{keyPoint.Body}}&nbsp;{{moment(keyPoint.Timestamp).format('LLL')}}
+      <li v-for="keyPoint in keyPoints" :key="keyPoint.id">
+        {{ keyPoint.Body }}
+        <br>
+        {{ moment(keyPoint.Timestamp).format("LLL") }}
       </li>
     </ol>
   </div>
 </template>
 
 <script>
-import { listenDisc, getMainPoint } from "../utils/FirestoreListen.js";
+import { listenDisc, getDisc, listenVotes } from "../utils/FirestoreListen.js";
 import { addDiscPoint } from "../utils/FirestoreReq.js";
 
 import moment from "moment";
@@ -24,19 +29,19 @@ export default {
   data() {
     return {
       keyPoints: [],
-      addPointForm: false,
-      discID: this.$route.params.id,
-      mainPoint: null
+      addPointForm: false
     };
   },
-  mounted() {
-    listenDisc(this);
-    getMainPoint(this);
+  watch: {
+    discussion: function() {
+      listenDisc(this);
+    }
   },
   props: {
     user: String,
-    userAccess: String,
-    userDetails: Object
+    userDetails: Object,
+    discussion: Object,
+    discID: String
   },
   methods: {
     moment: function(param) {

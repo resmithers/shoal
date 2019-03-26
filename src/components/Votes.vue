@@ -1,10 +1,15 @@
 <template>
   <div id="Votes">
     <h1>votes</h1>
-    <ul>
+    <ul v-if="discussion && discussion.End > Date.now()" >
       <li>Total votes: {{this.total}}</li>
       <li @click="this.postVote" value="1">Positive: {{this.up}}</li>
       <li @click="this.postVote" value="-1">Negative: {{this.down}}</li>
+    </ul>
+    <ul v-if="discussion && discussion.End < Date.now()" >
+      <li>Total votes: {{this.total}}</li>
+      <li >Positive: {{this.up}}</li>
+      <li >Negative: {{this.down}}</li>
     </ul>
   </div>
 </template>
@@ -20,7 +25,8 @@ export default {
     total: Number,
     up: Number,
     down: Number,
-    userDetails: Object
+    userDetails: Object,
+    discussion: Object
   },
   mounted() {},
   methods: {
@@ -35,7 +41,4 @@ export default {
 </script>
 
 <style scoped>
-#Votes {
-  left: 0;
-}
 </style>

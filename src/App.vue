@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <router-view :logout='this.logout' :setUser="this.setUser" :user="this.user" :userDetails="this.userDetails"/>
+    <router-view :logout="logout" :set-user="setUser" :user="user" :user-details="userDetails"/>
   </div>
 </template>
 <script>
 import { getUser } from "./utils/FirestoreListen";
-import firebase from 'firebase';
+import firebase from "firebase";
 
 export default {
   data() {
@@ -13,6 +13,12 @@ export default {
       user: null,
       userDetails: null
     };
+  },
+  mounted() {
+    if (localStorage.getItem("userUID")) {
+      this.user = localStorage.getItem("userUID");
+      this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    }
   },
   methods: {
     setUser: function(newUser) {
@@ -24,17 +30,11 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.push({ name: "Home" });
           this.user = null;
           this.userDetails = null;
           localStorage.clear();
+          this.$router.push({ name: "Home" });
         });
-    }
-  },
-  mounted() {
-    if (localStorage.getItem("userUID")) {
-      this.user = localStorage.getItem("userUID");
-      this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
     }
   }
 };
