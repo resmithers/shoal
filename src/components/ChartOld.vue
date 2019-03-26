@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="Chart">
+    <div id="Chart" v-if="chartKey">
       <chartjs-line
         :datalabel="'Votes'"
         :labels="votes.labels"
@@ -26,7 +26,7 @@
 export default {
   data() {
     return {
-      chartKey: 0,
+      chartKey: null,
       option: {
         animation: {
           duration: 300
@@ -51,16 +51,13 @@ export default {
       }
     };
   },
-  updated() {
-  
-  },
   props: {
     discussion: Object,
     votes: Object
   },
   watch: {
     votes: function() {
-      
+      this.chartKey = 1;
     }
   },
   methods: {

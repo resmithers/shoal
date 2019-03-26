@@ -29,8 +29,7 @@ export default {
   },
   mounted() {
     if (!this.inComments) {
-      console.log('live');
-      // listenComments(this);
+      listenComments(this);
     } else {
       this.comments = this.inComments;
     }
@@ -39,7 +38,6 @@ export default {
   watch: {
     comments: function() {},
     inComments: function() {
-      console.log("blah");
       this.comments = this.inComments;
     }
   },
