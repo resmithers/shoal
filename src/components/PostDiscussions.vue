@@ -62,15 +62,28 @@ export default {
 
 <style scoped>
 .PostDiscussionsContainer {
-  margin: 1em;
+  /* margin: 1em; */
 }
 
 .PostDiscussions {
   display: flex;
   flex-direction: column;
   width: 20em;
+  justify-items:center;
+  /* display: block; */
+/* text-align:center; */
+
 }
 .PostDiscussions input {
+  position: relative;
+  
   margin-bottom: 1em;
+  
+}
+.addDisc{
+  margin-left: 42.5%;
+  /* position: absolute; */
+  /* margin-left:50%; */
+  /* margin: 0; */
 }
 </style>
