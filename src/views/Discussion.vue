@@ -25,8 +25,7 @@ export default {
     Keypoint,
     Comments,
     Chart,
-    AddComment,
-    Votes
+    AddComment
   },
   data() {
     return {
