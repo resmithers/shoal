@@ -1,9 +1,5 @@
 <template>
   <div id="AddComment">
-    <br>
-    <br>
-    <br>
-    <br>
     <h1>Add A Comment</h1>
     <form id="addCommentForm" @submit.prevent="postComment">
       Show Username?
@@ -29,9 +25,9 @@ export default {
     };
   },
   methods: {
-    postComment(e) {
-      const body = e.target[1].value;
-      let user = e.target[0].value === "yes" ? this.userDetails.name : "Anon";
+    postComment({ target }) {
+      const user = target[0].value === "yes" ? this.userDetails.name : "Anon";
+      const body = target[1].value;
       addComment(this.discID, body, user);
     }
   },
