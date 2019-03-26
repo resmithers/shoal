@@ -10,6 +10,16 @@
         {{ comment.Author }}
       </li>
     </ul>
+    <ul>
+      <li v-if="comment.Replies" v-for="reply in comment.Replies" :key="reply.id">
+        {{ reply.Body }}
+        <br>
+        {{moment(reply.Timestamp).format('LLL')}}
+        <br>
+        {{ reply.Author }}
+      </li>
+    </ul>
+
   </div>
 </template>
 
