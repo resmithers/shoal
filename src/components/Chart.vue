@@ -19,7 +19,7 @@
       id="chart"
     ></chartjs-line>
   </div>
-  <Votes :user="user" :userDetails="userDetails" :discussion="discussion" :total="this.datasets.length" :up="this.upVotes" :down="this.downVotes"/>
+  <Votes :user="user" :userDetails="userDetails" :discussion="discussion" :total="datasets.length" :up="upVotes" :down="downVotes"/>
 </div>
 </template>
 
