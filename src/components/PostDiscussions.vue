@@ -2,13 +2,13 @@
   <div class="PostDiscussionsContainer">
     <form class="addDisc" @submit.prevent="addDisc">
       <div class="PostDiscussions">
-        <input v-model="title" type="text" placeholder="Title" name="Title">
-        <input v-model="message" type="text" placeholder="Message" name="Message">
-        <input v-model="department" type="text" placeholder="Department" name="Department">
+        <input v-model="title" type="text" placeholder="Title" name="Title" />
+        <input v-model="message" type="text" placeholder="Message" name="Message" />
+        <input v-model="department" type="text" placeholder="Department" name="Department" />
         <label>Start Date:</label>
-        <input v-model="startDate" type="datetime-local" placeholder="Start Date" name="StartDate">
+        <input v-model="startDate" type="datetime-local" placeholder="Start Date" name="StartDate" />
         <label>End Date:</label>
-        <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate">
+        <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate" />
         <p>{{ feedback }}</p>
 
         <button>Post</button>
