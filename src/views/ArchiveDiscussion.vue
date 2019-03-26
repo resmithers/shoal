@@ -4,8 +4,12 @@
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
     <Keypoint :user="user" :userDetails="userDetails" :discussion="discussion" :discID="discID"/>
-    <Chart :user="user" :userDetails="userDetails" :discussion="discussion" />
-    <AddComment v-if="discussion && discussion.End > Date.now()" :user="user" :userDetails="userDetails"/>
+    <Chart :user="user" :userDetails="userDetails" :discussion="discussion"/>
+    <AddComment
+      v-if="discussion && discussion.End > Date.now()"
+      :user="user"
+      :userDetails="userDetails"
+    />
     <Comments/>
   </div>
 </template>
@@ -15,9 +19,7 @@ import Comments from "../components/Comments";
 import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
-import { getArchiveDisc } from "../utils/FirestoreStaticListen";
-import { addDiscInteraction } from "../utils/FirestoreReq";
-import { getDisc } from "../utils/FirestoreListen.js";
+import { getArchiveDisc } from "../utils/FirestoreStaticList";
 
 export default {
   name: "Discussion",
