@@ -1,11 +1,11 @@
 <template>
   <div id="Dashboard">
-    <h1 v-if="userDetails">Welcome {{this.userDetails.name}}</h1>
-    <CurrentDiscussions/>(Manager)
-    <MyDiscussions/>
-    <ParticipatingDiscussions/>
-    <Outcomes/>(Manager)
-    <PostDiscussions :user="this.userDetails"/>
+    <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
+    <CurrentDiscussions :active="live" />
+    <MyDiscussions v-if="userDetails.access >= 3" :mine="mine" />
+    <ParticipatingDiscussions :interacted="interacted" />
+    <Outcomes :past="historical" />
+    <PostDiscussions v-if="userDetails.access >= 3" :user="userDetails" />
     <button @click="logout">Logout</button>
   </div>
 </template>
@@ -16,8 +16,7 @@ import MyDiscussions from "../components/MyDiscussions";
 import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
 import Outcomes from "../components/Outcomes";
 import PostDiscussions from "../components/PostDiscussions";
-import { getUser } from "../utils/FirestoreListen";
-import firebase from "firebase";
+import { getAvailable, getHistorical } from "../utils/FirestoreListen";
 
 export default {
   name: "Dashboard",
@@ -28,39 +27,29 @@ export default {
     Outcomes,
     PostDiscussions
   },
-  data() {
-    return { userDetails: null };
-  },
   props: {
     user: String,
-    setUser: Function
+    setUser: Function,
+    userDetails: Object,
+    logout: Function
+  },
+  data() {
+    return {
+      live: [],
+      historical: [],
+      interacted: [],
+      mine: []
+    };
   },
   mounted() {
-    if (localStorage.getItem("userUID")) {
-      this.setUser(JSON.parse(localStorage.getItem("userUID")), JSON.parse(localStorage.getItem("userDetails")) );
-      this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
-      getUser(this);
-    } else {
+    if (!this.user) {
       this.$router.push({ name: "Home" });
-    }
-  },
-  methods: {
-    logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.push({ name: "Home" });
-          localStorage.clear();
-        });
+    } else {
+      getAvailable(this);
+      getHistorical(this);
     }
   }
 };
 </script>
 
-
-  
-
-
-<style scoped>
-</style>
+<style scoped></style>

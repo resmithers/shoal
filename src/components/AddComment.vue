@@ -24,7 +24,6 @@ export default {
       discID: this.$route.params.id
     };
   },
-  mounted() {},
   methods: {
     postComment({ target }) {
       const user = target[0].value === "yes" ? this.userDetails.name : "Anon";

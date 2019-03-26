@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="Chart">
     <chartjs-line
       :datalabel="'Votes'"
@@ -17,13 +18,14 @@
       :responsive="true"
       id="chart"
     ></chartjs-line>
-    <Votes :total="this.datasets.length" :up="this.upVotes" :down="this.downVotes"></Votes>
   </div>
+  <Votes :user="user" :userDetails="userDetails" :discussion="discussion" :total="this.datasets.length" :up="this.upVotes" :down="this.downVotes"/>
+</div>
 </template>
 
 <script>
 import { listenVotes } from "../utils/FirestoreListen.js";
-import Votes from "../components/Votes";
+import Votes from "./Votes";
 
 export default {
   data() {
@@ -35,14 +37,33 @@ export default {
       upVotes: 0,
       downVotes: 0,
       option: {
-        title: {
-          postition: "bottom"
-        },
         animation: {
-          duration: 1
+          duration: 300
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                fontSize: 20,
+                beginAtZero: true
+              }
+            }
+          ],
+          xAxes: [
+            {
+              ticks: {
+                display: false
+              }
+            }
+          ]
         }
       }
     };
+  },
+  props: {
+    user: String,
+    userDetails: Object,
+    discussion: Object
   },
   mounted() {
     listenVotes(this);
@@ -78,6 +99,7 @@ export default {
 #Chart {
   width: 1000px;
   height: 500px;
+  margin: auto;
 }
 
 .chartjs-render-monitor {

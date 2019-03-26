@@ -1,9 +1,12 @@
 <template>
   <div id="app">
-    <router-view :setUser="this.setUser" :user="this.user" :userDetails="this.userDetails" />
+    <router-view :logout="logout" :set-user="setUser" :user="user" :user-details="userDetails"/>
   </div>
 </template>
 <script>
+import { getUser } from "./utils/FirestoreListen";
+import firebase from "firebase";
+
 export default {
   data() {
     return {
@@ -11,18 +14,28 @@ export default {
       userDetails: null
     };
   },
-  methods: {
-    setUser: function(newUser, userDeets) {
-      this.user = newUser;
-      this.userDetails = userDeets;
+  mounted() {
+    if (localStorage.getItem("userUID")) {
+      this.user = localStorage.getItem("userUID");
+      this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
     }
   },
-  mounted () {
-
-
-  },
-  watch: {
-    user: function() {console.log(this.user)}
+  methods: {
+    setUser: function(newUser) {
+      this.user = newUser;
+      getUser(this);
+    },
+    logout: function() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.user = null;
+          this.userDetails = null;
+          localStorage.clear();
+          this.$router.push({ name: "Home" });
+        });
+    }
   }
 };
 </script>

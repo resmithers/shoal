@@ -38,6 +38,9 @@ export default {
       confirm_password: null
     };
   },
+  props: {
+    setUser: Function
+  },
   methods: {
     signup() {
       if (
@@ -52,18 +55,20 @@ export default {
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.email, this.password)
-          .then(cred => {
-            ref
-              .doc(cred.user.uid)
-              .set({
+          .then(({ user }) => {
+            const { uid } = user;
+            Promise.all([
+              ref.doc(uid).set({
                 name: this.name,
-                access: this.access,
+                access: +this.access,
                 department: this.department,
-                user_id: cred.user.uid
-              })
-              .then(() => {
-                this.$router.push({ name: "Dashboard" });
-              });
+                user_id: uid
+              }),
+              uid
+            ]).then(a => {
+              this.setUser(a[1]);
+              this.$router.push({ name: "Dashboard" });
+            });
           })
           .catch(err => {
             console.log(err);
