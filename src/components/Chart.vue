@@ -92,6 +92,7 @@ export default {
 #Chart {
   width: 1000px;
   height: 500px;
+  margin: auto;
 }
 
 .chartjs-render-monitor {

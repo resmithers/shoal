@@ -3,10 +3,12 @@
     <button>
       <router-link to="/dashboard">dashboard</router-link>
     </button>
-    <Keypoint :user="user" userAccess="3" :userDetails="userDetails" />
+    <Keypoint :user="user" userAccess="3" :userDetails="userDetails"/>
     <Chart/>
-    <Votes :user="user" />
-    <AddComment :user="user" :userDetails="userDetails" />
+    <br>
+    <br>
+    <AddComment :user="user" :userDetails="userDetails"/>
+
     <Comments/>
   </div>
 </template>
@@ -16,7 +18,6 @@ import Comments from "../components/Comments";
 import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
-import Votes from "../components/Votes";
 
 export default {
   name: "Discussion",
@@ -24,8 +25,7 @@ export default {
     Keypoint,
     Comments,
     Chart,
-    AddComment,
-    Votes
+    AddComment
   },
   props: {
     user: String,

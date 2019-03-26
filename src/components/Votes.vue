@@ -35,7 +35,4 @@ export default {
 </script>
 
 <style scoped>
-#Votes {
-  left: 0;
-}
 </style>
