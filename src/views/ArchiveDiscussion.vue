@@ -3,44 +3,39 @@
     <button>
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
-    <Keypoint :user="user" :userDetails="userDetails" :discussion="discussion" :discID="discID"/>
-    <Chart :user="user" :userDetails="userDetails" :discussion="discussion"/>
-    <AddComment
-      v-if="discussion && discussion.End > Date.now()"
-      :user="user"
-      :userDetails="userDetails"
-    />
-    <Comments/>
+    <KeypointOld :keyPoints="points" :discussion="discussion"/>
+    <ChartOld :user="user" :userDetails="userDetails" :discussion="discussion"/>
+    <VotesOld :votes="votes"/>
+    <CommentsOld :comments="comments"/>
   </div>
 </template>
 
 <script>
-import Comments from "../components/Comments";
-import Chart from "../components/Chart";
-import AddComment from "../components/AddComment";
-import Keypoint from "../components/Keypoint";
-import { getArchiveDisc } from "../utils/FirestoreStaticList";
+import CommentsOld from "../components/CommentsOld";
+import ChartOld from "../components/ChartOld";
+import VotesOld from "../components/VotesOld";
+import KeypointOld from "../components/KeypointOld";
+import {
+  getArchiveDisc,
+  getSubCollections
+} from "../utils/FirestoreStaticListen";
 
 export default {
-  name: "Discussion",
+  name: "archived",
   components: {
-    Keypoint,
-    Comments,
-    Chart,
-    AddComment
+    KeypointOld,
+    CommentsOld,
+    ChartOld,
+    VotesOld
   },
   data() {
     return {
       discussion: null,
       discID: this.$route.params.id,
-      max: Date.now()
-    };
-  },
-  watch() {
-    return {
-      discussion: function() {
-        console.dir(this.discussion);
-      }
+      max: Date.now(),
+      votes: {},
+      comments: [],
+      points: []
     };
   },
   props: {
@@ -49,6 +44,7 @@ export default {
   },
   mounted() {
     getArchiveDisc(this);
+    getSubCollections(this);
   }
 };
 </script>

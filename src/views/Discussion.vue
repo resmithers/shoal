@@ -54,8 +54,9 @@ export default {
     }
   },
   mounted() {
-    getArchiveDisc(this);
-    getSubCollections(this);
+    getDisc(this)
+    // getArchiveDisc(this);
+    // getSubCollections(this);
   }
 };
 </script>

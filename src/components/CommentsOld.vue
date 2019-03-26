@@ -1,0 +1,39 @@
+<template>
+  <div class="Comments">
+    <h1>Comments:</h1>
+    <ul>
+      <li v-for="comment in comments" :key="comment.id">
+        {{ comment.Body }}
+        <br>
+        {{moment(comment.Timestamp).format('LLL')}}
+        <br>
+        {{ comment.Author }}
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import moment from "moment";
+
+export default {
+  props: {
+    comments: Array
+  },
+  methods: {
+    moment: function(param) {
+      return moment(param);
+    }
+  }
+};
+</script>
+
+<style scoped>
+li {
+  list-style: none;
+  margin: 10px;
+  border: 1px solid black;
+  width: 30%;
+  padding: 5px;
+}
+</style>
