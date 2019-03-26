@@ -17,7 +17,50 @@ export function getArchiveDisc(thisBind) {
     .collection("Discussions")
     .doc(thisBind.discID)
     .get()
-    .then(greg => {
-      thisBind.discussion = greg.data();
+    .then(disc => {
+      thisBind.discussion = disc.data();
     });
+}
+
+export function getArchivePoints(thisBind) {
+  return db
+    .collection("Discussions")
+    .doc(thisBind.discID)
+    .collection("Points")
+    .orderBy("Timestamp", "desc")
+    .get();
+}
+
+export function getArchiveVotes(thisBind) {
+  return db
+    .collection("Discussions")
+    .doc(thisBind.discID)
+    .collection("Votes")
+    .orderBy("Timestamp", "asc")
+    .get();
+}
+
+export function getArchiveComments(thisBind) {
+  return db
+    .collection("Discussions")
+    .doc(thisBind.discID)
+    .collection("Comments")
+    .orderBy("Timestamp", "desc")
+    .get();
+}
+
+export function getSubCollections(thisBind) {
+  {
+    Promise.all([
+      getArchivePoints(thisBind),
+      getArchiveVotes(thisBind),
+      getArchiveComments(thisBind)
+    ])
+      .then(([p, v, c]) => {
+        thisBind.points = p.docs.map(x => x.data());
+        thisBind.votes = v.docs.map(x => x.data());
+        thisBind.comments = c.docs.map(x => x.data());
+      })
+      .catch(console.log);
+  }
 }

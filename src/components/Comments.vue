@@ -18,6 +18,9 @@ import { listenComments } from "../utils/FirestoreListen";
 import moment from "moment";
 
 export default {
+  props: {
+    inComments: Array
+  },
   data() {
     return {
       comments: null,
@@ -25,11 +28,20 @@ export default {
     };
   },
   mounted() {
-    listenComments(this);
+    if (!this.inComments) {
+      console.log('live');
+      // listenComments(this);
+    } else {
+      this.comments = this.inComments;
+    }
   },
 
   watch: {
-    comments: function() {}
+    comments: function() {},
+    inComments: function() {
+      console.log("blah");
+      this.comments = this.inComments;
+    }
   },
   methods: {
     moment: function(param) {
@@ -38,8 +50,6 @@ export default {
   }
 };
 </script>
-
-
 
 <style scoped>
 li {
