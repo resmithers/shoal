@@ -1,9 +1,9 @@
-const { db } = require('./config.js');
-import moment from 'moment';
+const { db } = require("./config.js");
+import moment from "moment";
 
 export function listenAllDiscussions(thisBind) {
-  return db.collection('Discussions').onSnapshot((snap) => {
-    thisBind.discussions = snap.docs.map((v) => {
+  return db.collection("Discussions").onSnapshot(snap => {
+    thisBind.discussions = snap.docs.map(v => {
       return { id: v.id, ...v.data() };
     });
   });
@@ -11,13 +11,13 @@ export function listenAllDiscussions(thisBind) {
 
 export function getMainPoint(thisBind) {
   return db
-    .collection('Discussions')
+    .collection("Discussions")
     .doc(thisBind.discID)
     .get()
-    .then((doc) => {
+    .then(doc => {
       thisBind.mainPoint = doc.data().Body;
     });
-  }
+}
 
 export function getUser(thisBind) {
   return db
@@ -56,16 +56,16 @@ export function listenVotes(thisBind) {
   return db
     .collection("Discussions")
     .doc(thisBind.discID)
-    .collection('Votes')
-    .orderBy('Timestamp', 'asc')
+    .collection("Votes")
+    .orderBy("Timestamp", "asc")
     .onSnapshot(({ docs }) => {
-      const data = docs.map((v) => v.data());
+      const data = docs.map(v => v.data());
       const accumulatedVotes = [];
       const labels = [];
 
-      getUnique(data, 'Author').reduce((acc, vObj) => {
+      getUnique(data, "Author").reduce((acc, vObj) => {
         acc += vObj.Vote;
-        labels.push(moment(vObj.Timestamp).format('LLL'));
+        labels.push(moment(vObj.Timestamp).format("LLL"));
         accumulatedVotes.push(acc);
         return acc;
       }, 0);
@@ -77,8 +77,51 @@ export function listenVotes(thisBind) {
 
 function getUnique(arr, comp) {
   return arr
-    .map((e) => e[comp])
+    .map(e => e[comp])
     .map((e, i, final) => final.lastIndexOf(e) === i && i)
-    .filter((e) => arr[e])
-    .map((e) => arr[e]);
+    .filter(e => arr[e])
+    .map(e => arr[e]);
 }
+
+export function getAvailable(thisBind) {
+  return db
+    .collection("Discussions")
+    .where("End", ">=", Date.now())
+    .get()
+    .then(discussions => {
+      thisBind.live = discussions.docs.map(disc => ({
+        id: disc.id,
+        ...disc.data()
+      }));
+      thisBind.interacted = thisBind.live.filter(
+        disc => !disc.Interactions || disc.Interactions.includes(thisBind.user)
+      );
+      thisBind.mine = thisBind.live.filter(
+        disc => disc.Author === thisBind.userDetails.name
+      );
+    });
+}
+
+export function getHistorical(thisBind) {
+  return db
+    .collection("Discussions")
+    .where("End", "<=", Date.now())
+    .get()
+    .then(discussions => {
+      thisBind.historical = discussions.docs.map(disc => ({
+        id: disc.id,
+        ...disc.data()
+      }));
+    });
+}
+
+// export function getInteracted(userID) {
+//   return db
+//     .collection("Discussions")
+//     .where("End", ">=", Date.now())
+//     .get()
+//     .then(x => console.log(x.docs.map(a => a.data())));
+// }
+
+// i have interacted with
+// past
