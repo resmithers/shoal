@@ -4,7 +4,7 @@
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
     <KeypointOld :keyPoints="points" :discussion="discussion"/>
-    <ChartOld :user="user" :userDetails="userDetails" :discussion="discussion"/>
+    <ChartOld :discussion="discussion" :votes="votes" />
     <VotesOld :votes="votes"/>
     <CommentsOld :comments="comments"/>
   </div>

@@ -1,40 +1,32 @@
 <template>
-<div>
-  <div id="Chart">
-    <chartjs-line
-      :datalabel="'Votes'"
-      :labels="labels"
-      :data="datasets"
-      :option="option"
-      :key="chartKey"
-      :fill="true"
-      :linetension="0.2"
-      :backgroundcolor="'rgba(75,192,192,0.2)'"
-      :pointborderwidth="2"
-      :pointbordercolor="'blue'"
-      :pointhoverborderwidth="3"
-      :pointhoverbackgroundcolor="'#636b6f'"
-      :pointhoverbordercolor="'#ffd663'"
-      :responsive="true"
-      id="chart"
-    ></chartjs-line>
+  <div>
+    <div id="Chart">
+      <chartjs-line
+        :datalabel="'Votes'"
+        :labels="votes.labels"
+        :data="votes.total"
+        :option="option"
+        :key="chartKey"
+        :fill="true"
+        :linetension="0.2"
+        :backgroundcolor="'rgba(75,192,192,0.2)'"
+        :pointborderwidth="2"
+        :pointbordercolor="'blue'"
+        :pointhoverborderwidth="3"
+        :pointhoverbackgroundcolor="'#636b6f'"
+        :pointhoverbordercolor="'#ffd663'"
+        :responsive="true"
+        id="chart"
+      />
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import { listenVotes } from "../utils/FirestoreListen.js";
-import Votes from "./Votes";
-
 export default {
   data() {
     return {
       chartKey: 0,
-      labels: [],
-      datasets: [],
-      discID: this.$route.params.id,
-      upVotes: 0,
-      downVotes: 0,
       option: {
         animation: {
           duration: 300
@@ -59,18 +51,16 @@ export default {
       }
     };
   },
-  props: {
-    user: String,
-    userDetails: Object,
-    discussion: Object
+  updated() {
+  
   },
-  mounted() {
-    listenVotes(this);
+  props: {
+    discussion: Object,
+    votes: Object
   },
   watch: {
-    datasets: function() {
-      this.chartKey++;
-      this.countVotes();
+    votes: function() {
+      
     }
   },
   methods: {
@@ -87,9 +77,6 @@ export default {
           : this.upVotes++;
       }
     }
-  },
-  components: {
-    Votes
   }
 };
 </script>
