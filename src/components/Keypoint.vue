@@ -1,16 +1,19 @@
 <template>
   <div id="Keypoint">
-    <h1>{{this.discussion.Body}}</h1>
-    <button v-if="userDetails.access >= 3 && discussion.End > Date.now()" @click="showPointForm">Add Keypoint</button>
+    <h1>{{discussion && discussion.Body}}</h1>
+    <button
+      v-if="userDetails.access >= 3 && discussion && discussion.End > Date.now()"
+      @click="showPointForm"
+    >Add Keypoint</button>
     <form v-if="addPointForm" id="addPoint" @submit.prevent="postKeyPoint">
-      <textarea required cols="40" />
+      <textarea required cols="40"/>
       <button type="submit" form="addPoint">Submit</button>
     </form>
     <ol v-if="keyPoints.length > 0">
       <p id="updatedPoints">Updated Points:</p>
       <li v-for="keyPoint in keyPoints" :key="keyPoint.id">
         {{ keyPoint.Body }}
-        <br />
+        <br>
         {{ moment(keyPoint.Timestamp).format("LLL") }}
       </li>
     </ol>
@@ -18,7 +21,7 @@
 </template>
 
 <script>
-import { listenDisc, getDisc } from "../utils/FirestoreListen.js";
+import { listenDisc, getDisc, listenVotes } from "../utils/FirestoreListen.js";
 import { addDiscPoint } from "../utils/FirestoreReq.js";
 
 import moment from "moment";
@@ -29,13 +32,16 @@ export default {
       addPointForm: false
     };
   },
-  mounted() {
-    listenDisc(this);
+  watch: {
+    discussion: function() {
+      listenDisc(this);
+    }
   },
   props: {
     user: String,
     userDetails: Object,
-    discussion: Object
+    discussion: Object,
+    discID: String
   },
   methods: {
     moment: function(param) {

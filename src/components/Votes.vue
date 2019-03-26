@@ -1,12 +1,12 @@
 <template>
   <div id="Votes">
     <h1>votes</h1>
-    <ul v-if="discussion.End > Date.now()" >
+    <ul v-if="discussion && discussion.End > Date.now()" >
       <li>Total votes: {{this.total}}</li>
       <li @click="this.postVote" value="1">Positive: {{this.up}}</li>
       <li @click="this.postVote" value="-1">Negative: {{this.down}}</li>
     </ul>
-    <ul v-if="discussion.End < Date.now()" >
+    <ul v-if="discussion && discussion.End < Date.now()" >
       <li>Total votes: {{this.total}}</li>
       <li >Positive: {{this.up}}</li>
       <li >Negative: {{this.down}}</li>

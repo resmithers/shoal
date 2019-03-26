@@ -3,9 +3,9 @@
     <button>
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
-    <Keypoint :user="user" :userDetails="userDetails" :discussion="discussion"/>
+    <Keypoint :user="user" :userDetails="userDetails" :discussion="discussion" :discID="discID"/>
     <Chart :user="user" :userDetails="userDetails" :discussion="discussion" />
-    <AddComment v-if="discussion.End > Date.now()" :user="user" :userDetails="userDetails"/>
+    <AddComment v-if="discussion && discussion.End > Date.now()" :user="user" :userDetails="userDetails"/>
     <Comments/>
   </div>
 </template>
@@ -40,10 +40,6 @@ export default {
   mounted() {
     getDisc(this);
     addDiscInteraction(this.$route.params.id, this.user);
-<<<<<<< Updated upstream
-     
-=======
->>>>>>> Stashed changes
   }
 };
 </script>

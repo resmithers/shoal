@@ -88,7 +88,7 @@ export function getAvailable(thisBind) {
   return db
     .collection("Discussions")
     .where("End", ">=", Date.now())
-    .orderBy("Timestamp", "desc")
+    .orderBy("End", "desc")
     .get()
     .then(discussions => {
       thisBind.live = discussions.docs.map(disc => ({
