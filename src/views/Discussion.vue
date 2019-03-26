@@ -7,7 +7,6 @@
     <Chart/>
     <Votes :user="user"/>
     <AddComment :user="user" :userDetails="userDetails"/>
-
     <Comments/>
   </div>
 </template>
@@ -31,13 +30,8 @@ export default {
   props: {
     user: String,
     userDetails: Object
-  },
-  mounted() {
-    console.log(this.userDetails);
   }
 };
 </script>
 
-
-<style scoped>
-</style>
+<style scoped></style>
