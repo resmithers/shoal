@@ -41,7 +41,8 @@ import firebase from "firebase";
 export default {
   name: "Login",
   props: {
-    user: String
+    user: String,
+    setUser: Function
   },
   data() {
     return {
@@ -50,9 +51,10 @@ export default {
       feedback: null
     };
   },
-  props: {
-    user: String,
-    setUser: Function
+  mounted() {
+    if (this.user || localStorage.getItem("userUID")) {
+      this.$router.push({ name: "Dashboard" });
+    }
   },
   methods: {
     login() {
@@ -65,7 +67,7 @@ export default {
             this.setUser(cred.user.uid);
             // localStorage.setItem("userUID", JSON.stringify(cred.user.uid));
           })
-          .catch(error => {
+          .catch(() => {
             this.feedback = "There is no user existing with these credentials";
           });
         this.feedback = null;
