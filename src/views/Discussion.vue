@@ -19,12 +19,9 @@ import Comments from "../components/Comments";
 import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
-import {
-  getArchiveDisc,
-  getSubCollections
-} from "../utils/FirestoreStaticListen";
 import { addDiscInteraction } from "../utils/FirestoreReq";
 import { getDisc } from "../utils/FirestoreListen.js";
+import { db } from "../utils/config.js";
 
 export default {
   name: "Discussion",
@@ -45,18 +42,39 @@ export default {
       max: Date.now(),
       points: null,
       votes: null,
-      comments: null
+      comments: null,
+      listening: null
     };
   },
   watch: {
     discussion: function() {
-      console.dir(this.discussion);
+      // console.dir(this.discussion);
     }
   },
   mounted() {
-    getDisc(this)
-    // getArchiveDisc(this);
-    // getSubCollections(this);
+    getDisc(this);
+    addDiscInteraction(this);
+  },
+  beforeDestroy() {
+    const unDisc = db.collection("Discussions").onSnapshot(() => {});
+    const unComm = db
+      .collection("Discussions")
+      .doc(this.discID)
+      .collection("Comments")
+      .onSnapshot(() => {});
+    const unVot = db
+      .collection("Discussions")
+      .doc(this.discID)
+      .collection("Votes")
+      .onSnapshot(() => {});
+    const unPoint = db
+      .collection("Discussions")
+      .doc(this.discID)
+      .collection("Points")
+      .onSnapshot(() => {});
+    Promise.all([unDisc, unComm, unVot, unPoint]).then(() =>
+      console.log("disconnect")
+    );
   }
 };
 </script>

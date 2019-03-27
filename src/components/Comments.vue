@@ -5,21 +5,11 @@
       <li v-for="comment in comments" :key="comment.id">
         {{ comment.Body }}
         <br>
-        {{moment(comment.Timestamp).format('LLL')}}
+        {{ moment(comment.Timestamp).format("LLL") }}
         <br>
         {{ comment.Author }}
       </li>
     </ul>
-    <ul>
-      <li v-if="comment.Replies" v-for="reply in comment.Replies" :key="reply.id">
-        {{ reply.Body }}
-        <br>
-        {{moment(reply.Timestamp).format('LLL')}}
-        <br>
-        {{ reply.Author }}
-      </li>
-    </ul>
-
   </div>
 </template>
 
@@ -44,7 +34,6 @@ export default {
       this.comments = this.inComments;
     }
   },
-
   watch: {
     comments: function() {},
     inComments: function() {
