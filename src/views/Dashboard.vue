@@ -17,7 +17,7 @@
         v-if="userDetails && userDetails.access >= 3"
         :user="userDetails"
       />
-      <button @click="logout">Logout</button>
+      <button id="logOutButton" @click="logout">Logout</button>
     </div>
   </div>
 </template>
@@ -91,23 +91,20 @@ export default {
   height: 90%;
 }
 
-/* #participatingDiscussions {
-  margin: auto;
+#participatingDiscussions {
+  margin-left: 25%;
   position: absolute;
-  padding-left: 2%;
-  height: 90%;
-} */
-.ParticipatingDiscussions {
-  margin: auto;
-  position: absolute;
-  padding-left: 2%;
-  height: 90%;
-  margin-left: 40%;
+  height: 750px;
+  width: 450px;
+  top: 56px;
+  left: 210px;
 }
+
 #outcomes {
   right: 0;
   position: absolute;
   padding-right: 2%;
-  height: 90%;
+  height: 750px;
+  top: 56px;
 }
 </style>
