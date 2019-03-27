@@ -70,7 +70,6 @@ export function listenVotes(thisBind) {
         accumulatedVotes.push(acc);
         return acc;
       }, 0);
-
       thisBind.datasets = accumulatedVotes;
       thisBind.labels = labels;
     });

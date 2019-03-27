@@ -17,6 +17,11 @@ export default new Router({
       component: () => import('./views/Discussion.vue'),
     },
     {
+      path: '/archived/:id',
+      name: 'archived',
+      component: () => import('./views/ArchiveDiscussion.vue'),
+    },
+    {
       path: '/signup',
       name: 'signup',
       component: () => import('./views/Signup.vue'),

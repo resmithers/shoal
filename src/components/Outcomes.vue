@@ -12,7 +12,7 @@ export default {
   name: "Outcomes",
   methods: {
     selectDisc(e) {
-      this.$router.push({ path: `/discussion/${e.target.value}` });
+      this.$router.push({ path: `/archived/${e.target.value}` });
     }
   },
   props: {

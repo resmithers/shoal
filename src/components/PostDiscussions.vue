@@ -51,6 +51,7 @@ export default {
           start: +moment(this.startDate).format("x"),
           end: +moment(this.endDate).format("x")
         });
+        this.$router.push({ path: `/discussion/${this.title}` });
       } else {
         this.feedback = "Required Fields missing";
       }

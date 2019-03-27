@@ -6,7 +6,7 @@
     <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine" />
     <ParticipatingDiscussions :interacted="interacted" />
     <Outcomes :past="historical" />
-    <PostDiscussions id='postDiscussions' v-if="userDetails.access >= 3" :user="userDetails" />
+    <PostDiscussions id='postDiscussions' v-if="userDetails && userDetails.access >= 3" :user="userDetails" />
     <button @click="logout">Logout</button>
   </div>
   </div>
