@@ -38,7 +38,6 @@ export default {
   mounted() {},
   methods: {
     postVote: function(e) {
-      console.log(this.discussion);
       if (this.discussion.End > Date.now()) {
         const vote = +e.target.value;
         const docUID = this.$route.params.id;
