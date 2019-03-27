@@ -66,7 +66,7 @@ export default {
   background-size: 100%;
   background-position: cover;
   height: 100vh;
-  display: block;
+  /* display: block; */
 }
 #postDiscussions {
   right: 0%;

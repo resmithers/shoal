@@ -4,7 +4,7 @@
     <b-modal id="modal" title="Post Discussion" align="center">
       <form class="addDisc" @submit.prevent="addDisc">
         <input v-model="title" type="text" placeholder="Title" name="Title">
-        <input v-model="message" type="text" placeholder="Message" name="Message">
+        <textarea rows="4" v-model="message" type="text" placeholder="Message" name="Message"/>
         <input v-model="department" type="text" placeholder="Department" name="Department">
         <label>Start Date:</label>
         <input v-model="startDate" type="datetime-local" placeholder="Start Date" name="StartDate">
@@ -80,13 +80,23 @@ export default {
   margin-bottom: 1em;
 }
 .addDisc {
-  margin-left: 42.5%;
+  display: flex;
+  flex-direction: column;
+
   /* position: absolute; */
   /* margin-left:50%; */
   /* margin: 0; */
 }
-
-.modal-dialog.modal-md {
-  margin: 0;
+.addDisc textarea {
+  margin: 1em 0;
 }
+
+.addDisc label {
+  font-weight: 900;
+  font-size: 1em;
+  margin-top: 0.3em;
+}
+/* .modal-dialog.modal-md {
+  margin: 0;
+} */
 </style>
