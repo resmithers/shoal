@@ -18,9 +18,8 @@
     <div >
       <b-button v-b-toggle.collapse1 >Toggle</b-button>
       <b-collapse id="collapse1" >
-        <b-card v-for="kp in keyPoints" :key="kp.id" class="w-50" style="height: 150px">
-          <b-card-body>{{ kp.Body }}</b-card-body>
-          <b-card-body>{{ moment(kp.Timestamp).format("LLL") }}</b-card-body>
+        <b-card v-for="kp in keyPoints" :key="kp.id" class="w-50" style="height: 100px">
+          <b-card-body>{{ kp.Body }}<br/>{{ moment(kp.Timestamp).format("LLL") }}</b-card-body>
         </b-card>
       </b-collapse>
     </div>
