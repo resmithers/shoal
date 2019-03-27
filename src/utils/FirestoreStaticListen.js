@@ -58,7 +58,10 @@ export function getSubCollections(thisBind) {
       getArchiveComments(thisBind)
     ])
       .then(([p, v, c]) => {
-        thisBind.points = p.docs.map(x => x.data());
+        const point = p.docs.map(x => x.data());
+        point.unshift(thisBind.discussion.End);
+        point.push(thisBind.discussion.Start);
+        thisBind.points = point.docs.map(x => x.data());
         const vt = v.docs.map(x => x.data());
         thisBind.votes = archivedVoteObject(vt);
         thisBind.comments = c.docs.map(x => x.data());

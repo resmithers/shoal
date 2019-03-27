@@ -42,13 +42,13 @@ export default {
   },
   watch: {
     points: function() {
-      const arr = [];
-      const lookArr = [];
+      const arr = [0];
       this.points.forEach((p, i) => {
-        lookArr.push(p);
-        arr.push(i);
+        arr.push(i + 1);
       });
+      arr.push(arr.length);
       this.marks = arr;
+      console.dir(this.marks);
       this.min = 0;
       this.max = arr.length - 1;
     }

@@ -3,11 +3,11 @@
     <button>
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
-    <KeypointOld :keyPoints="points" :discussion="discussion"/>
+    <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
     <ChartOld :discussion="discussion" :votes="votes"/>
     <Slider :points="points" @slide="onSlide"/>
-    <VotesOld :votes="votes"/>
-    <CommentsOld :comments="comments"/>
+    <VotesOld :votes="filterVotes || votes"/>
+    <CommentsOld :comments="filterComms || comments"/>
   </div>
 </template>
 
@@ -40,7 +40,9 @@ export default {
       comments: [],
       points: [],
       slidePoints: [],
-      filterPoints: []
+      filterPoints: null,
+      filterVotes: null,
+      filterComms: null
     };
   },
   props: {
@@ -49,13 +51,31 @@ export default {
   },
   mounted() {
     getArchiveDisc(this);
-    getSubCollections(this);
+    // getSubCollections(this);
   },
   methods: {
     onSlide: function(value) {
-      console.log(value);
       this.slidePoints = value;
-      this.filterPoints = this.points.filter((x, i) => value[0] < i < value[1]);
+      const [maxTime, minTime] = [
+        this.points[this.slidePoints[0]].Timestamp,
+        this.points[this.slidePoints[1]].Timestamp
+      ];
+      const fil = arr => {
+        return arr.filter((x, i) => {
+          return value[0] <= i && i <= value[1];
+        });
+      };
+      this.filterPoints = fil(this.points);
+      this.filterComms = this.comments.filter((c, i) => {
+        return minTime <= c.Timestamp && c.Timestamp <= maxTime;
+      });
+      // this.filterVotes = fil(this.votes);
+    }
+  },
+  watch: {
+    discussion: function() {
+      console.log("Discussion is here");
+      getSubCollections(this);
     }
   }
 };
