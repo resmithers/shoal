@@ -4,19 +4,10 @@
     <b-card align="left">
       <ol name="active" id="discussion selector" v-on:click="selectDisc">
         <b-list-group-item
-          v-for="discussion in active.slice(0,3)"
+          v-for="discussion in active"
           :key="discussion.id"
         >{{discussion.id.length > 25 ? discussion.id.slice(0, 25) + '...' : discussion.id}}</b-list-group-item>
       </ol>
-      <b-button v-b-toggle.collapse2 class="m-1">More</b-button>
-      <b-collapse id="collapse2">
-        <ol name="active" id="discussion selector" v-on:click="selectDisc">
-          <b-list-group-item
-            v-for="discussion in active.slice(4,active.length)"
-            :key="discussion.id"
-          >{{discussion.id.length > 25 ? discussion.id.slice(0, 25) + '...' : discussion.id}}</b-list-group-item>
-        </ol>
-      </b-collapse>
     </b-card>
   </div>
 </template>
@@ -55,6 +46,7 @@ ol {
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 0;
+  height: 750px;
 }
 
 ol::-webkit-scrollbar {
@@ -64,14 +56,13 @@ ol::-webkit-scrollbar {
 .card {
   background-color: #a1cbfc00;
   border: none;
-  width: 100%;
+  width: 500px;
 }
 
 .card-body {
   background: #a1cbfc96;
   border: none;
   border-radius: 10%;
-  width: 500px;
 }
 
 .list-group-item {
