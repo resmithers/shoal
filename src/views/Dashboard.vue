@@ -1,14 +1,26 @@
 <template>
   <div id="Dashboard">
-    <div class=dashboardContainer>
-    <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
-    <CurrentDiscussions :active="live" />
-    <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine" />
-    <ParticipatingDiscussions :interacted="interacted" />
-    <Outcomes :past="historical" />
-    <PostDiscussions id='postDiscussions' v-if="userDetails && userDetails.access >= 3" :user="userDetails" />
-    <button @click="logout">Logout</button>
-  </div>
+    <div class="dashboardContainer">
+      <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
+      <div id="currentDiscussions">
+        <CurrentDiscussions :active="live"/>
+      </div>
+      <div id="myDiscs">
+        <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine"/>
+      </div>
+      <div id="participatingDiscussions">
+        <ParticipatingDiscussions :interacted="interacted"/>
+      </div>
+      <div id="outcomes">
+        <Outcomes :past="historical"/>
+      </div>
+      <PostDiscussions
+        id="postDiscussions"
+        v-if="userDetails && userDetails.access >= 3"
+        :user="userDetails"
+      />
+      <b-button id="logOutButton" @click="logout">Logout</b-button>
+    </div>
   </div>
 </template>
 
@@ -55,22 +67,63 @@ export default {
 </script>
 
 <style scoped>
-
 #Dashboard {
-  background-repeat: repeat-y;
-  background: radial-gradient(transparent 45%, #0c4783), url("../images/shore.png");
+  background-repeat: no-repeat;
+  background: radial-gradient(transparent 45%, #0c4783),
+    url("../images/shore.png");
   background-size: 100%;
-  
+  background-position: cover;
   height: 100vh;
-  display:block;
-  
 }
 #postDiscussions {
-  /* margin:auto;
-  width: 100% */
+  right: 0%;
+  top: 0;
+  position: absolute;
 }
-.dashboardContainer{
-  text-align:center;
+.dashboardContainer {
+  position: relative;
+  text-align: center;
 }
 
+#currentDiscussions {
+  left: 0;
+  position: absolute;
+  padding-left: 2%;
+  height: 90%;
+}
+
+#participatingDiscussions {
+  margin-left: 25%;
+  position: absolute;
+  height: 750px;
+  width: 450px;
+  top: 56px;
+  left: 210px;
+}
+
+#outcomes {
+  right: 0;
+  position: absolute;
+  padding-right: 2%;
+  height: 750px;
+  top: 56px;
+}
+#logOutButton {
+  left: 2px;
+  position: absolute;
+  top: 1px;
+  border-radius: 10%;
+  background-color: #032f5cce;
+  border: none;
+}
+
+#logOutButton:hover {
+  background-color: red;
+}
+
+#myDiscs {
+  right: 140px;
+  top: 0;
+  position: absolute;
+}
 </style>

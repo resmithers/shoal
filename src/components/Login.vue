@@ -1,11 +1,8 @@
 <template>
   <div id="loginPage">
     <div class="form">
-      <b-form id='topForm' @submit.prevent="login" v-if="show">
-        <b-form-group
-          id="email"
-          label-for="Email"
-        >
+      <b-form id="topForm" @submit.prevent="login" v-if="show">
+        <b-form-group id="email" label-for="Email">
           <label class="emailLabel">Email:</label>
           <b-form-input
             class="unique"
@@ -15,7 +12,7 @@
             placeholder="Enter your email..."
             required
           />
-          <p class='description'>We'll never share your email with anyone else.</p>
+          <p class="description">We'll never share your email with anyone else.</p>
         </b-form-group>
         <label class="passwordLabel">Password:</label>
         <b-form-group id="Password" label-for="password">
@@ -30,10 +27,10 @@
         </b-form-group>
 
         <b-button type="submit" variant="primary">Login</b-button>
-        <b-button id='signupButton' variant="warning"> <router-link to="/signup/" class='signupLink' >Sign Up</router-link> </b-button>
-
+        <b-button id="signupButton" variant="warning">
+          <router-link to="/signup/" class="signupLink">Sign Up</router-link>
+        </b-button>
       </b-form>
-
     </div>
   </div>
 </template>
@@ -86,35 +83,28 @@ export default {
 
 <style scoped>
 .homeButton {
-  color:white;
+  color: white;
 
-  float:right;
-
-  
+  float: right;
 }
 
-
 #loginPage {
-  
   padding-top: 1px;
-  background: radial-gradient(transparent 50%, #0c4783), url("../images/bkg.jpg");
+  background: radial-gradient(transparent 50%, #0c4783),
+    url("../images/shore.png");
 
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: center; 
- 
+  background-position: cover;
 
-  
   height: 100vh;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-
-  
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-
-.description{
+.description {
   margin-top: 0.5em;
   opacity: 0.6;
 }
@@ -126,18 +116,16 @@ export default {
   -moz-border-radius: 10px;
   margin: 0 0 0 0;
   border: 1px solid #d3fcff;
-background-image: linear-gradient(#0c4783,rgb(142, 180, 230));  
-margin-left: 35%;
-margin-right: 35%;
+  background-image: linear-gradient(#0c4783, rgb(142, 180, 230));
+  margin-left: 35%;
+  margin-right: 35%;
   margin-top: 18%;
   padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 5;
-  align-content:space-around;
-
-
+  align-content: space-around;
 
   box-shadow: inset 0 0 15px #fffbe5;
   -moz-box-shadow: inset 0 0 15px #ffe5e5;
@@ -148,9 +136,9 @@ margin-right: 35%;
   margin-top: 2em;
 }
 .form input {
-    color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
 
-  background: RGBA(255,255, 255, 0.7);
+  background: RGBA(255, 255, 255, 0.7);
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -158,52 +146,45 @@ margin-right: 35%;
   border-radius: 4px;
   display: block;
   margin: 0;
-
 }
 .unique {
-  margin:0;
+  margin: 0;
 }
 
 #loginPage label {
   font-size: 1.2em;
-
 }
 .signupLink {
   color: white;
-  
 }
 .btn {
-    margin-right: 0;
-
+  margin-right: 0;
 }
 #signupButton {
-      right: 0;
-      position:absolute;
-
+  right: 0;
+  position: absolute;
 }
 #topForm {
   position: relative;
-  
 }
 .loginPage {
   font-weight: bolder;
 }
-button { 
+button {
   margin-right: 5em;
   margin-bottom: 1em;
   border: 0;
   border-radius: 10%;
 }
 .homeButton {
-  margin:0;
-
+  margin: 0;
 }
 
 .link {
-  color:white
+  color: white;
 }
 
 .link:hover {
-text-decoration: none;
+  text-decoration: none;
 }
 </style>

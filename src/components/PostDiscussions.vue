@@ -1,19 +1,18 @@
 <template>
-  <div class="PostDiscussionsContainer">
-    <form class="addDisc" @submit.prevent="addDisc">
-      <div class="PostDiscussions">
+  <div id="postDiscussion" class="PostDiscussionsContainer">
+    <b-button id="postDiscButton" v-b-modal.modal>Post Discussion</b-button>
+    <b-modal @ok="addDisc" id="modal" title="Post Discussion" align="center">
+      <form class="addDisc" @submit.prevent="addDisc">
         <input v-model="title" type="text" placeholder="Title" name="Title">
-        <input v-model="message" type="text" placeholder="Message" name="Message">
+        <textarea rows="4" v-model="message" type="text" placeholder="Message" name="Message"/>
         <input v-model="department" type="text" placeholder="Department" name="Department">
         <label>Start Date:</label>
         <input v-model="startDate" type="datetime-local" placeholder="Start Date" name="StartDate">
         <label>End Date:</label>
         <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate">
         <p>{{ feedback }}</p>
-
-        <button>Post</button>
-      </div>
-    </form>
+      </form>
+    </b-modal>
   </div>
 </template>
 
@@ -70,21 +69,46 @@ export default {
   display: flex;
   flex-direction: column;
   width: 20em;
-  justify-items:center;
-  /* display: block; */
-/* text-align:center; */
-
+  justify-items: center;
 }
 .PostDiscussions input {
   position: relative;
-  
+
   margin-bottom: 1em;
-  
 }
-.addDisc{
-  margin-left: 42.5%;
-  /* position: absolute; */
-  /* margin-left:50%; */
-  /* margin: 0; */
+.addDisc {
+  display: flex;
+  flex-direction: column;
+}
+.addDisc textarea {
+  margin: 1em 0;
+}
+
+.addDisc label {
+  font-weight: 900;
+  font-size: 1em;
+  margin-top: 0.3em;
+}
+.addDisc input,
+textarea {
+  color: rgba(0, 0, 0, 1);
+
+  background: RGBA(255, 255, 255, 0.7);
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid blue;
+  border-radius: 4px;
+  display: block;
+  margin: 0;
+}
+
+#postDiscButton {
+  border-radius: 10%;
+  background-color: #032f5cce;
+  border: none;
+}
+
+#postDiscButton:hover {
+  background-color: green;
 }
 </style>
