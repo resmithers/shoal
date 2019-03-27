@@ -1,16 +1,29 @@
 <template>
   <div id="Discussion">
-    <button>
-      <router-link to="/dashboard">Dashboard</router-link>
-    </button>
-    <Keypoint :user="user" :userDetails="userDetails" :discussion="discussion" :discID="discID"/>
-    <Chart :user="user" :userDetails="userDetails" :discussion="discussion"/>
-    <AddComment
-      v-if="discussion && discussion.End > Date.now()"
-      :user="user"
-      :userDetails="userDetails"
-    />
-    <Comments :inComments="comments"/>
+    <b-container class="cont">
+      <b-row>
+        <b-col cols="8">
+          <b-button>
+            <router-link to="/dashboard">Dashboard</router-link>
+          </b-button>
+          <Keypoint
+            :user="user"
+            :userDetails="userDetails"
+            :discussion="discussion"
+            :discID="discID"
+          />
+          <Chart :user="user" :userDetails="userDetails" :discussion="discussion"/>
+        </b-col>
+        <b-col cols="4">
+          <Comments :inComments="comments"/>
+          <AddComment
+            v-if="discussion && discussion.End > Date.now()"
+            :user="user"
+            :userDetails="userDetails"
+          />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -79,4 +92,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.cont {
+  width: 100%;
+  margin: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+}
+
+#Discussion {
+  width: 100%;
+  background-repeat: no-repeat;
+  background: radial-gradient(transparent 45%, #0c4783),
+    url("../images/shore.png");
+  background-position: cover;
+  background-size: 100%;
+  overflow-y: hidden;
+}
+</style>

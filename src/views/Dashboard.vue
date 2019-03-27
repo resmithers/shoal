@@ -57,10 +57,10 @@ export default {
 <style scoped>
 
 #Dashboard {
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background: radial-gradient(transparent 45%, #0c4783), url("../images/shore.png");
   background-size: 100%;
-  background-position: cover; 
+  
   height: 100vh;
   display:block;
   

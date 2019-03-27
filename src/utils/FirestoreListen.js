@@ -75,7 +75,7 @@ export function listenVotes(thisBind) {
     });
 }
 
-function getUnique(arr, comp) {
+export function getUnique(arr, comp) {
   return arr
     .map(e => e[comp])
     .map((e, i, final) => final.lastIndexOf(e) === i && i)
