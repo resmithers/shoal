@@ -4,7 +4,8 @@
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
     <KeypointOld :keyPoints="points" :discussion="discussion"/>
-    <ChartOld :discussion="discussion" :votes="votes" />
+    <ChartOld :discussion="discussion" :votes="votes"/>
+    <Slider :points="points" @slide="onSlide"/>
     <VotesOld :votes="votes"/>
     <CommentsOld :comments="comments"/>
   </div>
@@ -15,6 +16,7 @@ import CommentsOld from "../components/CommentsOld";
 import ChartOld from "../components/ChartOld";
 import VotesOld from "../components/VotesOld";
 import KeypointOld from "../components/KeypointOld";
+import Slider from "../components/Slider";
 import {
   getArchiveDisc,
   getSubCollections
@@ -26,7 +28,8 @@ export default {
     KeypointOld,
     CommentsOld,
     ChartOld,
-    VotesOld
+    VotesOld,
+    Slider
   },
   data() {
     return {
@@ -35,7 +38,9 @@ export default {
       max: Date.now(),
       votes: {},
       comments: [],
-      points: []
+      points: [],
+      slidePoints: [],
+      filterPoints: []
     };
   },
   props: {
@@ -45,6 +50,13 @@ export default {
   mounted() {
     getArchiveDisc(this);
     getSubCollections(this);
+  },
+  methods: {
+    onSlide: function(value) {
+      console.log(value);
+      this.slidePoints = value;
+      this.filterPoints = this.points.filter((x, i) => value[0] < i < value[1]);
+    }
   }
 };
 </script>
