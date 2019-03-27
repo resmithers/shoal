@@ -21,7 +21,7 @@
       </p>
       </div>
        <div class='d-flex justify-content-center'>
-      <b-button v-b-toggle.collapse1>Show previous</b-button>
+      <b-button v-b-toggle.collapse1>Show previous keypoints</b-button>
        </div>
     <div class='d-flex justify-content-center collapse'>
       <b-collapse class='w-50' id="collapse1">

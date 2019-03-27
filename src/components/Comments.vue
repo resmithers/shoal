@@ -1,8 +1,9 @@
 <template>
 <div class="d-flex justify-content-center">
-  <div class="d-flex-column Comments w-50">
+  <div class="d-flex-column Comments w-100">
     <h1 class="text-center mt-5">Comments:</h1>
-    <b-card v-for="comment in comments" :key="comment.id" class="w-100 text-center" style="min-height: 100px;  ">
+    <div class="coms">
+    <b-card v-for="comment in comments" :key="comment.id" class="w-100 text-center" style="height: 110px;  ">
           <b-card-body>
            <span> {{ comment.Author }} : </span><span class="body"> {{ comment.Body }} </span>
             <br>
@@ -10,6 +11,7 @@
              
           </b-card-body>
         </b-card>  
+        </div>
 </div>
   </div>
 </template>
@@ -73,5 +75,18 @@ li {
   font-size: 12px;
   color: white;
   font-weight: 200;
+}
+
+.coms {
+  min-height: 110px;
+  max-height:80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.coms::-webkit-scrollbar {
+ width: 0 !important;
 }
 </style>
