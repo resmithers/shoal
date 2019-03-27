@@ -1,7 +1,9 @@
 <template>
-  <div class="PostDiscussionsContainer">
-    <form class="addDisc" @submit.prevent="addDisc">
-      <div class="PostDiscussions">
+  <div id="postDiscussion" class="PostDiscussionsContainer">
+    <b-button v-b-modal.modal>Post Discussion</b-button>
+    <b-modal id="modal" title="Post Discussion" align="center">
+      <form class="addDisc" @submit.prevent="addDisc">
+        <!-- <div class="PostDiscussions"> -->
         <input v-model="title" type="text" placeholder="Title" name="Title">
         <input v-model="message" type="text" placeholder="Message" name="Message">
         <input v-model="department" type="text" placeholder="Department" name="Department">
@@ -11,9 +13,10 @@
         <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate">
         <p>{{ feedback }}</p>
 
-        <button>Post</button>
-      </div>
-    </form>
+        <button>Post Discussion</button>
+        <!-- </div> -->
+      </form>
+    </b-modal>
   </div>
 </template>
 
@@ -70,18 +73,16 @@ export default {
   display: flex;
   flex-direction: column;
   width: 20em;
-  justify-items:center;
+  justify-items: center;
   /* display: block; */
-/* text-align:center; */
-
+  /* text-align:center; */
 }
 .PostDiscussions input {
   position: relative;
-  
+
   margin-bottom: 1em;
-  
 }
-.addDisc{
+.addDisc {
   margin-left: 42.5%;
   /* position: absolute; */
   /* margin-left:50%; */
