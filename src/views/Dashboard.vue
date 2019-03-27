@@ -1,14 +1,18 @@
 <template>
   <div id="Dashboard">
-    <div class=dashboardContainer>
-    <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
-    <CurrentDiscussions :active="live" />
-    <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine" />
-    <ParticipatingDiscussions :interacted="interacted" />
-    <Outcomes :past="historical" />
-    <PostDiscussions id='postDiscussions' v-if="userDetails && userDetails.access >= 3" :user="userDetails" />
-    <button @click="logout">Logout</button>
-  </div>
+    <div class="dashboardContainer">
+      <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
+      <CurrentDiscussions :active="live"/>
+      <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine"/>
+      <ParticipatingDiscussions :interacted="interacted"/>
+      <Outcomes :past="historical"/>
+      <PostDiscussions
+        id="postDiscussions"
+        v-if="userDetails && userDetails.access >= 3"
+        :user="userDetails"
+      />
+      <button @click="logout">Logout</button>
+    </div>
   </div>
 </template>
 
@@ -55,22 +59,26 @@ export default {
 </script>
 
 <style scoped>
-
 #Dashboard {
   background-repeat: no-repeat;
-  background: radial-gradient(transparent 45%, #0c4783), url("../images/shore.png");
+  background: radial-gradient(transparent 45%, #0c4783),
+    url("../images/shore.png");
   background-size: 100%;
-  background-position: cover; 
+  background-position: cover;
   height: 100vh;
-  display:block;
-  
+  display: block;
 }
 #postDiscussions {
-  /* margin:auto;
-  width: 100% */
+  right: 0%;
+  top: 0;
+  position: absolute;
 }
-.dashboardContainer{
-  text-align:center;
+.dashboardContainer {
+  position: relative;
+  text-align: center;
 }
 
+#modal-header {
+  margin-top: 20%;
+}
 </style>
