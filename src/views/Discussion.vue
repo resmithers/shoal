@@ -47,9 +47,7 @@ export default {
     };
   },
   watch: {
-    discussion: function() {
-      // console.dir(this.discussion);
-    }
+    discussion: function() {}
   },
   mounted() {
     getDisc(this);

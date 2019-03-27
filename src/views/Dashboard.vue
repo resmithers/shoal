@@ -2,10 +2,16 @@
   <div id="Dashboard">
     <div class="dashboardContainer">
       <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
-      <CurrentDiscussions :active="live"/>
+      <div id="currentDiscussions">
+        <CurrentDiscussions :active="live"/>
+      </div>
       <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine"/>
-      <ParticipatingDiscussions :interacted="interacted"/>
-      <Outcomes :past="historical"/>
+      <div id="participatingDiscussions">
+        <ParticipatingDiscussions :interacted="interacted"/>
+      </div>
+      <div id="outcomes">
+        <Outcomes :past="historical"/>
+      </div>
       <PostDiscussions
         id="postDiscussions"
         v-if="userDetails && userDetails.access >= 3"
@@ -78,7 +84,30 @@ export default {
   text-align: center;
 }
 
-#modal-header {
-  margin-top: 20%;
+#currentDiscussions {
+  left: 0;
+  position: absolute;
+  padding-left: 2%;
+  height: 90%;
+}
+
+/* #participatingDiscussions {
+  margin: auto;
+  position: absolute;
+  padding-left: 2%;
+  height: 90%;
+} */
+.ParticipatingDiscussions {
+  margin: auto;
+  position: absolute;
+  padding-left: 2%;
+  height: 90%;
+  margin-left: 40%;
+}
+#outcomes {
+  right: 0;
+  position: absolute;
+  padding-right: 2%;
+  height: 90%;
 }
 </style>

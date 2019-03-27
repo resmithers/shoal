@@ -5813,7 +5813,7 @@ a.close.disabled {
 @media (min-width: 576px) {
   .modal-dialog {
     max-width: 500px;
-    margin-top: 14%;
+    margin-top: 11%;
   }
   .modal-dialog-scrollable {
     max-height: calc(100% - 3.5rem);

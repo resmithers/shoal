@@ -1,7 +1,7 @@
 <template>
   <div id="postDiscussion" class="PostDiscussionsContainer">
     <b-button v-b-modal.modal>Post Discussion</b-button>
-    <b-modal id="modal" title="Post Discussion" align="center">
+    <b-modal @ok="addDisc" id="modal" title="Post Discussion" align="center">
       <form class="addDisc" @submit.prevent="addDisc">
         <input v-model="title" type="text" placeholder="Title" name="Title">
         <textarea rows="4" v-model="message" type="text" placeholder="Message" name="Message"/>
@@ -11,7 +11,6 @@
         <label>End Date:</label>
         <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate">
         <p>{{ feedback }}</p>
-        <button>Post Discussion</button>
       </form>
     </b-modal>
   </div>
@@ -95,6 +94,19 @@ export default {
   font-weight: 900;
   font-size: 1em;
   margin-top: 0.3em;
+}
+.addDisc input,
+textarea {
+  color: rgba(0, 0, 0, 1);
+
+  background: RGBA(255, 255, 255, 0.7);
+  width: 100%;
+  /* padding: 12px 20px; */
+  box-sizing: border-box;
+  border: 2px solid blue;
+  border-radius: 4px;
+  display: block;
+  margin: 0;
 }
 /* .modal-dialog.modal-md {
   margin: 0;
