@@ -1,6 +1,5 @@
 <template>
   <div class="Home">
-    <h1>Home (No user ? Login : Dashboard)</h1>
     <Login :setUser="this.setUser" :user="this.user"/>
   </div>
 </template>

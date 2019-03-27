@@ -6,6 +6,11 @@ import "hchs-vue-charts";
 import firebase from "firebase";
 import { firebaseApp } from "./utils/config";
 
+import "./CSS/superhero.css";
+
+import BootstrapVue from "bootstrap-vue";
+
+Vue.use(BootstrapVue);
 Vue.use(window.VueCharts);
 
 Vue.config.productionTip = false;
