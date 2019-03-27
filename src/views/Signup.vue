@@ -1,6 +1,6 @@
 
 <template>
-<div id="signupPage">
+  <div id="signupPage">
     <div class="form">
       <b-form @submit.prevent="signup" @reset.prevent="onReset" v-if="show">
         <b-form-group id="email" label-for="Email">
@@ -73,10 +73,10 @@
         <p v-if="feedback">{{feedback}}</p>
         <b-button type="submit" variant="primary">Create</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
-              <b-button  class='homeButton' variant="success"><router-link to="/" class='link'>Home</router-link></b-button>
-
+        <b-button class="homeButton" variant="success">
+          <router-link to="/" class="link">Home</router-link>
+        </b-button>
       </b-form>
-
     </div>
   </div>
 </template>
@@ -88,7 +88,7 @@ import firebase from "firebase";
 export default {
   name: "Signup",
 
-data() {
+  data() {
     return {
       form: {
         email: null,
@@ -164,24 +164,24 @@ data() {
 
 <style scoped>
 .homeButton {
-  color:white;
+  color: white;
 
-  float:right;
-
-  
+  float: right;
 }
 
 #signupPage {
   padding-top: 1px;
   padding-bottom: 500px;
-  background: radial-gradient(transparent 50%, #0c4783), url("../images/bkg.jpg");
+  background: radial-gradient(transparent 50%, #0c4783),
+    url("../images/shore.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  background-position: center; 
+  background-position: cover;
   height: 100vh;
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .form {
@@ -190,29 +190,25 @@ data() {
   -moz-border-radius: 10px;
   margin: 0 0 10px 0;
   border: 1px solid #d3fcff;
-background-image: linear-gradient(#0c4783,rgb(142, 180, 230));  
-margin-left: 35%;
-margin-right: 35%;
+  background-image: linear-gradient(#0c4783, rgb(142, 180, 230));
+  margin-left: 35%;
+  margin-right: 35%;
   margin-top: 9em;
   padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 5;
-  align-content:space-around;
-
-
+  align-content: space-around;
 
   box-shadow: inset 0 0 15px #fffbe5;
   -moz-box-shadow: inset 0 0 15px #ffe5e5;
   -webkit-box-shadow: inset 0 0 15px #ffe5e5;
 }
 
-
 .form input {
-  
-  color: rgba(0,0,0,1);
-  background: RGBA(255,255, 255, 0.7);
+  color: rgba(0, 0, 0, 1);
+  background: RGBA(255, 255, 255, 0.7);
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
@@ -220,36 +216,33 @@ margin-right: 35%;
   border-radius: 4px;
   display: block;
   margin: 0;
-
 }
 .unique {
-  margin:0;
+  margin: 0;
 }
 
 #signupPage label {
   font-size: 1.2em;
-
 }
 
 .signupPage {
   font-weight: bolder;
 }
-button { 
+button {
   margin-right: 5em;
   margin-bottom: 1em;
   border: 0;
   border-radius: 10%;
 }
 .homeButton {
-  margin:0;
-
+  margin: 0;
 }
 
 .link {
-  color:white
+  color: white;
 }
 
 .link:hover {
-text-decoration: none;
+  text-decoration: none;
 }
 </style>
