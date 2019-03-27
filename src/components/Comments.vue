@@ -1,15 +1,16 @@
 <template>
-  <div class="Comments">
-    <h1>Comments:</h1>
-    <ul>
-      <li v-for="comment in comments" :key="comment.id">
-        {{ comment.Body }}
-        <br>
-        {{ moment(comment.Timestamp).format("LLL") }}
-        <br>
-        {{ comment.Author }}
-      </li>
-    </ul>
+<div class="d-flex justify-content-center">
+  <div class="d-flex-column Comments w-50">
+    <h1 class="text-center mt-5">Comments:</h1>
+    <b-card v-for="comment in comments" :key="comment.id" class="w-100 text-center" style="min-height: 100px;  ">
+          <b-card-body>
+           <span> {{ comment.Author }} : </span><span class="body"> {{ comment.Body }} </span>
+            <br>
+           <span class="timestamp"> {{ moment(comment.Timestamp).format("LLL") }} </span>
+             
+          </b-card-body>
+        </b-card>  
+</div>
   </div>
 </template>
 
@@ -49,11 +50,28 @@ export default {
 </script>
 
 <style scoped>
+span {
+  font-weight: bold;
+  color: rgb(6, 6, 112);
+}
 li {
   list-style: none;
   margin: 10px;
   border: 1px solid black;
   width: 30%;
   padding: 5px;
+}
+
+.body {
+  color: white;
+  font-weight: 200;
+  font-size: 26px;
+
+}
+
+.timestamp {
+  font-size: 12px;
+  color: white;
+  font-weight: 200;
 }
 </style>

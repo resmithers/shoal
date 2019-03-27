@@ -7,8 +7,6 @@
       <li @click="this.postVote" value="-1">Negative: {{this.down}}</li>
     </ul>
   </div>
-
-  
 </template>
 
 <script>

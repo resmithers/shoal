@@ -79,4 +79,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#Discussion {
+  background-repeat: no-repeat;
+  background: radial-gradient(transparent 45%, #0c4783), url("../images/shore.png");
+  background-position: cover; 
+
+  display:block;
+  
+}</style>
