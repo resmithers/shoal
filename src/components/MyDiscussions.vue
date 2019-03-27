@@ -1,6 +1,6 @@
 <template>
   <div class="MyDiscussions">
-    <b-button id="myDiscModal" v-b-modal.myDiscsModal>My Discussions</b-button>
+    <b-button id="myDiscModal" variant="info" v-b-modal.myDiscsModal>My Discussions</b-button>
     <b-modal id="myDiscsModal" align="center">
       <ol>
         <li v-for="discussion in mine" @click="selectDisc" :key="discussion.id">{{ discussion.id }}</li>
