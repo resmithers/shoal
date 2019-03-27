@@ -1,11 +1,23 @@
 <template>
   <div id="Votes">
-    <h1>votes</h1>
-    <ul>
-      <li>Total votes: {{this.total}}</li>
-      <li @click="this.postVote" value="1">Positive: {{this.up}}</li>
-      <li @click="this.postVote" value="-1">Negative: {{this.down}}</li>
-    </ul>
+    <div class="d-flex justify-content-center"></div>
+    <div class="d-flex justify-content-center">
+      <b-button-group class="mb-5 gap">
+        <b-button
+          class="left"
+          variant="success"
+          @click="this.postVote"
+          value="1"
+        >Positive: {{this.up}}</b-button>
+        <b-button>Total votes: {{this.total}}</b-button>
+        <b-button
+          class="right"
+          variant="danger"
+          @click="this.postVote"
+          value="-1"
+        >Negative: {{this.down}}</b-button>
+      </b-button-group>
+    </div>
   </div>
 </template>
 
@@ -28,7 +40,7 @@ export default {
     postVote: function(e) {
       console.log(this.discussion);
       if (this.discussion.End > Date.now()) {
-        const vote = e.target.value;
+        const vote = +e.target.value;
         const docUID = this.$route.params.id;
         const user = this.user;
         addVote(vote, user, docUID);
@@ -38,4 +50,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.left {
+  border-radius: 40% 40%;
+}
+
+.right {
+  border-radius: 40% 40%;
+}
+
+.gap {
+  margin-top: 5px;
+}
+</style>

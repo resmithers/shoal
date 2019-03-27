@@ -108,6 +108,7 @@ export default {
   width: 1000px;
   height: 500px;
   margin: auto;
+  background-color: rgba(0, 9, 48, 0.582);
 }
 
 .chartjs-render-monitor {
