@@ -5,7 +5,9 @@
       <div id="currentDiscussions">
         <CurrentDiscussions :active="live"/>
       </div>
-      <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine"/>
+      <div id="myDiscs">
+        <MyDiscussions v-if="userDetails && userDetails.access >= 3" :mine="mine"/>
+      </div>
       <div id="participatingDiscussions">
         <ParticipatingDiscussions :interacted="interacted"/>
       </div>
@@ -17,7 +19,7 @@
         v-if="userDetails && userDetails.access >= 3"
         :user="userDetails"
       />
-      <button id="logOutButton" @click="logout">Logout</button>
+      <b-button id="logOutButton" @click="logout">Logout</b-button>
     </div>
   </div>
 </template>
@@ -72,7 +74,6 @@ export default {
   background-size: 100%;
   background-position: cover;
   height: 100vh;
-  /* display: block; */
 }
 #postDiscussions {
   right: 0%;
@@ -106,5 +107,17 @@ export default {
   padding-right: 2%;
   height: 750px;
   top: 56px;
+}
+#logOutButton {
+  left: 2px;
+  position: absolute;
+  top: 1px;
+  border-radius: 10%;
+  background-color: #032f5cce;
+  border: none;
+}
+
+#logOutButton:hover {
+  background-color: red;
 }
 </style>

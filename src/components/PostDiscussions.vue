@@ -1,6 +1,6 @@
 <template>
   <div id="postDiscussion" class="PostDiscussionsContainer">
-    <b-button v-b-modal.modal>Post Discussion</b-button>
+    <b-button id="postDiscButton" v-b-modal.modal>Post Discussion</b-button>
     <b-modal @ok="addDisc" id="modal" title="Post Discussion" align="center">
       <form class="addDisc" @submit.prevent="addDisc">
         <input v-model="title" type="text" placeholder="Title" name="Title">
@@ -101,14 +101,20 @@ textarea {
 
   background: RGBA(255, 255, 255, 0.7);
   width: 100%;
-  /* padding: 12px 20px; */
   box-sizing: border-box;
   border: 2px solid blue;
   border-radius: 4px;
   display: block;
   margin: 0;
 }
-/* .modal-dialog.modal-md {
-  margin: 0;
-} */
+
+#postDiscButton {
+  border-radius: 10%;
+  background-color: #032f5cce;
+  border: none;
+}
+
+#postDiscButton:hover {
+  background-color: green;
+}
 </style>
