@@ -1,26 +1,33 @@
 <template>
-<div>
-  <div id="Chart">
-    <chartjs-line
-      :datalabel="'Votes'"
-      :labels="labels"
-      :data="datasets"
-      :option="option"
-      :key="chartKey"
-      :fill="true"
-      :linetension="0.2"
-      :backgroundcolor="'rgba(75,192,192,0.2)'"
-      :pointborderwidth="2"
-      :pointbordercolor="'blue'"
-      :pointhoverborderwidth="3"
-      :pointhoverbackgroundcolor="'#636b6f'"
-      :pointhoverbordercolor="'#ffd663'"
-      :responsive="true"
-      id="chart"
-    ></chartjs-line>
+  <div>
+    <div id="Chart">
+      <chartjs-line
+        :datalabel="'Votes'"
+        :labels="labels"
+        :data="datasets"
+        :option="option"
+        :key="chartKey"
+        :fill="true"
+        :linetension="0.2"
+        :backgroundcolor="'rgba(75,192,192,0.2)'"
+        :pointborderwidth="2"
+        :pointbordercolor="'blue'"
+        :pointhoverborderwidth="3"
+        :pointhoverbackgroundcolor="'#636b6f'"
+        :pointhoverbordercolor="'#ffd663'"
+        :responsive="true"
+        id="chart"
+      ></chartjs-line>
+    </div>
+    <Votes
+      :user="user"
+      :userDetails="userDetails"
+      :discussion="discussion"
+      :total="datasets.length"
+      :up="upVotes"
+      :down="downVotes"
+    />
   </div>
-  <Votes :user="user" :userDetails="userDetails" :discussion="discussion" :total="datasets.length" :up="upVotes" :down="downVotes"/>
-</div>
 </template>
 
 <script>
@@ -100,6 +107,7 @@ export default {
   width: 1000px;
   height: 500px;
   margin: auto;
+  background-color: rgba(0, 9, 48, 0.582);
 }
 
 .chartjs-render-monitor {

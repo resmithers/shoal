@@ -100,6 +100,7 @@ export default {
   max-width: 100% !important;
 }
 
+
 #Discussion {
   width: 100%;
   background-repeat: no-repeat;

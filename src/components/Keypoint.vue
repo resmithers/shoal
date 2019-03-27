@@ -9,7 +9,7 @@
       >Add key point</b-button> 
 </div>
       <div class='d-flex justify-content-center m-3'>
-      <b-card class= 'w-50 text-center'>Latest Keypoint:<br/>{{keyPoints[0].Body}}<br/>{{ keyPoints[0].Timestamp }} </b-card>
+      <b-card class= 'w-50 text-center'>Latest Keypoint:<br/>{{keyPoints[0].Body}}<br/>{{ moment(keyPoints[0].Timestamp).format("LLL") }} </b-card>
         <b-modal id="modal1" title="BootstrapVue">
           <p class="my-4">Add key point</p>
           <b-form @submit.prevent="postKeyPoint">
