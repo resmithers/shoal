@@ -120,4 +120,10 @@ export default {
 #logOutButton:hover {
   background-color: red;
 }
+
+#myDiscs {
+  right: 140px;
+  top: 0;
+  position: absolute;
+}
 </style>

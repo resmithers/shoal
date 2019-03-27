@@ -1,9 +1,11 @@
 <template>
   <div class="MyDiscussions">
-    <select name="mine" id="discussion selector" v-on:change="selectDisc">
-      <option value>My discussions</option>
-      <option v-for="discussion in mine" :key="discussion.id">{{ discussion.id }}</option>
-    </select>
+    <b-button id="myDiscModal" v-b-modal.myDiscsModal>My Discussions</b-button>
+    <b-modal id="myDiscsModal" align="center">
+      <ol>
+        <li v-for="discussion in mine" @click="selectDisc" :key="discussion.id">{{ discussion.id }}</li>
+      </ol>
+    </b-modal>
   </div>
 </template>
 
@@ -12,7 +14,7 @@ export default {
   name: "MyDiscussions",
   methods: {
     selectDisc(e) {
-      this.$router.push({ path: `/discussion/${e.target.value}` });
+      this.$router.push({ path: `/discussion/${e.target.textContent}` });
     }
   },
   props: {
@@ -24,4 +26,6 @@ export default {
 
 
 <style scoped>
+#myDiscModal {
+}
 </style>

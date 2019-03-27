@@ -70,8 +70,6 @@ export default {
   flex-direction: column;
   width: 20em;
   justify-items: center;
-  /* display: block; */
-  /* text-align:center; */
 }
 .PostDiscussions input {
   position: relative;
@@ -81,10 +79,6 @@ export default {
 .addDisc {
   display: flex;
   flex-direction: column;
-
-  /* position: absolute; */
-  /* margin-left:50%; */
-  /* margin: 0; */
 }
 .addDisc textarea {
   margin: 1em 0;
