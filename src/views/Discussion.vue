@@ -100,14 +100,13 @@ export default {
   max-width: 100% !important;
 }
 
-
 #Discussion {
   width: 100%;
   background-repeat: no-repeat;
   background: radial-gradient(transparent 45%, #0c4783),
     url("../images/shore.png");
   background-position: cover;
+  background-size: 100%;
   overflow-y: hidden;
-  display: block;
 }
 </style>
