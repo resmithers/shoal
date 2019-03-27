@@ -93,12 +93,15 @@ export default {
 }
 
 #participatingDiscussions {
-  margin-left: 25%;
-  position: absolute;
+  /* margin-left: 25%; */
+  /* position: absolute; */
   height: 750px;
-  width: 450px;
-  top: 56px;
-  left: 210px;
+  width: 500px;
+  /* top: 56px;
+  left: 210px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #outcomes {
