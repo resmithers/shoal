@@ -2,11 +2,13 @@
   <div id="Votes">
     <h1>votes</h1>
     <ul>
-      <li>Total votes: {{this.total}}</li>
       <li @click="this.postVote" value="1">Positive: {{this.up}}</li>
+      <li>Total votes: {{this.total}}</li>
       <li @click="this.postVote" value="-1">Negative: {{this.down}}</li>
     </ul>
   </div>
+
+  
 </template>
 
 <script>

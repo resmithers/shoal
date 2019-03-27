@@ -23,9 +23,9 @@
        <div class='d-flex justify-content-center'>
       <b-button v-b-toggle.collapse1>Show previous</b-button>
        </div>
-    <div class='d-flex justify-content-center'>
+    <div class='d-flex justify-content-center collapse'>
       <b-collapse class='w-50' id="collapse1">
-        <b-card v-for="kp in keyPoints" :key="kp.id" class="w-100 text-center" style="height: 100px">
+        <b-card v-for="kp in keyPoints" id="kp.id" :key="kp.id" class="w-100 text-center" style="height: 100px">
           <b-card-body>
             {{ kp.Body }}
             <br>
@@ -87,4 +87,16 @@ h1 {
 #updatedPoints {
   text-align: center;
 }
+
+.collapse {
+  min-height: 50px;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.collapse::-webkit-scrollbar {
+ width: 0 !important;
+}
+
 </style>
