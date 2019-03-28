@@ -50,6 +50,7 @@ ol {
 }
 h2 {
   text-align: center;
+  font-weight: 900;
 }
 
 ol::-webkit-scrollbar {

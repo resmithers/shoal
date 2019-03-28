@@ -44,6 +44,7 @@ ol::-webkit-scrollbar {
 
 h2 {
   text-align: center;
+  font-weight: 900;
 }
 
 .card {
