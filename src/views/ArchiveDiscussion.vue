@@ -4,8 +4,8 @@
       <router-link to="/dashboard">Dashboard</router-link>
     </button>
     <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
-    <ChartOld :discussion="discussion" :votes="votes"/>
-    <Slider :points="pointplus" @slide="onSlide"/>
+    <ChartOld :discussion="discussion" :votes="filterVotes || votes"/>
+    <Slider :points="pointplus" @slide="onSlide" :maxMax="maxMax"/>
     <VotesOld :votes="filterVotes || votes"/>
     <CommentsOld :comments="filterComms || comments"/>
   </div>
@@ -31,63 +31,26 @@ export default {
     VotesOld,
     Slider
   },
-  data() {
-    return {
-      discussion: null,
-      discID: this.$route.params.id,
-      max: Date.now(),
-      votes: {},
-      comments: [],
-      points: [],
-      slidePoints: [],
-      filterPoints: null,
-      pointplus: null,
-      filterVotes: null,
-      filterComms: null
-    };
-  },
   props: {
     user: String,
     userDetails: Object
   },
-  mounted() {
-    getArchiveDisc(this);
-    // getSubCollections(this);
-  },
-  methods: {
-    onSlide: function(value) {
-      // this.slidePoints = value;
-      // let [maxTime, minTime] = [
-      //   this.points[this.slidePoints[0]].Timestamp,
-      //   this.points[this.slidePoints[1]].Timestamp
-      // ];
-      // console.log(this.pointplus);
-      let minTime;
-      let maxTime;
-      // console.log(value);
-      if (this.pointplus[0] === -1) {
-        minTime = this.discussion.Start;
-      } else {
-        minTime = this.points[value[0]].Timestamp;
-      }
-      if (this.pointplus[1] === -1) {
-        maxTime = this.discussion.End;
-      } else {
-        maxTime = this.points[value[1]].Timestamp;
-      }
-
-      const fil = arr => {
-        return arr.filter((x, i) => {
-          return value[0] <= i + 1 && i + 1 <= value[1];
-        });
-      };
-      this.filterPoints = fil(this.points);
-      this.filterComms = this.comments.filter((c, i) => {
-        return minTime <= c.Timestamp && c.Timestamp <= maxTime;
-      });
-      // console.log(this.filterPoints);
-      // this.pointplus = [-1, ...this.points, this.points.length];
-    }
+  data() {
+    return {
+      discussion: null,
+      discID: this.$route.params.id,
+      votes: {},
+      comments: [],
+      points: [],
+      slidePoints: [],
+      pointplus: null,
+      filterVotes: null,
+      filterPoints: null,
+      filterComms: null,
+      min: null,
+      max: null,
+      maxMax: null
+    };
   },
   watch: {
     discussion: function() {
@@ -95,6 +58,32 @@ export default {
     },
     points: function() {
       this.pointplus = [-1, ...this.points, -1];
+    }
+  },
+  mounted() {
+    getArchiveDisc(this);
+  },
+  methods: {
+    onSlide: function(value, max) {
+      this.min =
+        value[0] === 0
+          ? this.discussion.Start
+          : this.points[this.points.length - value[0]].Timestamp;
+
+      this.max =
+        value[1] === max
+          ? this.discussion.End
+          : this.points[this.points.length - value[1]].Timestamp;
+
+      const timeFilter = arr => {
+        return arr.filter(
+          ({ Timestamp }) => this.min <= Timestamp && Timestamp <= this.max
+        );
+      };
+
+      this.filterPoints = timeFilter(this.points);
+      this.filterComms = timeFilter(this.comments);
+      this.filterVotes = timeFilter(this.votes);
     }
   }
 };

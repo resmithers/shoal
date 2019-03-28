@@ -1,13 +1,13 @@
-
 <template>
   <div id="Votes">
     <vue-slider
-      v-on:change="slideOn"
+      v-if="max"
       v-model="value"
       :enable-cross="false"
       :marks="marks"
       :min="min"
       :max="max"
+      @change="slideOn"
     ></vue-slider>
   </div>
 </template>
@@ -21,24 +21,17 @@ export default {
   components: {
     VueSlider
   },
+  props: {
+    points: Array,
+    maxMax: Number
+  },
   data: function() {
     return {
-      value: [1, 2],
-      marks: [],
-      min: 0,
-      max: 1
+      value: null,
+      marks: null,
+      min: null,
+      max: null
     };
-  },
-  props: {
-    points: Array
-  },
-  methods: {
-    moment: function(param) {
-      return moment(param);
-    },
-    slideOn: function() {
-      this.$emit("slide", this.value);
-    }
   },
   watch: {
     points: function() {
@@ -46,15 +39,23 @@ export default {
       this.points.forEach((p, i) => {
         arr.push(i + 1);
       });
-      arr.push(arr.length);
-      this.marks = arr;
-      // console.dir(this.marks);
       this.min = 0;
       this.max = arr.length - 1;
+      this.$nextTick(() => {
+        this.marks = arr;
+        this.value = [0, arr.length - 1];
+      });
+    }
+  },
+  methods: {
+    moment: function(param) {
+      return moment(param);
+    },
+    slideOn: function() {
+      this.$emit("slide", this.value, this.max);
     }
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

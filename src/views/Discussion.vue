@@ -52,11 +52,9 @@ export default {
     return {
       discussion: null,
       discID: this.$route.params.id,
-      max: Date.now(),
       points: null,
       votes: null,
-      comments: null,
-      listening: null
+      comments: null
     };
   },
   watch: {

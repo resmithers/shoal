@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div id="Chart" v-if="chartKey">
+    <div v-if="chartKey > 0" id="Chart">
       <chartjs-line
         :datalabel="'Votes'"
-        :labels="votes.labels"
-        :data="votes.total"
+        :labels="labels"
+        :data="data"
         :option="option"
         :key="chartKey"
         :fill="true"
@@ -26,7 +26,9 @@
 export default {
   data() {
     return {
-      chartKey: null,
+      data: null,
+      labels: null,
+      chartKey: 0,
       option: {
         animation: {
           duration: 300
@@ -52,12 +54,19 @@ export default {
     };
   },
   props: {
-    discussion: Object,
     votes: Object
   },
   watch: {
     votes: function() {
-      this.chartKey = 1;
+      let labels = [];
+      let data = [];
+      this.votes.forEach(v => {
+        labels.push(v.label);
+        data.push(v.value);
+      });
+      this.labels = labels;
+      this.data = data;
+      this.chartKey++;
     }
   },
   methods: {
