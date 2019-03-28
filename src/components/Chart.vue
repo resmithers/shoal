@@ -9,7 +9,7 @@
         :key="chartKey"
         :fill="true"
         :linetension="0.2"
-        :backgroundcolor="'rgba(255, 145, 0, 0.5)'"
+        :backgroundcolor="'rgba(75,192,192,0.2)'"
         :bordercolor="'rgba(255, 145, 0)'"
         :pointborderwidth="2"
         :pointbordercolor="'blue'"
@@ -103,7 +103,7 @@ export default {
   width: 1000px;
   height: 500px;
   margin: auto;
-  background-color: rgba(0, 9, 48, 0.582);
+  background-color: rgba(26, 26, 26, 0.582);
 }
 
 .chartjs-render-monitor {

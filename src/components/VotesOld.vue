@@ -1,11 +1,11 @@
 <template>
-  <div id="Votes">
-    <h1>votes</h1>
-    <ul>
-      <li>Meaningful votes: {{ votes && votes.length }}</li>
-      <li>Upvotes: {{ upVotes }}</li>
-      <li>Downvotes: {{ downVotes }}</li>
-    </ul>
+  <div id="Votes"><div class="d-flex justify-content-center">
+    <b-button-group class="mt-5 gap">
+      <b-button class="left" variant="success" >Total votes: {{ votes && votes.length }}}</b-button>
+      <b-button>Positive: {{ upVotes }}</b-button>
+      <b-button class="right" variant="danger" >Negative: {{ downVotes }}</b-button>
+     </b-button-group>
+     </div>
   </div>
 </template>
 
@@ -33,4 +33,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.left {
+  border-radius: 40% 40%;
+}
+
+.right {
+  border-radius: 40% 40%;
+}
+
+</style>

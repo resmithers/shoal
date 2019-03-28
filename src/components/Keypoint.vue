@@ -1,6 +1,6 @@
 <template>
   <div id="Keypoint">
-    <h1 v-if="discussion">{{discussion && discussion.Body}}</h1>
+    <h2 class="text-center" v-if="discussion">{{discussion && discussion.Body}}</h2>
     <div class='d-flex justify-content-center'>
       <b-button
         v-b-modal.modal1
@@ -75,15 +75,6 @@ export default {
 </script>
 
 <style scoped>
-ol {
-  list-style-type: none;
-}
-li {
-  text-align: center;
-}
-h1 {
-  text-align: center;
-}
 #updatedPoints {
   text-align: center;
 }

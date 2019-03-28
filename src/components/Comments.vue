@@ -56,13 +56,7 @@ span {
   font-weight: bold;
   color: rgb(6, 6, 112);
 }
-li {
-  list-style: none;
-  margin: 10px;
-  border: 1px solid black;
-  width: 30%;
-  padding: 5px;
-}
+
 
 .body {
   color: white;

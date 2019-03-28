@@ -57,4 +57,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+#Votes {
+  background-color: rgba(48, 47, 47, 0.658)
+}
+
+</style>
