@@ -1,7 +1,7 @@
 <template>
   <div id="Votes"><div class="d-flex justify-content-center">
     <b-button-group class="mt-5 gap">
-      <b-button class="left" variant="success" >Total votes: {{ votes && votes.length }}}</b-button>
+      <b-button class="left" variant="success" >Total votes: {{ votes && votes.length }}</b-button>
       <b-button>Positive: {{ upVotes }}</b-button>
       <b-button class="right" variant="danger" >Negative: {{ downVotes }}</b-button>
      </b-button-group>
