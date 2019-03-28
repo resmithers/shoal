@@ -3,9 +3,9 @@
     <b-container class="cont">
       <b-row>
         <b-col cols="8">
-          <b-button>
-            <router-link to="/dashboard">Dashboard</router-link>
-          </b-button>
+          <router-link to="/dashboard">
+            <b-button>Dashboard</b-button>
+          </router-link>
           <Keypoint
             :user="user"
             :userDetails="userDetails"
@@ -103,6 +103,7 @@ export default {
     url("../images/shore.png");
   background-position: cover;
   background-size: 100%;
+  height: 100vh;
   overflow-y: hidden;
 }
 </style>

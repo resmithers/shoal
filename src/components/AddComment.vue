@@ -1,29 +1,20 @@
 <template>
   <div id="AddComment">
-    <div class='d-flex justify-content-center'>
-  
-    <b-button
-        v-b-modal.modal2
-        variant='primary'
-        class="w-25"
-      >Add a Comment?</b-button>
-     <b-modal id="modal2" title="BootstrapVue">
-          <p class="my-4">Add your comment</p>
-          Show Username?
-          <b-form @submit.prevent="postComment">
-      <select id='select'>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-          
-            <b-form-textarea id="commentBox" required rows="10" required/>
-            <b-button type="submit" variant="primary" >Submit</b-button>
-          </b-form>
-          <b-modal-footer/>
-        </b-modal>
-</div>
+    <div class="d-flex justify-content-center">
+      <b-button v-b-modal.modal2 variant="primary" class="w-25">Add a Comment?</b-button>
+      <b-modal id="modal2" title="BootstrapVue">
+        <p class="my-4">Add your comment</p>Show Username?
+        <b-form @submit.prevent="postComment">
+          <select id="select">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
 
-    
+          <b-form-textarea id="commentBox" required rows="10"/>
+          <b-button type="submit" variant="primary">Submit</b-button>
+        </b-form>
+      </b-modal>
+    </div>
   </div>
 </template>
 
