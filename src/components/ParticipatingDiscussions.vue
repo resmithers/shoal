@@ -34,7 +34,7 @@ ol {
   padding: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 760px;
+  height: 730px;
   margin: 0;
 }
 
