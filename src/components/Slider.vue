@@ -22,12 +22,11 @@ export default {
     VueSlider
   },
   props: {
-    points: Array,
-    maxMax: Number
+    points: Array
   },
   data: function() {
     return {
-      value: null,
+      value: [null, null],
       marks: null,
       min: null,
       max: null
@@ -37,7 +36,7 @@ export default {
     points: function() {
       const arr = [];
       this.points.forEach((p, i) => {
-        arr.push(i + 1);
+        arr.push(i);
       });
       this.min = 0;
       this.max = arr.length - 1;
