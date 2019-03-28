@@ -1,5 +1,6 @@
 <template>
   <div id="loginPage">
+    <img src="../images/logo.png" id="logo" alt="fishlogo">
     <div class="form">
       <b-form id="topForm" @submit.prevent="login" v-if="show">
         <b-form-group id="email" label-for="Email">
@@ -8,10 +9,9 @@
             v-model="form.email"
             type="text"
             name="email"
-            placeholder="Enter your email..."
+            placeholder="Enter Your Email..."
             required
           />
-          <!-- <p class="description">We'll never share your email with anyone else.</p> -->
         </b-form-group>
         <b-form-group id="Password" label-for="password">
           <b-form-input
@@ -19,7 +19,7 @@
             type="password"
             name="Password"
             class="unique"
-            placeholder="Enter your password..."
+            placeholder="Enter Your password..."
             required
           />
         </b-form-group>
@@ -107,13 +107,10 @@ export default {
 
 .form {
   position: relative;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
   margin: 0 0 0 0;
   margin-left: 35%;
   margin-right: 35%;
-  margin-top: 22%;
+  margin-top: 7%;
   padding-top: 1em;
   display: flex;
   flex-direction: column;
@@ -121,21 +118,12 @@ export default {
   z-index: 5;
   align-content: space-around;
   font-weight: 900;
-
-  /* background: #4e5d6c; */
   border: none;
-  /* box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5); */
 }
 
-.form h2 {
-  margin-top: 2em;
-}
 .form input {
   padding-bottom: 1em;
   color: rgba(0, 0, 0, 1);
-
   background: RGBA(255, 255, 255);
   width: 100%;
   padding: 12px 20px;
@@ -214,5 +202,15 @@ button:hover {
 #email,
 #Password {
   margin-bottom: 2em;
+}
+
+#logo{
+display: block;
+margin-left: auto;
+margin-right: auto;
+top: 9em;
+position: relative;
+width: 16%
+
 }
 </style>

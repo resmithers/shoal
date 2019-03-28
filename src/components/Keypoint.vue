@@ -67,7 +67,6 @@ export default {
   },
   watch: {
     discussion: function() {
-      console.log(this.discussion);
       listenDisc(this);
     }
   },
@@ -77,19 +76,11 @@ export default {
     discussion: Object,
     discID: String
   },
-  mounted() {
-    console.log(this.keyPoints);
-    console.log(this.addPointForm);
-    console.log(this.user);
-    console.log(this.userDetails);
-    console.log(this.discussion);
-    console.log(this.discID);
-  },
   methods: {
     moment: function(param) {
       return moment(param);
     },
-    showPointForm: function(e) {
+    showPointForm: function() {
       this.addPointForm = true;
     },
     postKeyPoint: function(e) {

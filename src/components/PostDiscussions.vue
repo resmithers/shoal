@@ -1,6 +1,6 @@
 <template>
   <div id="postDiscussion" class="PostDiscussionsContainer">
-    <b-button id="postDiscButton" v-b-modal.modal>Post Discussion</b-button>
+    <span id="postDiscLink" v-b-modal.modal>Post Discussion</span>
     <b-modal @ok="addDisc" id="modal" title="Post Discussion" align="center">
       <form class="addDisc" @submit.prevent="addDisc">
         <input v-model="title" type="text" placeholder="Title" name="Title">
@@ -91,24 +91,23 @@ export default {
 }
 .addDisc input,
 textarea {
+  resize: none;
   color: rgba(0, 0, 0, 1);
 
   background: RGBA(255, 255, 255, 0.7);
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid blue;
+  border: 2px solid rgb(223, 223, 231);
   border-radius: 4px;
   display: block;
   margin: 0;
 }
 
-#postDiscButton {
-  border-radius: 10%;
-  background-color: #032f5cce;
-  border: none;
+#postDiscLink {
+  margin: 0;
 }
 
-#postDiscButton:hover {
-  background-color: green;
+.modal-title {
+  font-weight: 900;
 }
 </style>

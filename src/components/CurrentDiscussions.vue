@@ -1,5 +1,6 @@
 <template>
   <div class="CurrentDiscussions">
+    <div id="nav"></div>
     <b-card align="left">
       <h2>Current Discussions</h2>
       <ol name="active" id="discussion selector" v-on:click="selectDisc">
@@ -36,27 +37,13 @@ export default {
 
 
 <style scoped>
-.m-1 {
-  position: absolute;
-  top: 320px;
-}
 ol {
   list-style-type: none;
   padding: 0;
   overflow-y: scroll;
   overflow-x: hidden;
   margin: 0;
-  height: 760px;
-}
-
-.ol:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 110px;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+  height: 730px;
 }
 
 h2 {

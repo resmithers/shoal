@@ -4,18 +4,15 @@
     <div class="form">
       <b-form @submit.prevent="signup" @reset.prevent="onReset" v-if="show">
         <b-form-group id="email" label-for="Email">
-          <label class="emailLabel">Email:</label>
-
           <b-form-input
             class="unique"
             v-model="form.email"
             type="text"
             name="email"
-            placeholder="you@email.com"
+            placeholder="Work Email..."
             required
           />
         </b-form-group>
-        <label class="employeeIdLabel">Employee ID:</label>
         <b-form-group id="employeeId" label-for="employeeId">
           <b-form-input
             v-model="form.employeeId"
@@ -23,21 +20,16 @@
             name="employeeId"
             class="unique"
             required
+            placeholder="Employee ID..."
           />
         </b-form-group>
         <p v-if="feedback">{{feedback}}</p>
-
-        <label class="nameLabel">Name:</label>
         <b-form-group id="name" label-for="name">
-          <b-form-input v-model="form.name" type="text" name="name" class="unique" required/>
+          <b-form-input v-model="form.name" type="text" name="name" class="unique" required placeholder="First And Last Name..."/>
         </b-form-group>
-
-        <label class="accessLabel">Access:</label>
         <b-form-group id="access" label-for="accessLabel">
-          <b-form-input v-model="form.access" type="text" name="access" class="unique" required/>
+          <b-form-input v-model="form.access" type="number" name="access" class="unique" required placeholder="Access Level..."/>
         </b-form-group>
-
-        <label class="departmentLabel">Department:</label>
         <b-form-group id="department" label-for="department">
           <b-form-input
             v-model="form.department"
@@ -45,28 +37,27 @@
             name="department"
             class="unique"
             required
+            placeholder="Department Name..."
           />
         </b-form-group>
-
-        <label class="passwordLabel">Password:</label>
         <b-form-group id="password" label-for="passwordLabel">
           <b-form-input
             v-model="form.password"
-            type="text"
+            type="password"
             name="password"
             class="unique"
             required
+            placeholder="Password.."
           />
         </b-form-group>
-
-        <label class="confirm_passwordLabel">Confirm Password:</label>
         <b-form-group id="confirm_password" label-for="confirm_password">
           <b-form-input
             v-model="form.confirm_password"
-            type="text"
+            type="password"
             name="confirm_password"
             class="unique"
             required
+            placeholder="Confirm Password..."
           />
         </b-form-group>
 
@@ -189,8 +180,7 @@ export default {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   margin: 0 0 10px 0;
-  border: 1px solid #d3fcff;
-  background-image: linear-gradient(#0c4783, rgb(142, 180, 230));
+  font-weight: 900;
   margin-left: 35%;
   margin-right: 35%;
   margin-top: 9em;
@@ -200,22 +190,19 @@ export default {
   align-items: center;
   z-index: 5;
   align-content: space-around;
-
-  box-shadow: inset 0 0 15px #fffbe5;
-  -moz-box-shadow: inset 0 0 15px #ffe5e5;
-  -webkit-box-shadow: inset 0 0 15px #ffe5e5;
 }
 
 .form input {
+   padding-bottom: 2em;
   color: rgba(0, 0, 0, 1);
-  background: RGBA(255, 255, 255, 0.7);
+  background: RGBA(255, 255, 255);
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 2px solid blue;
-  border-radius: 4px;
+  font-weight: 900;
+  border-radius: 1em;
   display: block;
-  margin: 0;
+  margin-bottom: 2em;
 }
 .unique {
   margin: 0;
@@ -232,7 +219,17 @@ button {
   margin-right: 5em;
   margin-bottom: 1em;
   border: 0;
-  border-radius: 10%;
+  border-radius: 1em;
+  font-weight: 900;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px;
+  font-weight: 700 !important;
+  -webkit-box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
 }
 .homeButton {
   margin: 0;

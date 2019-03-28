@@ -1,9 +1,9 @@
 <template>
   <div id="Votes"><div class="d-flex justify-content-center">
     <b-button-group class="mt-4">
-      <b-button class="left" variant="success" >Total Votes: {{votes.total && votes.total[votes.total.length -1]}}</b-button>
-      <b-button>Positive: {{votes.total && votes.up.length}}</b-button>
-      <b-button class="right" variant="danger" >Negative: {{votes.total && -votes.down.length}}</b-button>
+      <b-button class="left" variant="success" >Total Votes: {{ votes && votes.length }}</b-button>
+      <b-button>Positive: {{ upVotes }}</b-button>
+      <b-button class="right" variant="danger" >Negative: {{ downVotes }}</b-button>
      </b-button-group>
      </div>
   </div>
@@ -12,7 +12,23 @@
 <script>
 export default {
   props: {
-    votes: Object
+    votes: Object,
+    updown: Object
+  },
+  data() {
+    return {
+      upVotes: 0,
+      downVotes: 0
+    };
+  },
+  watch: {
+    votes: function() {
+      this.total = this.votes.length;
+    },
+    updown: function() {
+      this.upVotes = this.updown.up.length;
+      this.downVotes = this.updown.down.length;
+    }
   }
 };
 </script>

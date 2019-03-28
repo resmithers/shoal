@@ -58,8 +58,8 @@ export function addUser(event, refs) {
   event.target.reset();
 }
 
-export function addDiscInteraction(thisBind) {
-  Shoal.doc(thisBind.discUID).update({
-    Interactions: firebase.firestore.FieldValue.arrayUnion(thisBind.user)
+export function addDiscInteraction(discID, user) {
+  Shoal.doc(discID).update({
+    Interactions: firebase.firestore.FieldValue.arrayUnion(user)
   });
 }

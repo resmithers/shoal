@@ -35,6 +35,7 @@ import Keypoint from "../components/Keypoint";
 import { addDiscInteraction } from "../utils/FirestoreReq";
 import { getDisc } from "../utils/FirestoreListen.js";
 import { db } from "../utils/config.js";
+import Navbar from "../components/Navbar";
 
 export default {
   name: "Discussion",
@@ -42,7 +43,8 @@ export default {
     Keypoint,
     Comments,
     Chart,
-    AddComment
+    AddComment,
+    Navbar
   },
   props: {
     user: String,
@@ -57,12 +59,9 @@ export default {
       comments: null
     };
   },
-  watch: {
-    discussion: function() {}
-  },
   mounted() {
     getDisc(this);
-    addDiscInteraction(this);
+    addDiscInteraction(this.$route.params.id, this.user);
   },
   beforeDestroy() {
     const unDisc = db.collection("Discussions").onSnapshot(() => {});
