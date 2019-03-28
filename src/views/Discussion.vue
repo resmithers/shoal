@@ -103,6 +103,7 @@ export default {
     url("../images/shore.png");
   background-position: cover;
   background-size: 100%;
+  height: 100vh;
   overflow-y: hidden;
 }
 </style>
