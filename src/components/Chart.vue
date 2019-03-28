@@ -87,14 +87,9 @@ export default {
       this.upVotes = 0;
       this.downVotes = 0;
 
-      if (this.datasets[0] === 1) this.upVotes++;
-      if (this.datasets[0] === -1) this.downVotes++;
-
-      for (let i = 1; i < this.datasets.length; i++) {
-        this.datasets[i] < this.datasets[i - 1]
-          ? this.downVotes++
-          : this.upVotes++;
-      }
+      this.datasets.forEach(d => {
+        d ? this.upVotes++ : this.downVotes++;
+      });
     }
   },
   components: {
