@@ -1,13 +1,23 @@
 <template>
   <div id="Discussion">
-    <button>
-      <router-link to="/dashboard">Dashboard</router-link>
-    </button>
-    <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
-    <ChartOld :discussion="discussion" :votes="filterVotes || votes"/>
-    <Slider :points="pointplus" @slide="onSlide" :maxMax="maxMax"/>
-    <VotesOld :votes="filterVotes || votes"/>
-    <CommentsOld :comments="filterComms || comments"/>
+    <b-container class="cont">
+      <b-row>
+        <b-col cols="8">
+          <router-link to="/dashboard">
+            <b-button>Dashboard</b-button>
+          </router-link>
+          <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
+          <ChartOld :discussion="discussion" :votes="filterVotes || votes"/>
+           <Slider class="ml-5" :points="pointplus" @slide="onSlide" :maxMax="maxMax"/>
+        <VotesOld :votes="filterVotes || votes"/>
+        </b-col>
+        <b-col cols="4">
+         
+          
+          <CommentsOld :comments="filterComms || comments"/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -89,4 +99,23 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#Discussion {
+  width: 100%;
+  background-repeat: no-repeat;
+  background: radial-gradient(transparent 45%, #0c4783),
+    url("../images/shore.png");
+  background-position: cover;
+  background-size: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.cont {
+  width: 100%;
+  margin: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+}
+
+</style>
