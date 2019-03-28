@@ -3,7 +3,6 @@
     <div class="form">
       <b-form id="topForm" @submit.prevent="login" v-if="show">
         <b-form-group id="email" label-for="Email">
-          <label class="emailLabel">Email:</label>
           <b-form-input
             class="unique"
             v-model="form.email"
@@ -12,24 +11,21 @@
             placeholder="Enter your email..."
             required
           />
-          <p class="description">We'll never share your email with anyone else.</p>
+          <!-- <p class="description">We'll never share your email with anyone else.</p> -->
         </b-form-group>
-        <label class="passwordLabel">Password:</label>
         <b-form-group id="Password" label-for="password">
           <b-form-input
             v-model="form.password"
             type="password"
             name="Password"
             class="unique"
-            placeholder="   Enter your password..."
+            placeholder="Enter your password..."
             required
           />
         </b-form-group>
 
-        <b-button type="submit" variant="primary">Login</b-button>
-        <b-button id="signupButton" variant="warning">
-          <router-link to="/signup/" class="signupLink">Sign Up</router-link>
-        </b-button>
+        <b-button id="loginButton" type="submit" variant="primary">Login</b-button>
+        <router-link to="/signup/" class="signUpLink">Create New Account</router-link>
       </b-form>
     </div>
   </div>
@@ -115,35 +111,37 @@ export default {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   margin: 0 0 0 0;
-  border: 1px solid #d3fcff;
-  background-image: linear-gradient(#0c4783, rgb(142, 180, 230));
   margin-left: 35%;
   margin-right: 35%;
-  margin-top: 18%;
+  margin-top: 22%;
   padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 5;
   align-content: space-around;
+  font-weight: 900;
 
-  box-shadow: inset 0 0 15px #fffbe5;
-  -moz-box-shadow: inset 0 0 15px #ffe5e5;
-  -webkit-box-shadow: inset 0 0 15px #ffe5e5;
+  /* background: #4e5d6c; */
+  border: none;
+  /* box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5); */
 }
 
 .form h2 {
   margin-top: 2em;
 }
 .form input {
+  padding-bottom: 1em;
   color: rgba(0, 0, 0, 1);
 
-  background: RGBA(255, 255, 255, 0.7);
+  background: RGBA(255, 255, 255);
   width: 100%;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 2px solid blue;
-  border-radius: 4px;
+  font-weight: 900;
+  border-radius: 1em;
   display: block;
   margin: 0;
 }
@@ -165,6 +163,9 @@ export default {
   right: 0;
   position: absolute;
 }
+#loginButton:hover {
+  background: rgb(41, 211, 41);
+}
 #topForm {
   position: relative;
 }
@@ -175,7 +176,19 @@ button {
   margin-right: 5em;
   margin-bottom: 1em;
   border: 0;
-  border-radius: 10%;
+  border-radius: 1em;
+  width: 100%;
+  font-weight: 900;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px;
+  background: #5bc0de;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  -webkit-box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
 }
 .homeButton {
   margin: 0;
@@ -187,5 +200,19 @@ button {
 
 .link:hover {
   text-decoration: none;
+}
+.signUpLink {
+  text-align: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+  margin-top: 1em;
+}
+
+#email,
+#Password {
+  margin-bottom: 2em;
 }
 </style>
