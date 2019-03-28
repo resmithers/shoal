@@ -8,7 +8,7 @@ export function addNewDisc(title, event, refs) {
   Shoal.doc(title).set({
     Body: refs.body,
     Author: refs.author,
-    Deptartment: refs.dept,
+    Dept: refs.dept,
     Start: refs.start,
     End: refs.end,
     Timestamp: Date.now(),

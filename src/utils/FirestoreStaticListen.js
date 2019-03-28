@@ -60,7 +60,7 @@ export function getSubCollections(thisBind) {
       .then(([p, v, c]) => {
         thisBind.points = p.docs.map(x => x.data());
         const vt = v.docs.map(x => x.data());
-        thisBind.votes = archivedVoteObject(vt);
+        thisBind.votes = archivedVoteObject(vt).vv.total;
         thisBind.comments = c.docs.map(x => x.data());
       })
       .catch(console.log);
@@ -75,19 +75,34 @@ export function archivedVoteObject(votes) {
   const upLabels = [];
   const downLabels = [];
 
-  getUnique(votes, "Author").reduce((acc, vObj) => {
+  let vv = { total: [], up: [], down: [] };
+
+  getUnique(votes, "Author").reduce((acc, vObj, i) => {
     acc += vObj.Vote;
     const time = moment(vObj.Timestamp).format("LLL");
     labels.push(time);
     if (vObj.Vote === 1) {
       upAcc.push(vObj.Vote);
       upLabels.push(time);
+      vv.up.push({
+        value: vObj.Vote,
+        timestamp: vObj.Timestamp,
+        label: time
+      });
     }
     if (vObj.Vote === -1) {
       downAcc.push(vObj.Vote);
       downLabels.push(time);
+      vv.down.push({
+        value: vObj.Vote,
+        timestamp: vObj.Timestamp,
+        label: time
+      });
     }
     accumulatedVotes.push(acc);
+
+    vv.total[i] = { value: acc, Timestamp: vObj.Timestamp, label: time };
+
     return acc;
   }, 0);
 
@@ -95,7 +110,7 @@ export function archivedVoteObject(votes) {
   const up = upAcc;
   const down = downAcc;
 
-  return { total, up, down, labels, upLabels, downLabels };
+  return { total, up, down, labels, upLabels, downLabels, vv };
 }
 
 function getUnique(arr, comp) {
