@@ -1,6 +1,7 @@
 <template>
   <div id="Dashboard">
     <div class="dashboardContainer">
+      <Navbar :logout="logout" :userDetails="userDetails"/>
       <div id="currentDiscussions">
         <CurrentDiscussions :active="live"/>
       </div>
@@ -13,12 +14,12 @@
       <div id="outcomes">
         <Outcomes :past="historical"/>
       </div>
-      <PostDiscussions
+      <!-- <PostDiscussions
         id="postDiscussions"
         v-if="userDetails && userDetails.access >= 3"
         :user="userDetails"
-      />
-      <b-button id="logOutButton" @click="logout">Logout</b-button>
+      />-->
+      <!-- <b-button id="logOutButton" @click="logout">Logout</b-button> -->
     </div>
   </div>
 </template>
@@ -28,17 +29,19 @@ import CurrentDiscussions from "../components/CurrentDiscussions";
 import MyDiscussions from "../components/MyDiscussions";
 import ParticipatingDiscussions from "../components/ParticipatingDiscussions";
 import Outcomes from "../components/Outcomes";
-import PostDiscussions from "../components/PostDiscussions";
+// import PostDiscussions from "../components/PostDiscussions";
 import { getAvailable, getHistorical } from "../utils/FirestoreListen";
+import Navbar from "../components/Navbar";
 
 export default {
   name: "Dashboard",
   components: {
+    Navbar,
     CurrentDiscussions,
     MyDiscussions,
     ParticipatingDiscussions,
-    Outcomes,
-    PostDiscussions
+    Outcomes
+    // PostDiscussions
   },
   props: {
     user: String,
@@ -85,7 +88,7 @@ export default {
 }
 
 #currentDiscussions {
-  top: 3em;
+  top: 4.5em;
   left: 0;
   position: absolute;
   padding-left: 2%;
@@ -98,7 +101,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  top: 3em;
+  bottom: -1.4em;
 }
 
 #outcomes {
@@ -106,7 +109,7 @@ export default {
   position: absolute;
   padding-right: 2%;
   height: 750px;
-  top: 3em;
+  top: 4.5em;
 }
 #logOutButton {
   left: 2px;

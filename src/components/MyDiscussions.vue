@@ -27,5 +27,13 @@ export default {
 
 <style scoped>
 #myDiscModal {
+  top: 1px;
+  position: relative;
+  border-radius: 3em;
+  background-color: #032f5cce;
+  border: none;
+}
+#myDiscModal:hover {
+  background-color: rgb(223, 105, 26);
 }
 </style>
