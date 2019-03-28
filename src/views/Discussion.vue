@@ -4,7 +4,7 @@
       <b-row>
         <b-col cols="8">
           <router-link to="/dashboard">
-            <b-button>Dashboard</b-button>
+            <b-button class='rounded'>Dashboard</b-button>
           </router-link>
           <Keypoint
             :user="user"
@@ -95,6 +95,13 @@ export default {
   margin-right: 0 !important;
   max-width: 100% !important;
 }
+
+
+.rounded {
+      border-radius: 1em !important;
+      margin-bottom: 3px;
+}
+
 
 #Discussion {
   width: 100%;

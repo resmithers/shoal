@@ -20,11 +20,11 @@ export default {
 <style scoped>
 
 .left {
-  border-radius: 40% 40%;
+   border-radius: 1em;
 }
 
 .right {
-  border-radius: 40% 40%;
+   border-radius: 1em;
 }
 
 </style>

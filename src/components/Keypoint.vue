@@ -1,31 +1,47 @@
 <template>
   <div id="Keypoint">
     <h2 class="text-center" v-if="discussion">{{discussion && discussion.Body}}</h2>
-    <div class='d-flex justify-content-center'>
+    <div class="d-flex justify-content-center">
       <b-button
+        class="rounded"
         v-b-modal.modal1
-        variant='primary'
+        variant="primary"
         v-if="userDetails.access >= 3 && discussion && discussion.End > Date.now()"
-      >Add key point</b-button> 
-</div>
-      <div class='d-flex justify-content-center m-3'>
-      <b-card v-if="keyPoints.length > 0" class= 'w-50 text-center'>Latest Keypoint:<br/>{{keyPoints[0].Body}}<br/>{{ moment(keyPoints[0].Timestamp).format("LLL") }} </b-card>
-        <b-modal id="modal1" title="BootstrapVue">
-          <p class="my-4">Add key point</p>
-          <b-form @submit.prevent="postKeyPoint">
-            <b-form-textarea required rows="10"/>
-            <b-button type="submit" variant="primary">Submit</b-button>
-          </b-form>
-          <b-modal-footer/>
-        </b-modal>
-      </p>
-      </div>
-       <div class='d-flex justify-content-center'>
-      <b-button v-if="keyPoints.length > 1" v-b-toggle.collapse1>Show previous keypoints</b-button>
-       </div>
-    <div class='d-flex justify-content-center collapse'>
-      <b-collapse  class='w-50' id="collapse1">
-        <b-card v-for="kp in keyPoints" id="kp.id" :key="kp.id" class="w-100 text-center" style="height: 100px">
+      >Add key point</b-button>
+    </div>
+    <div class="d-flex justify-content-center m-3">
+      <b-card v-if="keyPoints.length > 0" class="w-50 text-center rounded">
+        Latest Keypoint:
+        <br>
+        {{keyPoints[0].Body}}
+        <br>
+        {{ moment(keyPoints[0].Timestamp).format("LLL") }}
+      </b-card>
+      <b-modal id="modal1" title="BootstrapVue">
+        <p class="my-4">Add key point</p>
+        <b-form @submit.prevent="postKeyPoint">
+          <b-form-textarea required rows="10"/>
+          <b-button type="submit" variant="primary">Submit</b-button>
+        </b-form>
+        <b-modal-footer/>
+      </b-modal>
+    </div>
+    <div class="d-flex justify-content-center">
+      <b-button
+        class="rounded"
+        v-if="keyPoints.length > 1"
+        v-b-toggle.collapse1
+      >Show previous keypoints</b-button>
+    </div>
+    <div class="d-flex justify-content-center collapse">
+      <b-collapse class="w-50" id="collapse1">
+        <b-card
+          v-for="kp in keyPoints"
+          id="kp.id"
+          :key="kp.id"
+          class="w-100 text-center rounded gap"
+          style="height: 100px"
+        >
           <b-card-body>
             {{ kp.Body }}
             <br>
@@ -51,7 +67,7 @@ export default {
   },
   watch: {
     discussion: function() {
-      console.log(this.discussion)
+      console.log(this.discussion);
       listenDisc(this);
     }
   },
@@ -61,13 +77,13 @@ export default {
     discussion: Object,
     discID: String
   },
-  mounted(){
-    console.log(this.keyPoints)
-        console.log(this.addPointForm)
-            console.log(this.user)
-                console.log(this.userDetails)
-                    console.log(this.discussion)
-                        console.log(this.discID)
+  mounted() {
+    console.log(this.keyPoints);
+    console.log(this.addPointForm);
+    console.log(this.user);
+    console.log(this.userDetails);
+    console.log(this.discussion);
+    console.log(this.discID);
   },
   methods: {
     moment: function(param) {
@@ -84,6 +100,24 @@ export default {
 </script>
 
 <style scoped>
+.rounded {
+  border-radius: 1em !important;
+}
+
+.gap {
+  margin: 5px;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 900;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 3em;
+  padding: 1%;
+}
+
 #updatedPoints {
   text-align: center;
 }
@@ -96,7 +130,6 @@ export default {
 }
 
 .collapse::-webkit-scrollbar {
- width: 0 !important;
+  width: 0 !important;
 }
-
 </style>
