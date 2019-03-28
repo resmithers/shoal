@@ -60,7 +60,8 @@ export default {
 <style scoped>
 
 #Votes {
-  background-color: rgba(48, 47, 47, 0.658)
+  background-color: rgba(48, 47, 47, 0.658);
+  margin-top: 5px;
 }
 
 </style>

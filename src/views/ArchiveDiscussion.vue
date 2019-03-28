@@ -4,7 +4,7 @@
       <b-row>
         <b-col cols="8">
           <router-link to="/dashboard">
-            <b-button>Dashboard</b-button>
+            <b-button class='rounded' >Dashboard</b-button>
           </router-link>
           <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
           <ChartOld :discussion="discussion" :votes="filterVotes || votes"/>
@@ -128,6 +128,13 @@ export default {
 </script>
 
 <style scoped>
+.rounded {
+      border-radius: 1em !important;
+      margin: 8px;
+      font-weight: 900;
+}
+
+
 #Discussion {
   width: 100%;
   background-repeat: no-repeat;

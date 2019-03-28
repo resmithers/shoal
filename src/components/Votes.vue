@@ -9,7 +9,7 @@
           @click="this.postVote"
           value="1"
         >Positive: {{this.up}}</b-button>
-        <b-button>Total votes: {{this.total}}</b-button>
+        <b-button>Total Votes: {{this.total}}</b-button>
         <b-button
           class="right"
           variant="danger"
@@ -51,14 +51,20 @@ export default {
 
 <style scoped>
 .left {
-  border-radius: 40% 40%;
+ border-radius: 1em;
 }
 
 .right {
-  border-radius: 40% 40%;
+   border-radius: 1em;
 }
 
 .gap {
   margin-top: 5px;
 }
+
+
+.rounded {
+      border-radius: 1em !important;
+}
+
 </style>

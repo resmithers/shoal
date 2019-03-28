@@ -1,7 +1,7 @@
 <template>
   <div id="Votes"><div class="d-flex justify-content-center">
-    <b-button-group class="mt-5 gap">
-      <b-button class="left" variant="success" >Total votes: {{ votes && votes.length }}</b-button>
+    <b-button-group class="mt-4">
+      <b-button class="left" variant="success" >Total Votes: {{ votes && votes.length }}</b-button>
       <b-button>Positive: {{ upVotes }}</b-button>
       <b-button class="right" variant="danger" >Negative: {{ downVotes }}</b-button>
      </b-button-group>
@@ -36,11 +36,11 @@ export default {
 <style scoped>
 
 .left {
-  border-radius: 40% 40%;
+   border-radius: 1em;
 }
 
 .right {
-  border-radius: 40% 40%;
+   border-radius: 1em;
 }
 
 </style>

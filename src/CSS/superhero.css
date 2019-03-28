@@ -5648,10 +5648,11 @@ a.close.disabled {
   overflow: hidden;
   outline: 0;
 }
+
 .modal-dialog {
   position: relative;
   width: auto;
-  margin: 0.5rem;
+  margin: auto;
   pointer-events: none;
 }
 .modal.fade .modal-dialog {
