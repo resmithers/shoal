@@ -32,7 +32,7 @@ import Comments from "../components/Comments";
 import Chart from "../components/Chart";
 import AddComment from "../components/AddComment";
 import Keypoint from "../components/Keypoint";
-import { addDiscInteraction } from "../utils/FirestoreReq";
+import { addDiscInteraction, addDiscPoint } from "../utils/FirestoreReq";
 import { getDisc } from "../utils/FirestoreListen.js";
 import { db } from "../utils/config.js";
 
@@ -57,12 +57,9 @@ export default {
       comments: null
     };
   },
-  watch: {
-    discussion: function() {}
-  },
   mounted() {
     getDisc(this);
-    addDiscInteraction(this);
+    addDiscInteraction(this.$route.params.id, this.user);
   },
   beforeDestroy() {
     const unDisc = db.collection("Discussions").onSnapshot(() => {});
