@@ -1,6 +1,6 @@
 <template>
   <div id="Keypoint">
-    <h1>{{discussion && discussion.Body}}</h1>
+    <h1 v-if="discussion">{{discussion && discussion.Body}}</h1>
     <div class='d-flex justify-content-center'>
       <b-button
         v-b-modal.modal1
@@ -9,7 +9,7 @@
       >Add key point</b-button> 
 </div>
       <div class='d-flex justify-content-center m-3'>
-      <b-card class= 'w-50 text-center'>Latest Keypoint:<br/>{{keyPoints[0].Body}}<br/>{{ moment(keyPoints[0].Timestamp).format("LLL") }} </b-card>
+      <b-card v-if="keyPoints.length > 0" class= 'w-50 text-center'>Latest Keypoint:<br/>{{keyPoints[0].Body}}<br/>{{ moment(keyPoints[0].Timestamp).format("LLL") }} </b-card>
         <b-modal id="modal1" title="BootstrapVue">
           <p class="my-4">Add key point</p>
           <b-form @submit.prevent="postKeyPoint">
@@ -21,10 +21,10 @@
       </p>
       </div>
        <div class='d-flex justify-content-center'>
-      <b-button v-b-toggle.collapse1>Show previous keypoints</b-button>
+      <b-button v-if="keyPoints.length > 1" v-b-toggle.collapse1>Show previous keypoints</b-button>
        </div>
     <div class='d-flex justify-content-center collapse'>
-      <b-collapse class='w-50' id="collapse1">
+      <b-collapse  class='w-50' id="collapse1">
         <b-card v-for="kp in keyPoints" id="kp.id" :key="kp.id" class="w-100 text-center" style="height: 100px">
           <b-card-body>
             {{ kp.Body }}
@@ -51,6 +51,7 @@ export default {
   },
   watch: {
     discussion: function() {
+      console.log(this.discussion)
       listenDisc(this);
     }
   },
@@ -59,6 +60,14 @@ export default {
     userDetails: Object,
     discussion: Object,
     discID: String
+  },
+  mounted(){
+    console.log(this.keyPoints)
+        console.log(this.addPointForm)
+            console.log(this.user)
+                console.log(this.userDetails)
+                    console.log(this.discussion)
+                        console.log(this.discID)
   },
   methods: {
     moment: function(param) {

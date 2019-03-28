@@ -3,7 +3,7 @@
   <div class="d-flex-column Comments w-100">
     <h1 class="text-center mt-5">Comments:</h1>
     <div class="coms">
-    <b-card v-for="comment in comments" :key="comment.id" class="w-100 text-center" style="height: 110px;  ">
+    <b-card v-for="comment in comments" :key="comment.id" class="w-100 text-center" style="min-height: 110px; ">
           <b-card-body>
            <span> {{ comment.Author }} : </span><span class="body"> {{ comment.Body }} </span>
             <br>

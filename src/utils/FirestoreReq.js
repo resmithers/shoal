@@ -1,14 +1,14 @@
-const { db, firebaseApp } = require('./config.js');
-const firebase = require('firebase');
+const { db, firebaseApp } = require("./config.js");
+const firebase = require("firebase");
 
-let Shoal = db.collection('Discussions');
-let Users = db.collection('Users');
+let Shoal = db.collection("Discussions");
+let Users = db.collection("Users");
 
 export function addNewDisc(title, event, refs) {
   Shoal.doc(title).set({
     Body: refs.body,
     Author: refs.author,
-    Deptartment: refs.dept,
+    Dept: refs.dept,
     Start: refs.start,
     End: refs.end,
     Timestamp: Date.now(),
@@ -18,7 +18,7 @@ export function addNewDisc(title, event, refs) {
 
 export function addDiscPoint(docUID, body, user) {
   Shoal.doc(docUID)
-    .collection('Points')
+    .collection("Points")
     .add({
       Body: body,
       Author: user,
@@ -29,7 +29,7 @@ export function addDiscPoint(docUID, body, user) {
 
 export function addComment(docUID, body, user) {
   Shoal.doc(docUID)
-    .collection('Comments')
+    .collection("Comments")
     .add({
       Body: body,
       Author: user,
@@ -40,7 +40,7 @@ export function addComment(docUID, body, user) {
 
 export function addVote(vote, user, docUID) {
   Shoal.doc(docUID)
-    .collection('Votes')
+    .collection("Votes")
     .add({
       Vote: vote,
       Author: user,

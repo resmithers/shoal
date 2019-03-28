@@ -3,9 +3,9 @@
     <b-container class="cont">
       <b-row>
         <b-col cols="8">
-          <b-button>
-            <router-link to="/dashboard">Dashboard</router-link>
-          </b-button>
+          <router-link to="/dashboard">
+            <b-button>Dashboard</b-button>
+          </router-link>
           <Keypoint
             :user="user"
             :userDetails="userDetails"
