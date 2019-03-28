@@ -1,8 +1,8 @@
 <template>
   <div id="AddComment">
     <div class="d-flex justify-content-center">
-      <b-button v-b-modal.modal2 variant="primary" class="w-25 rounded">Add a Comment?</b-button>
-      <b-modal id="modal2" title="BootstrapVue">
+      <b-button v-b-modal.modal2 variant="primary" class="w-25 rounded">Add A Comment</b-button>
+      <b-modal id="modal2" title="Add a comment">
         <p class="my-4">Add your comment</p>Show Username?
         <b-form @submit.prevent="postComment">
           <select id="select">
@@ -49,6 +49,7 @@ export default {
 
 .rounded {
       border-radius: 1em !important;
+      font-weight: 900;
 }
 
 </style>

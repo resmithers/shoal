@@ -100,6 +100,8 @@ export default {
 .rounded {
       border-radius: 1em !important;
       margin-bottom: 3px;
+      font-weight: 900;
+      margin: 8px;
 }
 
 

@@ -7,7 +7,7 @@
         v-b-modal.modal1
         variant="primary"
         v-if="userDetails.access >= 3 && discussion && discussion.End > Date.now()"
-      >Add key point</b-button>
+      >Add Key Point</b-button>
     </div>
     <div class="d-flex justify-content-center m-3">
       <b-card v-if="keyPoints.length > 0" class="w-50 text-center rounded">
@@ -17,8 +17,8 @@
         <br>
         {{ moment(keyPoints[0].Timestamp).format("LLL") }}
       </b-card>
-      <b-modal id="modal1" title="BootstrapVue">
-        <p class="my-4">Add key point</p>
+      <b-modal id="modal1" title="Add A Key Point">
+        <p class="my-4">Add Key Point</p>
         <b-form @submit.prevent="postKeyPoint">
           <b-form-textarea required rows="10"/>
           <b-button type="submit" variant="primary">Submit</b-button>
@@ -31,7 +31,7 @@
         class="rounded"
         v-if="keyPoints.length > 1"
         v-b-toggle.collapse1
-      >Show previous keypoints</b-button>
+      >Show Previous Key Points</b-button>
     </div>
     <div class="d-flex justify-content-center collapse">
       <b-collapse class="w-50" id="collapse1">
@@ -102,6 +102,7 @@ export default {
 <style scoped>
 .rounded {
   border-radius: 1em !important;
+  font-weight: 900;
 }
 
 .gap {

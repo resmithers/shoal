@@ -102,7 +102,8 @@ export default {
 <style scoped>
 .rounded {
       border-radius: 1em !important;
-      margin-bottom: 10px;
+      margin: 8px;
+      font-weight: 900;
 }
 
 

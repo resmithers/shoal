@@ -6,7 +6,7 @@
       </b-card>
       </div>
       <div class='d-flex justify-content-center'>
-      <b-button class='rounded' v-if="keyPoints.length > 1" v-b-toggle.collapse1>Show previous keypoints</b-button>
+      <b-button class='rounded' v-if="keyPoints.length > 1" v-b-toggle.collapse1>Show Previous Key Points</b-button>
        </div>
        <div class='d-flex justify-content-center collapse'>
       <b-collapse  class='w-50' id="collapse1">
@@ -42,6 +42,17 @@ export default {
 
 .rounded {
   border-radius: 1em !important;
+  font-weight: 900;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 900;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 3em;
+  padding: 1%;
 }
 
 .gap {
