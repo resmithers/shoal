@@ -48,9 +48,25 @@ ol {
   margin: 0;
   height: 760px;
 }
+
+.ol:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 110px;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
+}
+
 h2 {
   text-align: center;
   font-weight: 900;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 3em;
+  padding: 1%;
 }
 
 ol::-webkit-scrollbar {
@@ -64,9 +80,9 @@ ol::-webkit-scrollbar {
 }
 
 .card-body {
-  background: #4e5d6ce1;
+  background-image: transparent;
   border: none;
-  border-radius: 10%;
+  border-radius: 3em;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);

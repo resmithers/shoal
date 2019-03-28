@@ -45,6 +45,11 @@ ol::-webkit-scrollbar {
 h2 {
   text-align: center;
   font-weight: 900;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 3em;
+  padding: 1%;
 }
 
 .card {
@@ -54,9 +59,9 @@ h2 {
 }
 
 .card-body {
-  background: #4e5d6ce1;
+  background-image: transparent;
   border: none;
-  border-radius: 10%;
+  border-radius: 3em;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);

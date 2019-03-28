@@ -1,7 +1,6 @@
 <template>
   <div id="Dashboard">
     <div class="dashboardContainer">
-      <h1 v-if="userDetails">Welcome {{ userDetails.name }}</h1>
       <div id="currentDiscussions">
         <CurrentDiscussions :active="live"/>
       </div>
@@ -86,6 +85,7 @@ export default {
 }
 
 #currentDiscussions {
+  top: 3em;
   left: 0;
   position: absolute;
   padding-left: 2%;
@@ -95,10 +95,10 @@ export default {
 #participatingDiscussions {
   height: 750px;
   width: 500px;
-
-  display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  top: 3em;
 }
 
 #outcomes {
@@ -106,7 +106,7 @@ export default {
   position: absolute;
   padding-right: 2%;
   height: 750px;
-  top: 56px;
+  top: 3em;
 }
 #logOutButton {
   left: 2px;
