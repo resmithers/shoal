@@ -1,8 +1,7 @@
 <template>
   <div class="outcomes">
-    <h2>Outcomes</h2>
-
     <b-card align="left">
+      <h2>Outcomes</h2>
       <ol name="outcomes" id="discussion selector" v-on:click="selectDisc">
         <b-list-group-item
           v-for="discussion in past"
@@ -35,12 +34,22 @@ ol {
   padding: 0;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 750px;
+  height: 760px;
   margin: 0;
 }
 
 ol::-webkit-scrollbar {
   width: 0 !important;
+}
+
+h2 {
+  text-align: center;
+  font-weight: 900;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  border-radius: 3em;
+  padding: 1%;
 }
 
 .card {
@@ -50,9 +59,12 @@ ol::-webkit-scrollbar {
 }
 
 .card-body {
-  background: #a1cbfc96;
+  background-image: transparent;
   border: none;
-  border-radius: 10%;
+  border-radius: 3em;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .list-group-item {
@@ -61,8 +73,25 @@ ol::-webkit-scrollbar {
   padding: 1em;
   margin: 1em;
   border-radius: 25px;
-  background: #032f5cce;
+  background: #df691a;
   font-weight: 900;
+  box-shadow: 5px 10px rgba(0, 0, 0, 0.226);
+}
+
+.list-group-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px;
+  background: #5bc0de;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px;
+  -webkit-box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.3s ease 0s;
+}
+
+.list-group-item:active {
+  transform: translateY(10px);
 }
 </style>
 
