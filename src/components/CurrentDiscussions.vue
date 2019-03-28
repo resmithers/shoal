@@ -46,16 +46,6 @@ ol {
   height: 730px;
 }
 
-.ol:after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 110px;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
-}
-
 h2 {
   text-align: center;
   font-weight: 900;

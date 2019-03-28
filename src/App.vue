@@ -39,5 +39,8 @@ export default {
   }
 };
 </script>
-<style>
+<style >
+body {
+  overflow-x: hidden;
+}
 </style>
