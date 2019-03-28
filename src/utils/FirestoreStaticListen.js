@@ -60,7 +60,11 @@ export function getSubCollections(thisBind) {
       .then(([p, v, c]) => {
         thisBind.points = p.docs.map(x => x.data());
         const vt = v.docs.map(x => x.data());
-        thisBind.votes = archivedVoteObject(vt).vv.total;
+        thisBind.votes = archivedVoteObject(vt).total;
+        thisBind.updown = {
+          up: archivedVoteObject(vt).up,
+          down: archivedVoteObject(vt).down
+        };
         thisBind.comments = c.docs.map(x => x.data());
       })
       .catch(console.log);
@@ -69,54 +73,34 @@ export function getSubCollections(thisBind) {
 
 export function archivedVoteObject(votes) {
   const accumulatedVotes = [];
-  const upAcc = [];
-  const downAcc = [];
   const labels = [];
-  const upLabels = [];
-  const downLabels = [];
-
   let vv = { total: [], up: [], down: [] };
 
-  getUnique(votes, "Author").reduce((acc, vObj, i) => {
+  votes.reduce((acc, vObj, i) => {
     acc += vObj.Vote;
     const time = moment(vObj.Timestamp).format("LLL");
     labels.push(time);
-    if (vObj.Vote === 1) {
-      upAcc.push(vObj.Vote);
-      upLabels.push(time);
-      vv.up.push({
-        value: vObj.Vote,
-        timestamp: vObj.Timestamp,
-        label: time
-      });
-    }
-    if (vObj.Vote === -1) {
-      downAcc.push(vObj.Vote);
-      downLabels.push(time);
-      vv.down.push({
-        value: vObj.Vote,
-        timestamp: vObj.Timestamp,
-        label: time
-      });
-    }
+
+    vv[vObj.Vote === 1 ? "up" : "down"].push({
+      Author: vObj.Author,
+      value: vObj.Vote,
+      timestamp: vObj.Timestamp,
+      label: time
+    });
+
     accumulatedVotes.push(acc);
 
-    vv.total[i] = { value: acc, Timestamp: vObj.Timestamp, label: time };
+    vv.total[i] = {
+      Author: vObj.Author,
+      value: acc,
+      Timestamp: vObj.Timestamp,
+      label: time
+    };
 
     return acc;
   }, 0);
 
-  const total = accumulatedVotes;
-  const up = upAcc;
-  const down = downAcc;
+  vv.acc = accumulatedVotes;
 
-  return { total, up, down, labels, upLabels, downLabels, vv };
-}
-
-function getUnique(arr, comp) {
-  return arr
-    .map(e => e[comp])
-    .map((e, i, final) => final.lastIndexOf(e) === i && i)
-    .filter(e => arr[e])
-    .map(e => arr[e]);
+  return vv;
 }

@@ -60,28 +60,24 @@ export default {
     votes: function() {
       let labels = [];
       let data = [];
-      this.votes.forEach(v => {
+
+      function getUnique(arr, comp) {
+        return arr
+          .map(e => e[comp])
+          .map((e, i, final) => final.lastIndexOf(e) === i && i)
+          .filter(e => arr[e])
+          .map(e => arr[e]);
+      }
+
+      const voter = getUnique(this.votes, "Author");
+
+      voter.forEach(v => {
         labels.push(v.label);
         data.push(v.value);
       });
       this.labels = labels;
       this.data = data;
       this.chartKey++;
-    }
-  },
-  methods: {
-    countVotes: function() {
-      this.upVotes = 0;
-      this.downVotes = 0;
-
-      if (this.datasets[0] === 1) this.upVotes++;
-      if (this.datasets[0] === -1) this.downVotes++;
-
-      for (let i = 1; i < this.datasets.length; i++) {
-        this.datasets[i] < this.datasets[i - 1]
-          ? this.downVotes++
-          : this.upVotes++;
-      }
     }
   }
 };

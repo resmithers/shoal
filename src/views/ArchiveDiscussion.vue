@@ -5,8 +5,8 @@
     </button>
     <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
     <ChartOld :discussion="discussion" :votes="filterVotes || votes"/>
-    <Slider :points="pointplus" @slide="onSlide" :maxMax="maxMax"/>
-    <VotesOld :votes="filterVotes || votes"/>
+    <Slider :points="pointplus" @slide="onSlide"/>
+    <VotesOld :votes="filterVotes || votes" :updown="filterUpDown || updown"/>
     <CommentsOld :comments="filterComms || comments"/>
   </div>
 </template>
@@ -47,9 +47,13 @@ export default {
       filterVotes: null,
       filterPoints: null,
       filterComms: null,
+      filterUpDown: null,
       min: null,
       max: null,
-      maxMax: null
+      maxMax: null,
+      count: null,
+      updown: null,
+      upDownCount: null
     };
   },
   watch: {
@@ -58,6 +62,21 @@ export default {
     },
     points: function() {
       this.pointplus = [-1, ...this.points, -1];
+    },
+    votes: function() {
+      if (!this.count) {
+        this.filterVotes = this.getUnique(this.votes, "Author");
+        this.count = 1;
+      }
+    },
+    updown: function() {
+      if (!this.upDownCount) {
+        this.filterUpDown = {
+          up: this.getUnique(this.updown.up, "Author"),
+          down: this.getUnique(this.updown.down, "Author")
+        };
+        this.upDownCount = 1;
+      }
     }
   },
   mounted() {
@@ -83,7 +102,18 @@ export default {
 
       this.filterPoints = timeFilter(this.points);
       this.filterComms = timeFilter(this.comments);
-      this.filterVotes = timeFilter(this.votes);
+      this.filterUpDown = {
+        up: this.getUnique(this.updown.up, "Author"),
+        down: this.getUnique(this.updown.down, "Author")
+      };
+      this.filterVotes = this.getUnique(timeFilter(this.votes), "Author");
+    },
+    getUnique: function(arr, comp) {
+      return arr
+        .map(e => e[comp])
+        .map((e, i, final) => final.lastIndexOf(e) === i && i)
+        .filter(e => arr[e])
+        .map(e => arr[e]);
     }
   }
 };
