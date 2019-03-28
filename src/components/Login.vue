@@ -156,6 +156,7 @@ export default {
 }
 .signupLink {
   color: white;
+  text-decoration: none;
 }
 .btn {
   margin-right: 0;
