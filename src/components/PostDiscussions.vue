@@ -103,7 +103,7 @@ textarea {
 }
 
 #postDiscButton {
-  border-radius: 10%;
+  border-radius: 3em;
   background-color: #032f5cce;
   border: none;
 }

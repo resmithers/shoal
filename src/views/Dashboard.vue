@@ -112,7 +112,7 @@ export default {
   left: 2px;
   position: absolute;
   top: 1px;
-  border-radius: 10%;
+  border-radius: 3em;
   background-color: #032f5cce;
   border: none;
 }
