@@ -3,19 +3,11 @@
     <div class="d-flex justify-content-center"></div>
     <div class="d-flex justify-content-center">
       <b-button-group class="mb-5 gap">
-        <b-button
-          class="left"
-          variant="success"
-          @click="this.postVote"
-          value="1"
-        >Positive: {{this.up}}</b-button>
+        <b-button class="left" variant="success" @click="this.postVote" value="1">Positive</b-button>
+        <!-- >Positive: {{this.up}}</b-button> -->
         <b-button>Total Votes: {{this.total}}</b-button>
-        <b-button
-          class="right"
-          variant="danger"
-          @click="this.postVote"
-          value="-1"
-        >Negative: {{this.down}}</b-button>
+        <b-button class="right" variant="danger" @click="this.postVote" value="-1">Negative</b-button>
+        <!-- >Negative: {{this.down}}</b-button> -->
       </b-button-group>
     </div>
   </div>
@@ -51,20 +43,18 @@ export default {
 
 <style scoped>
 .left {
- border-radius: 1em;
+  border-radius: 1em;
 }
 
 .right {
-   border-radius: 1em;
+  border-radius: 1em;
 }
 
 .gap {
   margin-top: 5px;
 }
 
-
 .rounded {
-      border-radius: 1em !important;
+  border-radius: 1em !important;
 }
-
 </style>
