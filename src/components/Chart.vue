@@ -104,6 +104,7 @@ export default {
   height: 500px;
   margin: auto;
   background-color: rgba(26, 26, 26, 0.582);
+  position: relative;
 }
 
 .chartjs-render-monitor {

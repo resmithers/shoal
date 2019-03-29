@@ -12,14 +12,19 @@
         <b-nav-item right @click="logout">Logout</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
-    <PostDiscussions :user="user"/>
+    <PostDiscussions :user="userDetails"/>
   </div>
 </template>
 
 <script>
 import PostDiscussions from "../components/PostDiscussions";
 import logo from "../images/logo.png";
-
+//    <p id="userDetails">{{userDetails.name}}</p>
+//    <PostDiscussions
+//      id="PostDiscs"
+//      v-if="userDetails && userDetails.access >= 3"
+//      :user="userDetails"
+//    />
 export default {
   name: "Navbar",
   props: {
@@ -34,7 +39,7 @@ export default {
   },
   components: {
     PostDiscussions
-  }
+  },
 };
 </script>
 
