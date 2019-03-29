@@ -4,12 +4,12 @@
       <b-row>
         <b-col cols="8">
           <router-link to="/dashboard">
-            <b-button class='rounded' >Dashboard</b-button>
+            <b-button class="rounded">Dashboard</b-button>
           </router-link>
           <KeypointOld :keyPoints="filterPoints || points" :discussion="discussion"/>
           <ChartOld :discussion="discussion" :votes="filterVotes || votes"/>
-           <Slider class="ml-5" :points="pointplus" @slide="onSlide"/>
-        <VotesOld :votes="filterVotes || votes" :updown="filterUpDown || updown"/>
+          <Slider class="ml-5" :points="pointplus" @slide="onSlide"/>
+          <VotesOld :votes="filterVotes || votes" :updown="filterUpDown || updown"/>
         </b-col>
         <b-col cols="4">
           <CommentsOld :comments="filterComms || comments"/>
@@ -114,6 +114,7 @@ export default {
         up: this.getUnique(this.updown.up, "Author"),
         down: this.getUnique(this.updown.down, "Author")
       };
+
       this.filterVotes = this.getUnique(timeFilter(this.votes), "Author");
     },
     getUnique: function(arr, comp) {
@@ -129,11 +130,10 @@ export default {
 
 <style scoped>
 .rounded {
-      border-radius: 1em !important;
-      margin: 8px;
-      font-weight: 900;
+  border-radius: 1em !important;
+  margin: 8px;
+  font-weight: 900;
 }
-
 
 #Discussion {
   width: 100%;
@@ -152,5 +152,4 @@ export default {
   margin-right: 0 !important;
   max-width: 100% !important;
 }
-
 </style>

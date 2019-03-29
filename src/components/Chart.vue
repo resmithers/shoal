@@ -36,6 +36,14 @@ import { listenVotes } from "../utils/FirestoreListen.js";
 import Votes from "./Votes";
 
 export default {
+  components: {
+    Votes
+  },
+  props: {
+    user: String,
+    userDetails: Object,
+    discussion: Object
+  },
   data() {
     return {
       chartKey: 0,
@@ -68,19 +76,14 @@ export default {
       }
     };
   },
-  props: {
-    user: String,
-    userDetails: Object,
-    discussion: Object
-  },
-  mounted() {
-    listenVotes(this);
-  },
   watch: {
     datasets: function() {
       this.chartKey++;
       this.countVotes();
     }
+  },
+  mounted() {
+    listenVotes(this);
   },
   methods: {
     countVotes: function() {
@@ -91,9 +94,6 @@ export default {
         d ? this.upVotes++ : this.downVotes++;
       });
     }
-  },
-  components: {
-    Votes
   }
 };
 </script>

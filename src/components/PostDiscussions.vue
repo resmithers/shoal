@@ -1,19 +1,16 @@
 <template>
-  <div id="postDiscussion" class="PostDiscussionsContainer">
-    <span id="postDiscLink" v-b-modal.modal>Post Discussion</span>
-    <b-modal @ok="addDisc" id="modal" title="Post Discussion" align="center">
-      <form class="addDisc" @submit.prevent="addDisc">
-        <input v-model="title" type="text" placeholder="Title" name="Title">
-        <textarea rows="4" v-model="message" type="text" placeholder="Message" name="Message"/>
-        <input v-model="department" type="text" placeholder="Department" name="Department">
-        <label>Start Date:</label>
-        <input v-model="startDate" type="datetime-local" placeholder="Start Date" name="StartDate">
-        <label>End Date:</label>
-        <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate">
-        <p>{{ feedback }}</p>
-      </form>
-    </b-modal>
-  </div>
+  <b-modal @ok="addDisc" id="modal" title="Post Discussion" align="center">
+    <form class="addDisc" @submit.prevent="addDisc">
+      <input v-model="title" type="text" placeholder="Title" name="Title">
+      <textarea rows="4" v-model="message" type="text" placeholder="Message" name="Message"/>
+      <input v-model="department" type="text" placeholder="Department" name="Department">
+      <label>Start Date:</label>
+      <input v-model="startDate" type="datetime-local" placeholder="Start Date" name="StartDate">
+      <label>End Date:</label>
+      <input v-model="endDate" type="datetime-local" placeholder="End Date" name="EndDate">
+      <p>{{ feedback }}</p>
+    </form>
+  </b-modal>
 </template>
 
 <script>
