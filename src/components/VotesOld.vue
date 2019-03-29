@@ -3,8 +3,8 @@
     <div class="d-flex justify-content-center">
       <b-button-group class="mt-4">
         <b-button class="left" variant="success">Positive</b-button>
-                <!-- <b-button class="left" variant="success">Positive: {{ upVotes }}</b-button> -->
-        <b-button>Total Votes: {{ votes && votes.length }}</b-button> 
+        <!-- <b-button class="left" variant="success">Positive: {{ upVotes }}</b-button> -->
+        <b-button>Total Votes: {{ votes && votes.length }}</b-button>
         <b-button class="right" variant="danger">Negative</b-button>
         <!-- <b-button class="right" variant="danger">Negative: {{ downVotes }}</b-button> -->
       </b-button-group>
