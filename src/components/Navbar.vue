@@ -1,7 +1,11 @@
 <template>
   <div id="Navbar">
     <p id="userDetails">{{userDetails.name}}</p>
-    <PostDiscussions id="PostDiscs" v-if="userDetails && userDetails.access >= 3" :user="user"/>
+    <PostDiscussions
+      id="PostDiscs"
+      v-if="userDetails && userDetails.access >= 3"
+      :user="userDetails"
+    />
 
     <span id="navLogout" a href="#" @click="logout">Logout</span>
   </div>
@@ -20,7 +24,7 @@ export default {
   },
   components: {
     PostDiscussions
-  }
+  },
 };
 </script>
 
