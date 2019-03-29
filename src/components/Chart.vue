@@ -89,9 +89,8 @@ export default {
     countVotes: function() {
       this.upVotes = 0;
       this.downVotes = 0;
-
-      this.datasets.forEach(d => {
-        d ? this.upVotes++ : this.downVotes++;
+      this.datasets.forEach((d, i) => {
+        d < this.datasets[i + 1] ? this.upVotes++ : this.downVotes++;
       });
     }
   }
