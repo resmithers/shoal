@@ -19,7 +19,7 @@
             type="password"
             name="Password"
             class="unique"
-            placeholder="Enter Your password..."
+            placeholder="Enter Your Password..."
             required
           />
         </b-form-group>
@@ -204,13 +204,12 @@ button:hover {
   margin-bottom: 2em;
 }
 
-#logo{
-display: block;
-margin-left: auto;
-margin-right: auto;
-top: 9em;
-position: relative;
-width: 16%
-
+#logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 9em;
+  position: relative;
+  width: 16%;
 }
 </style>
