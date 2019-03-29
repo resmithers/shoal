@@ -29,6 +29,7 @@ import {
   getArchiveDisc,
   getSubCollections
 } from "../utils/FirestoreStaticListen";
+import { getUnique } from "../utils/FirestoreListen";
 
 export default {
   name: "archived",
@@ -110,12 +111,26 @@ export default {
 
       this.filterPoints = timeFilter(this.points);
       this.filterComms = timeFilter(this.comments);
+
       this.filterUpDown = {
-        up: this.getUnique(this.updown.up, "Author"),
-        down: this.getUnique(this.updown.down, "Author")
+        up: getUnique(timeFilter(this.updown.up), "Author"),
+        down: getUnique(timeFilter(this.updown.down), "Author")
       };
 
-      this.filterVotes = this.getUnique(timeFilter(this.votes), "Author");
+      this.filterVotes = getUnique(timeFilter(this.votes), "Author");
+
+      //   console.log(this.updown.up.length);
+      //   console.log(this.updown.down.length);
+      //   console.log(this.votes.length);
+      //   console.log(timeFilter(this.updown.up).length);
+      //   console.log(timeFilter(this.updown.down).length);
+      //   console.log(timeFilter(this.votes).length);
+      //   console.log(getUnique(timeFilter(this.updown.up), "Author").length);
+      //   console.log(getUnique(timeFilter(this.updown.down), "Author").length);
+      //   console.log(this.filterVotes.length);
+
+      //   console.dir(timeFilter(this.updown.up));
+      //   console.dir(timeFilter(this.updown.down));
     },
     getUnique: function(arr, comp) {
       return arr
