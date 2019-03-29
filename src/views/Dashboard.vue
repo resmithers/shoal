@@ -1,7 +1,7 @@
 <template>
   <div id="Dashboard">
-    <div class="dashboardContainer">
-      <Navbar :logout="logout" :userDetails="userDetails" :mine="mine"/>
+    <Navbar :logout="logout" :user="user" :userDetails="userDetails"/>
+    <!-- <div class="dashboardContainer">
       <div id="currentDiscussions">
         <CurrentDiscussions :active="live"/>
       </div>
@@ -11,7 +11,20 @@
       <div id="outcomes">
         <Outcomes :past="historical"/>
       </div>
-    </div>
+    </div>-->
+    <b-container class="mainChild" align="center">
+      <b-row row="1">
+        <b-col cols="4">
+          <CurrentDiscussions :active="live"/>
+        </b-col>
+        <b-col cols="4">
+          <ParticipatingDiscussions :interacted="interacted"/>
+        </b-col>
+        <b-col cols="4">
+          <Outcomes :past="historical"/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -56,6 +69,19 @@ export default {
 </script>
 
 <style scoped>
+
+.row {
+  width: 100vw;
+}
+
+.mainChild {
+  margin: 0;
+  margin-top: 3%;
+  border: 0;
+  text-align: center;
+  width: 100vw;
+}
+
 #Dashboard {
   background-repeat: no-repeat;
   background: radial-gradient(transparent 45%, #0c4783),
@@ -63,57 +89,8 @@ export default {
   background-size: 100%;
   background-position: cover;
   height: 100vh;
-}
-#postDiscussions {
-  right: 0%;
-  top: 0;
-  position: absolute;
-}
-.dashboardContainer {
-  position: relative;
-  text-align: center;
-}
-
-#currentDiscussions {
-  top: 4.5em;
-  left: 0;
-  position: absolute;
-  padding-left: 2%;
-  height: 90%;
-}
-
-#participatingDiscussions {
-  height: 750px;
-  width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-  bottom: -2em;
-}
-
-#outcomes {
-  right: 0;
-  position: absolute;
-  padding-right: 2%;
-  height: 750px;
-  top: 4.5em;
-}
-#logOutButton {
-  left: 2px;
-  position: absolute;
-  top: 1px;
-  border-radius: 3em;
-  background-color: #032f5cce;
-  border: none;
-}
-
-#logOutButton:hover {
-  background-color: red;
-}
-
-#myDiscs {
-  right: 140px;
-  top: 0;
-  position: absolute;
+  width: 100vw;
+  margin: 0;
+  border: 0;
 }
 </style>

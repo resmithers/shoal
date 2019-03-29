@@ -1,26 +1,41 @@
 <template>
   <div id="Navbar">
-    <p id="userDetails">{{userDetails.name}}</p>
-    <PostDiscussions
-      id="PostDiscs"
-      v-if="userDetails && userDetails.access >= 3"
-      :user="userDetails"
-    />
-
-    <span id="navLogout" a href="#" @click="logout">Logout</span>
+    <b-navbar type="dark" variant="dark" class="navvy">
+      <b-navbar-brand>
+        <img :src="logo" alt="I am a fishy logo" class="logo">
+      </b-navbar-brand>
+      <b-navbar-nav>
+        <b-nav-item v-if="userDetails && userDetails.access >= 3" v-b-modal.modal>Post discusssion</b-nav-item>
+      </b-navbar-nav>
+      <b-navbar-nav class="ml-auto">
+        <b-nav-item disabled >Welcome "{{ userDetails.name }}"</b-nav-item>
+        <b-nav-item right @click="logout">Logout</b-nav-item>
+      </b-navbar-nav>
+    </b-navbar>
+    <PostDiscussions :user="userDetails"/>
   </div>
 </template>
 
 <script>
 import PostDiscussions from "../components/PostDiscussions";
-
+import logo from "../images/logo.png";
+//    <p id="userDetails">{{userDetails.name}}</p>
+//    <PostDiscussions
+//      id="PostDiscs"
+//      v-if="userDetails && userDetails.access >= 3"
+//      :user="userDetails"
+//    />
 export default {
   name: "Navbar",
   props: {
     userDetails: Object,
     user: String,
-    logout: Function,
-    mine: Array
+    logout: Function
+  },
+  data() {
+    return {
+      logo: logo
+    };
   },
   components: {
     PostDiscussions
@@ -29,26 +44,15 @@ export default {
 </script>
 
 <style scoped>
-#navLogout {
-  position: relative;
-  right: -47%;
-  top: -1.35em;
-  font-weight: 900;
-  font-size: 20px;
-  width: auto;
+.logo {
+  max-width: 50px;
+  max-height: 50px;
 }
 
-#navLogout:hover {
-  cursor: pointer;
+.navbar {
+  height: 55px;
 }
 
-#userDetails {
-  left: 1em;
-  position: absolute;
-  font-weight: 900;
-  font-size: 25px;
-  padding-left: 2px;
-}
 #Navbar {
   background: #4e5d6c;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.753);
@@ -56,17 +60,6 @@ export default {
   -webkit-box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.74);
   width: 100%;
   height: 40px;
-}
-#PostDiscs {
-  position: relative;
-  margin-left: auto;
-  margin-right: auto;
-
-  top: 0.2em;
   font-weight: 900;
-  font-size: 20px;
-}
-#PostDiscs:hover {
-  cursor: pointer;
 }
 </style>

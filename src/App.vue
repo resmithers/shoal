@@ -14,11 +14,20 @@ export default {
       userDetails: null
     };
   },
+  watch: {
+    user: function() {
+      console.log(this.user);
+    }
+  },
   mounted() {
     if (localStorage.getItem("userUID")) {
       this.user = localStorage.getItem("userUID");
       this.userDetails = JSON.parse(localStorage.getItem("userDetails"));
     }
+
+    this.$nextTick(() => {
+      console.log(this.user, this.userDetails);
+    });
   },
   methods: {
     setUser: function(newUser) {
