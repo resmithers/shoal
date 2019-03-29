@@ -17,11 +17,10 @@
         <br>
         {{ moment(keyPoints[0].Timestamp).format("LLL") }}
       </b-card>
-      <b-modal id="modal1" title="Add A Key Point">
-        <p class="my-4">Add Key Point</p>
+      <b-modal @ok="postKeyPoint" id="modal1" title="Add A Key Point">
         <b-form @submit.prevent="postKeyPoint">
-          <b-form-textarea required rows="10"/>
-          <b-button type="submit" variant="primary">Submit</b-button>
+          <b-form-textarea id="textArea" required rows="10"/>
+          <!-- <b-button type="submit" variant="primary">Submit</b-button> -->
         </b-form>
         <b-modal-footer/>
       </b-modal>
@@ -84,7 +83,11 @@ export default {
       this.addPointForm = true;
     },
     postKeyPoint: function(e) {
-      addDiscPoint(this.discID, e.target[0].value, this.user);
+      addDiscPoint(
+        this.discID,
+        document.getElementById("textArea").value,
+        this.user
+      );
     }
   }
 };
@@ -119,6 +122,20 @@ h2 {
   max-height: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
+  position: relative;
+}
+
+#textArea {
+  resize: none;
+  color: rgba(0, 0, 0, 1);
+
+  background: RGBA(255, 255, 255, 0.7);
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid rgb(223, 223, 231);
+  border-radius: 4px;
+  display: block;
+  margin: 0;
 }
 
 .collapse::-webkit-scrollbar {
