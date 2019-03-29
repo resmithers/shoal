@@ -84,7 +84,7 @@ export function archivedVoteObject(votes) {
     vv[vObj.Vote === 1 ? "up" : "down"].push({
       Author: vObj.Author,
       value: vObj.Vote,
-      timestamp: vObj.Timestamp,
+      Timestamp: vObj.Timestamp,
       label: time
     });
 
@@ -101,6 +101,10 @@ export function archivedVoteObject(votes) {
   }, 0);
 
   vv.acc = accumulatedVotes;
+
+  // console.log(vv.up.length);
+  // console.log(vv.down.length);
+  // console.log(vv.acc);
 
   return vv;
 }
